@@ -1,4 +1,4 @@
-![Build Status](https://effa-109-99-137-155.ngrok-free.app/job/master/job/hdl_jobs/job/Main_HDL_Commit/badge/icon)
+![Build Status](https://viable-regularly-sheep.ngrok-free.app/job/master/job/hdl_jobs/job/Main_HDL_Commit/badge/icon)
 # HDL Reference Designs
 
 [Analog Devices Inc.](http://www.analog.com/en/index.html) HDL libraries and projects for various reference design and prototyping systems.
