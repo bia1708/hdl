@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ $(git for-each-ref --contains "958aadfadb0b1702fc82905ab6b27ec33e2ac0cb" | grep "refs\\/remotes\\/origin\\/master$") ]; then
+	echo 'true'
+else
+	echo 'false'
+fi
