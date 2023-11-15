@@ -1,11 +1,3 @@
-All projects: ![Build Status](https://viable-regularly-sheep.ngrok-free.app/job/master/job/hdl_jobs/job/Main_HDL_Commit/badge/icon)
-
-| Projects                     | Status                                                                                                                                                                               |
-|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ad40xx_fmc.zed               | ![Build Status](https://viable-regularly-sheep.ngrok-free.app/job/master/job/hdl_jobs/job/history/job/master_latest_commit/job/projects/job/ad40xx_fmc.zed/badge/icon)               |
-| ad4110.zed                   | ![Build Status](https://viable-regularly-sheep.ngrok-free.app/job/master/job/hdl_jobs/job/history/job/master_latest_commit/job/projects/job/ad4110.zed/badge/icon)                   |
-| ad9081_fmca_ebz.vcu128_m4_l8 | ![Build Status](https://viable-regularly-sheep.ngrok-free.app/job/master/job/hdl_jobs/job/history/job/master_latest_commit/job/projects/job/ad9081_fmca_ebz.vcu128_m4_l8/badge/icon) |
-| daq3.kcu105                  | ![Build Status](https://viable-regularly-sheep.ngrok-free.app/job/master/job/hdl_jobs/job/history/job/master_latest_commit/job/projects/job/daq3.kcu105/badge/icon)                  |
 
 # HDL Reference Designs
 
