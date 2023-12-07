@@ -14,6 +14,8 @@ all: lib
 
 clean:
 	$(MAKE) -C ad463x_data_capture clean
+	$(MAKE) -C axi_ad3552r clean
+	$(MAKE) -C axi_ad4858 clean
 	$(MAKE) -C axi_ad5766 clean
 	$(MAKE) -C axi_ad7606x clean
 	$(MAKE) -C axi_ad7616 clean
@@ -49,6 +51,7 @@ clean:
 	$(MAKE) -C axi_intr_monitor clean
 	$(MAKE) -C axi_laser_driver clean
 	$(MAKE) -C axi_logic_analyzer clean
+	$(MAKE) -C axi_ltc235x clean
 	$(MAKE) -C axi_ltc2387 clean
 	$(MAKE) -C axi_pulse_gen clean
 	$(MAKE) -C axi_pwm_gen clean
@@ -136,6 +139,8 @@ clean-all:clean
 
 lib:
 	$(MAKE) -C ad463x_data_capture
+	$(MAKE) -C axi_ad3552r
+	$(MAKE) -C axi_ad4858
 	$(MAKE) -C axi_ad5766
 	$(MAKE) -C axi_ad7606x
 	$(MAKE) -C axi_ad7616
@@ -171,6 +176,7 @@ lib:
 	$(MAKE) -C axi_intr_monitor
 	$(MAKE) -C axi_laser_driver
 	$(MAKE) -C axi_logic_analyzer
+	$(MAKE) -C axi_ltc235x
 	$(MAKE) -C axi_ltc2387
 	$(MAKE) -C axi_pulse_gen
 	$(MAKE) -C axi_pwm_gen
