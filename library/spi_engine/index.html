@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SPI Engine Execution Module" href="spi_engine_execution.html" /><link rel="prev" title="High-Speed DMA Controller" href="../axi_dmac/index.html" />
 
-    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>SPI Engine - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spi-bus-interface.html">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,7 +232,7 @@
         </div>
         <article role="main">
           <section id="spi-engine">
-<span id="id1"></span><h1>SPI Engine<a class="headerlink" href="#spi-engine" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1>SPI Engine<a class="headerlink" href="#spi-engine" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <p>SPI Engine is a highly flexible and powerful SPI controller framework.
@@ -248,7 +251,7 @@ when triggered by an external event allows for very low latency response times.
 By using a SPI Engine interconnect it is possible to connect multiple command
 stream master modules to a SPI Engine execution module.</p>
 <section id="sub-modules">
-<h2>Sub-modules<a class="headerlink" href="#sub-modules" title="Link to this heading">#</a></h2>
+<h2>Sub-modules<a class="headerlink" href="#sub-modules" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="spi_engine_execution.html#spi-engine-execution"><span class="std std-ref">SPI Engine Execution Module</span></a>: Main module which processes a SPI engine command
 stream and implements the SPI bus interface logic.</p></li>
@@ -261,7 +264,7 @@ to a SPI Engine execution module.</p></li>
 </ul>
 </section>
 <section id="interfaces">
-<h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="control-interface.html#spi-engine-control-interface"><span class="std std-ref">SPI Engine Control Interface</span></a>: SPI Engine command stream.</p></li>
 <li><p><a class="reference internal" href="offload-control-interface.html#spi-engine-offload-control-interface"><span class="std std-ref">SPI Engine Offload Control Interface</span></a>: Program the command stream stored
@@ -270,7 +273,7 @@ in a offload module.</p></li>
 </ul>
 </section>
 <section id="software">
-<h2>Software<a class="headerlink" href="#software" title="Link to this heading">#</a></h2>
+<h2>Software<a class="headerlink" href="#software" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://wiki.analog.com/resources/tools-software/linux-drivers/spi/spi_engine">Linux Driver</a>:
 Linux driver for the SPI Engine framework.</p></li>
@@ -279,9 +282,9 @@ format.</p></li>
 </ul>
 </section>
 <section id="related-ip-cores">
-<h2>Related IP Cores<a class="headerlink" href="#related-ip-cores" title="Link to this heading">#</a></h2>
+<h2>Related IP Cores<a class="headerlink" href="#related-ip-cores" title="Permalink to this heading">#</a></h2>
 <p>This list contains cores that are not part of the core SPI engine framework but
-make use of its interfaces and are intend to be used together with the SPI engine
+make use of its interfaces and are intended to be used together with the SPI engine
 framework.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://wiki.analog.com/resources/fpga/peripherals/util_sigma_delta_spi">util-sigma-delta-spi</a>:
@@ -289,7 +292,7 @@ Helper module for interfacing ADCs from the Analog Devices Sigma-Delta family.</
 </ul>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://wiki.analog.com/resources/eval/user-guides/eval-cn0363-pmdz">CN0363</a>:
 Colorimeter application using the <a class="reference external" href="https://www.analog.com/AD7175-2">AD7175-2</a> Sigma-Delta ADC.</p></li>
@@ -299,7 +302,7 @@ A 16-bit ADC subsystem with four common signal processing and conditioning block
 16-channel, 16-/12-bit, voltage output Digital-to-Analog Converters (DAC).</p></li>
 <li><p><a class="reference external" href="https://wiki.analog.com/resources/eval/user-guides/eval-cn0363-pmdz">CN0363</a>:
 The AD7768-1 is a low power, high performance, Σ-Δ analog-to-digital converter (ADC).</p></li>
-<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/projects/ad40xx_fmc">projects/ad40xx_fmc</a>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/projects/ad40xx_fmc">projects/ad40xx_fmc</a>
 Evaluation Board for the AD4000 Series 16-/18-/20-Bit Precision SAR ADCs.</p></li>
 <li><p><a class="reference external" href="https://wiki.analog.com/resources/eval/user-guides/ad469x">AD469x</a>:
 16-Bit, 16-Channel, 500 kSPS/1 MSPS, Easy Drive Multiplexed SAR ADC.</p></li>
@@ -308,9 +311,10 @@ Evaluation Board for the AD4000 Series 16-/18-/20-Bit Precision SAR ADCs.</p></l
 </ul>
 </section>
 <section id="additional-resources">
-<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h2>
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference download external" download="" href="https://wiki.analog.com/_media/resources/fpga/peripherals/spi-engine3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">Presentation:</span> <span class="pre">SPI</span> <span class="pre">Engine</span> <span class="pre">Design</span> <span class="pre">Philosophy</span></code></a>.</p></li>
+<li><p><a class="reference internal" href="pipeline-delays.html#spi-engine-pipeline-delays"><span class="std std-ref">SPI Engine Pipeline Delays</span></a></p></li>
 <li><p><a class="reference internal" href="tutorial.html#spi-engine-tutorial"><span class="std std-ref">SPI Engine Tutorial - PulSAR-ADC</span></a>.</p></li>
 </ul>
 </section>
@@ -395,9 +399,9 @@ Evaluation Board for the AD4000 Series 16-/18-/20-Bit Precision SAR ADCs.</p></l
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>

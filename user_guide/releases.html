@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Build an HDL project" href="build_hdl.html" /><link rel="prev" title="HDL Git repository" href="git_repository.html" />
 
-    <link rel="shortcut icon" href="../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>Releases - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,7 +232,7 @@
         </div>
         <article role="main">
           <section id="releases">
-<span id="id1"></span><h1>Releases<a class="headerlink" href="#releases" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1>Releases<a class="headerlink" href="#releases" title="Permalink to this heading">#</a></h1>
 <p>The HDL is released as git branches bi-annually. The release branches
 are created first and then tested before being made official. That is,
 the existence of a branch does not mean it is a fully tested release.</p>
@@ -241,7 +244,7 @@ along with the ADI library cores that are used.</p>
 one must assume these are <strong>not</strong> tested, therefore <strong>not</strong> supported by
 this release.</p>
 <section id="porting-a-release-branch-to-another-tool-version">
-<h2>Porting a release branch to another Tool version<a class="headerlink" href="#porting-a-release-branch-to-another-tool-version" title="Link to this heading">#</a></h2>
+<h2>Porting a release branch to another Tool version<a class="headerlink" href="#porting-a-release-branch-to-another-tool-version" title="Permalink to this heading">#</a></h2>
 <p>It is possible to port a release branch to another tool version, though
 not recommended. The ADI libraries should work across different versions
 of the tools, but the projects may not. The issues are most likely with
@@ -268,7 +271,7 @@ After which, update the Tcl scripts accordingly.</p>
 cases, it should work without much effort. If it doesn’t, do an
 incremental update and debug accordingly.</p>
 <section id="release-branches">
-<h3>Release branches<a class="headerlink" href="#release-branches" title="Link to this heading">#</a></h3>
+<h3>Release branches<a class="headerlink" href="#release-branches" title="Permalink to this heading">#</a></h3>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
@@ -377,7 +380,7 @@ incremental update and debug accordingly.</p>
 </section>
 </section>
 <section id="about-the-tools-we-use">
-<h2>About the tools we use<a class="headerlink" href="#about-the-tools-we-use" title="Link to this heading">#</a></h2>
+<h2>About the tools we use<a class="headerlink" href="#about-the-tools-we-use" title="Permalink to this heading">#</a></h2>
 <p>When Intel or AMD have a new release, we usually follow them and update our
 tools in a timely manner.</p>
 <p>Changing the version of tool used on a branch is done by updating the
@@ -470,9 +473,9 @@ Linux, to use the proper version of CROSS_COMPILE, etc.</p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>

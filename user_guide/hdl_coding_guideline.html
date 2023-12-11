@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Documentation guidelines" href="docs_guidelines.html" /><link rel="prev" title="Customize HDL projects" href="customize_hdl.html" />
 
-    <link rel="shortcut icon" href="../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>ADI HDL coding guideline - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,9 +232,9 @@
         </div>
         <article role="main">
           <section id="adi-hdl-coding-guideline">
-<span id="hdl-coding-guideline"></span><h1>ADI HDL coding guideline<a class="headerlink" href="#adi-hdl-coding-guideline" title="Link to this heading">#</a></h1>
+<span id="hdl-coding-guideline"></span><h1>ADI HDL coding guideline<a class="headerlink" href="#adi-hdl-coding-guideline" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>This document contains coding and documentation guidelines which must be
 followed by all HDL projects. The purpose of this document is to
 establish a set of rules that specify the layout, naming conventions and
@@ -256,9 +259,9 @@ VHDL or Verilog.</p>
 document.</p>
 </section>
 <section id="coding-style">
-<h2>2. Coding style<a class="headerlink" href="#coding-style" title="Link to this heading">#</a></h2>
+<h2>2. Coding style<a class="headerlink" href="#coding-style" title="Permalink to this heading">#</a></h2>
 <section id="a-layout">
-<h3>A. Layout<a class="headerlink" href="#a-layout" title="Link to this heading">#</a></h3>
+<h3>A. Layout<a class="headerlink" href="#a-layout" title="Permalink to this heading">#</a></h3>
 <p><strong>A1</strong></p>
 <p>Spaces <strong>must</strong> be used instead of tabs.</p>
 <p>This allows the code to be properly visualized by any editor. <strong>Do not</strong>
@@ -512,7 +515,7 @@ separate sections. <strong>Firstly</strong> register types and then wire types.<
 Verilog code and Annex 2 for VHDL code.</p>
 </section>
 <section id="b-naming-conventions">
-<h3>B. Naming Conventions<a class="headerlink" href="#b-naming-conventions" title="Link to this heading">#</a></h3>
+<h3>B. Naming Conventions<a class="headerlink" href="#b-naming-conventions" title="Permalink to this heading">#</a></h3>
 <p><strong>B1</strong></p>
 <p>All the names in the source code <strong>must</strong> be written in English.</p>
 <p><strong>B2</strong></p>
@@ -593,7 +596,7 @@ uncommon abbreviations <em>should</em> be avoided.</p>
 hierarchy.</p>
 </section>
 <section id="c-comments">
-<h3>C. Comments<a class="headerlink" href="#c-comments" title="Link to this heading">#</a></h3>
+<h3>C. Comments<a class="headerlink" href="#c-comments" title="Permalink to this heading">#</a></h3>
 <p><strong>C1</strong></p>
 <p>Comments <strong>must</strong> be used to describe the functionality of the
 HDL code. Liberal use of comments is strongly encouraged. Adding obvious
@@ -623,7 +626,7 @@ used.</p>
 format shown in Annex 1 for Verilog code and Annex 2 for VHDL code.</p>
 </section>
 <section id="d-general">
-<h3>D. General<a class="headerlink" href="#d-general" title="Link to this heading">#</a></h3>
+<h3>D. General<a class="headerlink" href="#d-general" title="Permalink to this heading">#</a></h3>
 <p><strong>D1</strong></p>
 <p>A file <strong>must</strong> contain a single module.</p>
 <p><strong>D2</strong></p>
@@ -676,9 +679,9 @@ the current year.</p>
 </section>
 </section>
 <section id="annexes">
-<h2>3. Annexes<a class="headerlink" href="#annexes" title="Link to this heading">#</a></h2>
+<h2>3. Annexes<a class="headerlink" href="#annexes" title="Permalink to this heading">#</a></h2>
 <section id="annex-1-verilog-file-format">
-<h3>Annex 1 Verilog file format<a class="headerlink" href="#annex-1-verilog-file-format" title="Link to this heading">#</a></h3>
+<h3>Annex 1 Verilog file format<a class="headerlink" href="#annex-1-verilog-file-format" title="Permalink to this heading">#</a></h3>
 <div class="highlight-verilog notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// ***************************************************************************</span>
 <span class="linenos"> 2</span><span class="c1">// ***************************************************************************</span>
 <span class="linenos"> 3</span><span class="c1">// Copyright (C) year-year Analog Devices, Inc. All rights reserved.</span>
@@ -773,7 +776,7 @@ the current year.</p>
 </div>
 </section>
 <section id="annex-2-vhdl-file-format">
-<h3>Annex 2 VHDL file format<a class="headerlink" href="#annex-2-vhdl-file-format" title="Link to this heading">#</a></h3>
+<h3>Annex 2 VHDL file format<a class="headerlink" href="#annex-2-vhdl-file-format" title="Permalink to this heading">#</a></h3>
 <div class="highlight-vhdl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">-- ***************************************************************************</span>
 <span class="linenos"> 2</span><span class="c1">-- ***************************************************************************</span>
 <span class="linenos"> 3</span><span class="c1">-- Copyright (C) year-year Analog Devices, Inc. All rights reserved.</span>
@@ -873,7 +876,7 @@ the current year.</p>
 </section>
 </section>
 <section id="references">
-<h2>4. References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2>4. References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="http://www.xilinx.com/support/documentation/white_papers/wp231.pdf">[1] Philippe Garrault, Brian Philofsky, “HDL Coding Practices to Accelerate
 Design Performance”, Xilinx, 2006</a></p>
 <p><a class="reference external" href="http://www.asic-world.com/code/verilog_tutorial/peter_chambers_10_commandments.pdf">[2] Peter Chambers, “The Ten Commandments of Excellent Design”, VLSI
@@ -970,9 +973,9 @@ Technology, 1997</a></p>
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>

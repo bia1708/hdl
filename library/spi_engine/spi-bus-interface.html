@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SPI Engine Instruction Set Specification" href="instruction-format.html" /><link rel="prev" title="SPI Engine Offload Control Interface" href="offload-control-interface.html" />
 
-    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>SPI Bus Interface - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,10 +232,10 @@
         </div>
         <article role="main">
           <section id="spi-bus-interface">
-<span id="spi-engine-spi-bus-interface"></span><h1>SPI Bus Interface<a class="headerlink" href="#spi-bus-interface" title="Link to this heading">#</a></h1>
+<span id="spi-engine-spi-bus-interface"></span><h1>SPI Bus Interface<a class="headerlink" href="#spi-bus-interface" title="Permalink to this heading">#</a></h1>
 <p>The SPI bus interface carries logical low-level SPI bus signals.</p>
 <section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <thead>
@@ -241,7 +244,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/spi_engine/interfaces/spi_master_rtl.xml">library/spi_engine/interfaces/spi_master_rtl.xml</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/spi_engine/interfaces/spi_master_rtl.xml">library/spi_engine/interfaces/spi_master_rtl.xml</a></p></td>
 <td><p>Interface definition file</p></td>
 </tr>
 </tbody>
@@ -249,7 +252,7 @@
 </div>
 </section>
 <section id="signal-pins">
-<h2>Signal Pins<a class="headerlink" href="#signal-pins" title="Link to this heading">#</a></h2>
+<h2>Signal Pins<a class="headerlink" href="#signal-pins" title="Permalink to this heading">#</a></h2>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
@@ -296,7 +299,7 @@ mode <code class="docutils literal notranslate"><span class="pre">sdi</span></co
 </div>
 </section>
 <section id="io-configuration">
-<h2>IO configuration<a class="headerlink" href="#io-configuration" title="Link to this heading">#</a></h2>
+<h2>IO configuration<a class="headerlink" href="#io-configuration" title="Permalink to this heading">#</a></h2>
 <a class="reference internal image-reference" href="../../_images/spi_bus.svg"><img alt="../../_images/spi_bus.svg" class="align-right" src="../../_images/spi_bus.svg" width="30%" /></a>
 <p>The SPI bus interface only carries a logical representation of the low-level SPI
 bus signals. The top-level module in the FPGA design project is responsible for
@@ -313,7 +316,7 @@ directly be connected to the input buffer for the <code class="docutils literal 
 when <code class="docutils literal notranslate"><span class="pre">mosi</span></code> tri-stating is not required the <code class="docutils literal notranslate"><span class="pre">sdo</span></code> signal can be directly
 connected to the <code class="docutils literal notranslate"><span class="pre">mosi</span></code> signal leaving the <code class="docutils literal notranslate"><span class="pre">sdo_t</span></code> signal unconnected.</p>
 <section id="example-verilog-io-configuration">
-<h3>Example Verilog IO configuration<a class="headerlink" href="#example-verilog-io-configuration" title="Link to this heading">#</a></h3>
+<h3>Example Verilog IO configuration<a class="headerlink" href="#example-verilog-io-configuration" title="Permalink to this heading">#</a></h3>
 <blockquote>
 <div><p>The following example Verilog code shows the most generic IO configuration,
 which represents the diagram above. Depending on system requirements some
@@ -411,9 +414,9 @@ interface.</p>
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>

@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>IP Template - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,10 +232,9 @@
         </div>
         <article role="main">
           <section id="ip-template">
-<span id="template-ip"></span><h1>IP Template<a class="headerlink" href="#ip-template" title="Link to this heading">#</a></h1>
+<span id="template-ip"></span><h1>IP Template<a class="headerlink" href="#ip-template" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id1">
-<object data="../../_images/symbol-9172b0007c63391890d67a9da816d7c8f2e7ac5e.svg" type="image/svg+xml">
-            <p class="warning">// ***************************************************************************
+// ***************************************************************************
 // ***************************************************************************
 // Copyright (C) 2015-2023 Analog Devices, Inc. All rights reserved.
 //
@@ -845,20 +847,20 @@ module spi_engine_execution #(
     sdo_t &lt;= sdo_t_int;
   end
 
-endmodule</p></object>
+endmodule
 <figcaption>
-<p><span class="caption-text">spi_engine_execution</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-text">spi_engine_execution</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="features">
-<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>AXI-based configuration</p></li>
 <li><p>Vivado and Quartus Compatible</p></li>
 </ul>
 </section>
 <section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <thead>
@@ -867,7 +869,7 @@ endmodule</p></object>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/axi_dmac/axi_dmac.v">library/axi_dmac/axi_dmac.v</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/axi_dmac/axi_dmac.v">library/axi_dmac/axi_dmac.v</a></p></td>
 <td><p>Verilog source for the peripheral.</p></td>
 </tr>
 </tbody>
@@ -875,10 +877,10 @@ endmodule</p></object>
 </div>
 </section>
 <section id="block-diagram">
-<h2>Block Diagram<a class="headerlink" href="#block-diagram" title="Link to this heading">#</a></h2>
+<h2>Block Diagram<a class="headerlink" href="#block-diagram" title="Permalink to this heading">#</a></h2>
 <img alt="Template IP block diagram" class="align-center" src="../../_images/block_diagram.svg" /></section>
 <section id="configuration-parameters">
-<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Link to this heading">#</a></h2>
+<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Permalink to this heading">#</a></h2>
 <div><section id="hdl-parameters">
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
@@ -912,10 +914,10 @@ endmodule</p></object>
 </section>
 </div></section>
 <section id="interface">
-<span id="template-ip-interface"></span><h2>Interface<a class="headerlink" href="#interface" title="Link to this heading">#</a></h2>
+<span id="template-ip-interface"></span><h2>Interface<a class="headerlink" href="#interface" title="Permalink to this heading">#</a></h2>
 <div></div></section>
 <section id="detailed-architecture">
-<h2>Detailed Architecture<a class="headerlink" href="#detailed-architecture" title="Link to this heading">#</a></h2>
+<h2>Detailed Architecture<a class="headerlink" href="#detailed-architecture" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">image</span><span class="p">::</span> <span class="n">detailed_architecture</span><span class="o">.</span><span class="n">svg</span>
    <span class="p">:</span><span class="n">alt</span><span class="p">:</span> <span class="n">Template</span> <span class="n">IP</span> <span class="n">detailed</span> <span class="n">architecture</span>
    <span class="p">:</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span>
@@ -923,7 +925,7 @@ endmodule</p></object>
 </div>
 </section>
 <section id="detailed-description">
-<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Link to this heading">#</a></h2>
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this heading">#</a></h2>
 <p>The top module instantiates</p>
 <ul class="simple">
 <li><p>The ADC channel register map.</p></li>
@@ -937,10 +939,10 @@ The Up_adc_channel module implements the ADC CHANNEL register map, allowing for
 basic monitoring and control of the ADC’s channel.</p>
 </section>
 <section id="register-map">
-<h2>Register Map<a class="headerlink" href="#register-map" title="Link to this heading">#</a></h2>
+<h2>Register Map<a class="headerlink" href="#register-map" title="Permalink to this heading">#</a></h2>
 <div><section id="hdl-regmap">
 <section id="register-map-Base (common to all cores)">
-<h4>Base (common to all cores) (Base (common to all cores))<a class="headerlink" href="#register-map-Base (common to all cores)" title="Link to this heading">#</a></h4>
+<h4>Base (common to all cores) (Base (common to all cores))<a class="headerlink" href="#register-map-Base (common to all cores)" title="Permalink to this heading">#</a></h4>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="cc26e3cbc5121058c1531ab9056a6838885ff6ea" name="cc26e3cbc5121058c1531ab9056a6838885ff6ea" type="checkbox"></input><label for="cc26e3cbc5121058c1531ab9056a6838885ff6ea"><p>Register map table.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -1184,7 +1186,7 @@ basic monitoring and control of the ADC’s channel.</p>
 <td><code class="docutils literal notranslate"></code></td>
 <td><code class="docutils literal notranslate"></code></td>
 <td class="description"><section>
-<p>FPGA device information <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/scripts/adi_intel_device_info_enc.tcl">library/scripts/adi_intel_device_info_enc.tcl</a> (Intel encoded values) <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/scripts/adi_xilinx_device_info_enc.tcl">library/scripts/adi_xilinx_device_info_enc.tcl</a> (Xilinx encoded values)</p>
+<p>FPGA device information <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/scripts/adi_intel_device_info_enc.tcl">library/scripts/adi_intel_device_info_enc.tcl</a> (Intel encoded values) <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/scripts/adi_xilinx_device_info_enc.tcl">library/scripts/adi_xilinx_device_info_enc.tcl</a> (Xilinx encoded values)</p>
 </section>
 </td>
 </tr>
@@ -1238,7 +1240,7 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </div><div><section id="hdl-regmap">
 <section id="register-map-ADC Common (axi_ad*)">
-<h4>ADC Common (axi_ad*) (ADC Common (axi_ad*))<a class="headerlink" href="#register-map-ADC Common (axi_ad*)" title="Link to this heading">#</a></h4>
+<h4>ADC Common (axi_ad*) (ADC Common (axi_ad*))<a class="headerlink" href="#register-map-ADC Common (axi_ad*)" title="Permalink to this heading">#</a></h4>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="cc26e3cbc5121058c1531ab9056a6838885ff6ea" name="cc26e3cbc5121058c1531ab9056a6838885ff6ea" type="checkbox"></input><label for="cc26e3cbc5121058c1531ab9056a6838885ff6ea"><p>Register map table.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -2062,7 +2064,7 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </div><div><section id="hdl-regmap">
 <section id="register-map-ADC Channel (axi_ad*)">
-<h4>ADC Channel (axi_ad*) (ADC Channel (axi_ad*))<a class="headerlink" href="#register-map-ADC Channel (axi_ad*)" title="Link to this heading">#</a></h4>
+<h4>ADC Channel (axi_ad*) (ADC Channel (axi_ad*))<a class="headerlink" href="#register-map-ADC Channel (axi_ad*)" title="Permalink to this heading">#</a></h4>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="cc26e3cbc5121058c1531ab9056a6838885ff6ea" name="cc26e3cbc5121058c1531ab9056a6838885ff6ea" type="checkbox"></input><label for="cc26e3cbc5121058c1531ab9056a6838885ff6ea"><p>Register map table.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -2547,7 +2549,7 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </div></section>
 <section id="design-guidelines">
-<h2>Design Guidelines<a class="headerlink" href="#design-guidelines" title="Link to this heading">#</a></h2>
+<h2>Design Guidelines<a class="headerlink" href="#design-guidelines" title="Permalink to this heading">#</a></h2>
 <p>The control of the chip is done through an SPI interface, which is needed at the
 system level.
 The <a class="reference internal" href="#template-ip-interface"><span class="std std-ref">Interface</span></a> must be connected directly to the top file of
@@ -2561,13 +2563,13 @@ If no processor is available in your system, you  can create your IP starting
 from the interface module.</p>
 </section>
 <section id="software-guidelines">
-<h2>Software Guidelines<a class="headerlink" href="#software-guidelines" title="Link to this heading">#</a></h2>
+<h2>Software Guidelines<a class="headerlink" href="#software-guidelines" title="Permalink to this heading">#</a></h2>
 <p>Linux is supported also using <a class="reference external" href="https://github.com/analogdevicesinc/linux/blob/master//">/</a>.</p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl">ADI HDL repository</a>, <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/axi_ad777x">library/axi_ad777x</a> library.</p></li>
+<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl">ADI HDL repository</a>, <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/axi_ad777x">library/axi_ad777x</a> library.</p></li>
 <li><p><a class="reference external" href="https://github.com/analogdevicesinc/linux/blob/master//">/</a>.</p></li>
 <li><p><a class="reference external" href="https://www.xilinx.com/support/documentation/data_sheets/ds190-Zynq-7000-Overview.pdf">Zynq-7000 SoC Overview</a>.</p></li>
 <li><p><a class="reference external" href="https://www.xilinx.com/support/documentation/user_guides/ug865-Zynq-7000-Pkg-Pinout.pdf">Zynq-7000 SoC Packaging and Pinout</a>.</p></li>
@@ -2641,9 +2643,9 @@ from the interface module.</p>
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>

@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="AXI SPI Engine Module" href="axi_spi_engine.html" /><link rel="prev" title="SPI Engine" href="index.html" />
 
-    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>SPI Engine Execution Module - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spi-bus-interface.html">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,10 +232,9 @@
         </div>
         <article role="main">
           <section id="spi-engine-execution-module">
-<span id="spi-engine-execution"></span><h1>SPI Engine Execution Module<a class="headerlink" href="#spi-engine-execution-module" title="Link to this heading">#</a></h1>
+<span id="spi-engine-execution"></span><h1>SPI Engine Execution Module<a class="headerlink" href="#spi-engine-execution-module" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id1">
-<object data="../../_images/symbol-9172b0007c63391890d67a9da816d7c8f2e7ac5e.svg" type="image/svg+xml">
-            <p class="warning">// ***************************************************************************
+// ***************************************************************************
 // ***************************************************************************
 // Copyright (C) 2015-2023 Analog Devices, Inc. All rights reserved.
 //
@@ -845,16 +847,16 @@ module spi_engine_execution #(
     sdo_t &lt;= sdo_t_int;
   end
 
-endmodule</p></object>
+endmodule
 <figcaption>
-<p><span class="caption-text">spi_engine_execution</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-text">spi_engine_execution</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The SPI Engine Execution peripheral forms the heart of the SPI Engine framework.
 It is responsible for handling a SPI Engine control stream and translates it
 into low-level SPI bus transactions.</p>
 <section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
@@ -867,10 +869,10 @@ into low-level SPI bus transactions.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/spi_engine/spi_engine_execution/spi_engine_execution.v">library/spi_engine/spi_engine_execution/spi_engine_execution.v</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/spi_engine/spi_engine_execution/spi_engine_execution.v">library/spi_engine/spi_engine_execution/spi_engine_execution.v</a></p></td>
 <td><p>Verilog source for the peripheral.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl">library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl">library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl</a></p></td>
 <td><p>TCL script to generate the Vivado IP-integrator project for the peripheral.</p></td>
 </tr>
 </tbody>
@@ -878,7 +880,7 @@ into low-level SPI bus transactions.</p>
 </div>
 </section>
 <section id="configuration-parameters">
-<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Link to this heading">#</a></h2>
+<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Permalink to this heading">#</a></h2>
 <div><section id="hdl-parameters">
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
@@ -960,9 +962,9 @@ into low-level SPI bus transactions.</p>
 </section>
 </div></section>
 <section id="signal-and-interface-pins">
-<h2>Signal and Interface Pins<a class="headerlink" href="#signal-and-interface-pins" title="Link to this heading">#</a></h2>
+<h2>Signal and Interface Pins<a class="headerlink" href="#signal-and-interface-pins" title="Permalink to this heading">#</a></h2>
 <div><section id="bus-interface-ctrl">
-<h3>ctrl<a class="headerlink" href="#bus-interface-ctrl" title="Link to this heading">#</a></h3>
+<h3>ctrl<a class="headerlink" href="#bus-interface-ctrl" title="Permalink to this heading">#</a></h3>
 <section>
 <p><a class="reference internal" href="control-interface.html#spi-engine-control-interface"><span class="std std-ref">SPI Engine Control Interface</span></a> slave.     SPI Engine Control stream that contains commands and data for the     execution module.</p>
 </section>
@@ -1033,7 +1035,7 @@ into low-level SPI bus transactions.</p>
 </div>
 </section>
 <section id="bus-interface-spi">
-<h3>spi<a class="headerlink" href="#bus-interface-spi" title="Link to this heading">#</a></h3>
+<h3>spi<a class="headerlink" href="#bus-interface-spi" title="Permalink to this heading">#</a></h3>
 <section>
 <p><a class="reference internal" href="spi-bus-interface.html#spi-engine-spi-bus-interface"><span class="std std-ref">SPI Bus Interface</span></a> master.     Low-level SPI bus interface that is controlled by peripheral.</p>
 </section>
@@ -1080,7 +1082,7 @@ into low-level SPI bus transactions.</p>
 </div>
 </section>
 <section id="ports">
-<h3>Ports<a class="headerlink" href="#ports" title="Link to this heading">#</a></h3>
+<h3>Ports<a class="headerlink" href="#ports" title="Permalink to this heading">#</a></h3>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="1130f9d1c1635dd7229a2efad01389094ea6d999" name="1130f9d1c1635dd7229a2efad01389094ea6d999" type="checkbox"></input><label for="1130f9d1c1635dd7229a2efad01389094ea6d999"><p>Ports table.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -1133,7 +1135,7 @@ into low-level SPI bus transactions.</p>
 </section>
 </div></section>
 <section id="theory-of-operation">
-<h2>Theory of Operation<a class="headerlink" href="#theory-of-operation" title="Link to this heading">#</a></h2>
+<h2>Theory of Operation<a class="headerlink" href="#theory-of-operation" title="Permalink to this heading">#</a></h2>
 <p>The SPI Engine Execution module implements the physical access to the SPI bus.
 It implements a small but powerful programmable state machine that translates a
 SPI Engine command stream into low-level SPI bus access.</p>
@@ -1227,9 +1229,9 @@ divide the external clock to the counter and compare unit.</p>
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>

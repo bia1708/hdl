@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>Template Module - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,10 +232,9 @@
         </div>
         <article role="main">
           <section id="template-module">
-<span id="template-framework-module"></span><h1>Template Module<a class="headerlink" href="#template-module" title="Link to this heading">#</a></h1>
+<span id="template-framework-module"></span><h1>Template Module<a class="headerlink" href="#template-module" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id1">
-<object data="../../_images/symbol-9172b0007c63391890d67a9da816d7c8f2e7ac5e.svg" type="image/svg+xml">
-            <p class="warning">// ***************************************************************************
+// ***************************************************************************
 // ***************************************************************************
 // Copyright (C) 2015-2023 Analog Devices, Inc. All rights reserved.
 //
@@ -845,14 +847,14 @@ module spi_engine_execution #(
     sdo_t &lt;= sdo_t_int;
   end
 
-endmodule</p></object>
+endmodule
 <figcaption>
-<p><span class="caption-text">spi_engine_execution</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-text">spi_engine_execution</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The {module name} is responsible for {brief description}.</p>
 <section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
@@ -865,10 +867,10 @@ endmodule</p></object>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/spi_engine/spi_engine_execution/spi_engine_execution.v">library/spi_engine/spi_engine_execution/spi_engine_execution.v</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/spi_engine/spi_engine_execution/spi_engine_execution.v">library/spi_engine/spi_engine_execution/spi_engine_execution.v</a></p></td>
 <td><p>Verilog source for the peripheral.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl">library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl">library/spi_engine/spi_engine_execution/spi_engine_execution_ip.tcl</a></p></td>
 <td><p>TCL script to generate the Vivado IP-integrator project for the peripheral.</p></td>
 </tr>
 </tbody>
@@ -876,7 +878,7 @@ endmodule</p></object>
 </div>
 </section>
 <section id="configuration-parameters">
-<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Link to this heading">#</a></h2>
+<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Permalink to this heading">#</a></h2>
 <div><section id="hdl-parameters">
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
@@ -910,9 +912,9 @@ endmodule</p></object>
 </section>
 </div></section>
 <section id="signal-and-interface-pins">
-<h2>Signal and Interface Pins<a class="headerlink" href="#signal-and-interface-pins" title="Link to this heading">#</a></h2>
+<h2>Signal and Interface Pins<a class="headerlink" href="#signal-and-interface-pins" title="Permalink to this heading">#</a></h2>
 <div><section id="bus-interface-m_ctrl">
-<h3>m_ctrl<a class="headerlink" href="#bus-interface-m_ctrl" title="Link to this heading">#</a></h3>
+<h3>m_ctrl<a class="headerlink" href="#bus-interface-m_ctrl" title="Permalink to this heading">#</a></h3>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="4f81aab6c3f593abc152b26789a2741a5e2cbd43" name="4f81aab6c3f593abc152b26789a2741a5e2cbd43" type="checkbox"></input><label for="4f81aab6c3f593abc152b26789a2741a5e2cbd43"><p>Ports of m_ctrl bus.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -980,7 +982,7 @@ endmodule</p></object>
 </div>
 </section>
 <section id="bus-interface-s0_ctrl">
-<h3>s0_ctrl<a class="headerlink" href="#bus-interface-s0_ctrl" title="Link to this heading">#</a></h3>
+<h3>s0_ctrl<a class="headerlink" href="#bus-interface-s0_ctrl" title="Permalink to this heading">#</a></h3>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="c4ce348ea412d24d734db47f89ab02a36550fcfc" name="c4ce348ea412d24d734db47f89ab02a36550fcfc" type="checkbox"></input><label for="c4ce348ea412d24d734db47f89ab02a36550fcfc"><p>Ports of s0_ctrl bus.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -1048,7 +1050,7 @@ endmodule</p></object>
 </div>
 </section>
 <section id="bus-interface-s1_ctrl">
-<h3>s1_ctrl<a class="headerlink" href="#bus-interface-s1_ctrl" title="Link to this heading">#</a></h3>
+<h3>s1_ctrl<a class="headerlink" href="#bus-interface-s1_ctrl" title="Permalink to this heading">#</a></h3>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="96941df42b30a569b55bd1a4a658c4d9809b8e87" name="96941df42b30a569b55bd1a4a658c4d9809b8e87" type="checkbox"></input><label for="96941df42b30a569b55bd1a4a658c4d9809b8e87"><p>Ports of s1_ctrl bus.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -1116,7 +1118,7 @@ endmodule</p></object>
 </div>
 </section>
 <section id="ports">
-<h3>Ports<a class="headerlink" href="#ports" title="Link to this heading">#</a></h3>
+<h3>Ports<a class="headerlink" href="#ports" title="Permalink to this heading">#</a></h3>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="1130f9d1c1635dd7229a2efad01389094ea6d999" name="1130f9d1c1635dd7229a2efad01389094ea6d999" type="checkbox"></input><label for="1130f9d1c1635dd7229a2efad01389094ea6d999"><p>Ports table.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -1154,7 +1156,7 @@ endmodule</p></object>
 </section>
 </div></section>
 <section id="theory-of-operation">
-<h2>Theory of Operation<a class="headerlink" href="#theory-of-operation" title="Link to this heading">#</a></h2>
+<h2>Theory of Operation<a class="headerlink" href="#theory-of-operation" title="Permalink to this heading">#</a></h2>
 <p>The {module name}  module implements {brief description}.</p>
 <img alt="../../_images/spi_engine.svg" src="../../_images/spi_engine.svg" /></section>
 </section>
@@ -1218,9 +1220,9 @@ endmodule</p></object>
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>

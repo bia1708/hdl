@@ -1,11 +1,11 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" data-content_root="">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="SPI Engine Interconnect Module" href="spi_engine_interconnect.html" /><link rel="prev" title="AXI SPI Engine Module" href="axi_spi_engine.html" />
 
-    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.2.2 and Furo 2023.08.17 -->
+    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
         <title>SPI Engine Offload Module - HDL, Analog Devices v0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
@@ -184,12 +184,15 @@
 <li class="toctree-l2"><a class="reference internal" href="offload-control-interface.html">Offload Control Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="spi-bus-interface.html">SPI Bus Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline-delays.html">Pipeline Delays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Projects</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
@@ -229,9 +232,8 @@
         </div>
         <article role="main">
           <section id="spi-engine-offload-module">
-<span id="spi-engine-offload"></span><h1>SPI Engine Offload Module<a class="headerlink" href="#spi-engine-offload-module" title="Link to this heading">#</a></h1>
-<object data="../../_images/symbol-7aafba655586b2552fff7cb908677b6098d5e02e.svg" type="image/svg+xml">
-            <p class="warning">// ***************************************************************************
+<span id="spi-engine-offload"></span><h1>SPI Engine Offload Module<a class="headerlink" href="#spi-engine-offload-module" title="Permalink to this heading">#</a></h1>
+// ***************************************************************************
 // ***************************************************************************
 // Copyright (C) 2015-2023 Analog Devices, Inc. All rights reserved.
 //
@@ -534,13 +536,13 @@ module spi_engine_offload #(
       sdo_mem[ctrl_sdo_wr_addr] &lt;= ctrl_sdo_wr_data;
   end
 
-endmodule</p></object>
+endmodule
 <p>The SPI Engine Offload peripheral allows to store a SPI Engine command and SDO
 data stream in a RAM or ROM module. The command stream is executed when the
 <code class="docutils literal notranslate"><span class="pre">trigger</span></code> signal is asserted. This allows the execution of SPI transactions
 with a very short delay in reaction to a event.</p>
 <section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h2>
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
 <div class="table-wrapper colwidths-given docutils container">
 <table class="docutils align-default">
 <colgroup>
@@ -553,10 +555,10 @@ with a very short delay in reaction to a event.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/spi_engine/spi_engine_offload/spi_engine_offload.v">library/spi_engine/spi_engine_offload/spi_engine_offload.v</a></p></td>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/spi_engine/spi_engine_offload/spi_engine_offload.v">library/spi_engine/spi_engine_offload/spi_engine_offload.v</a></p></td>
 <td><p>Verilog source for the peripheral.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/main/library/spi_engine/spi_engine_offload/spi_engine_offload_ip.tcl">library/spi_engine/spi_engine_offload/spi_engine_offload_ip.tcl</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/spi_engine/spi_engine_offload/spi_engine_offload_ip.tcl">library/spi_engine/spi_engine_offload/spi_engine_offload_ip.tcl</a></p></td>
 <td><p>TCL script to generate the Vivado IP-integrator project for the
 peripheral.</p></td>
 </tr>
@@ -565,7 +567,7 @@ peripheral.</p></td>
 </div>
 </section>
 <section id="configuration-parameters">
-<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Link to this heading">#</a></h2>
+<h2>Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Permalink to this heading">#</a></h2>
 <div><section id="hdl-parameters">
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
@@ -629,9 +631,9 @@ peripheral.</p></td>
 </section>
 </div></section>
 <section id="signal-and-interface-pins">
-<h2>Signal and Interface Pins<a class="headerlink" href="#signal-and-interface-pins" title="Link to this heading">#</a></h2>
+<h2>Signal and Interface Pins<a class="headerlink" href="#signal-and-interface-pins" title="Permalink to this heading">#</a></h2>
 <div><section id="bus-interface-spi_engine_ctrl">
-<h3>spi_engine_ctrl<a class="headerlink" href="#bus-interface-spi_engine_ctrl" title="Link to this heading">#</a></h3>
+<h3>spi_engine_ctrl<a class="headerlink" href="#bus-interface-spi_engine_ctrl" title="Permalink to this heading">#</a></h3>
 <section>
 <p><a class="reference internal" href="control-interface.html#spi-engine-control-interface"><span class="std std-ref">SPI Engine Control Interface</span></a> master.     SPI Engine Control stream that contains commands and data.</p>
 </section>
@@ -702,7 +704,7 @@ peripheral.</p></td>
 </div>
 </section>
 <section id="bus-interface-spi_engine_offload_ctrl">
-<h3>spi_engine_offload_ctrl<a class="headerlink" href="#bus-interface-spi_engine_offload_ctrl" title="Link to this heading">#</a></h3>
+<h3>spi_engine_offload_ctrl<a class="headerlink" href="#bus-interface-spi_engine_offload_ctrl" title="Permalink to this heading">#</a></h3>
 <section>
 <p><a class="reference internal" href="offload-control-interface.html#spi-engine-offload-control-interface"><span class="std std-ref">SPI Engine Offload Control Interface</span></a> slave.     Control interface which allows to re-program the stored command and SDO     data stream.</p>
 </section>
@@ -765,7 +767,7 @@ peripheral.</p></td>
 </div>
 </section>
 <section id="bus-interface-offload_sdi">
-<h3>offload_sdi<a class="headerlink" href="#bus-interface-offload_sdi" title="Link to this heading">#</a></h3>
+<h3>offload_sdi<a class="headerlink" href="#bus-interface-offload_sdi" title="Permalink to this heading">#</a></h3>
 <section>
 <p>Streaming AXI master     Output stream of the received SPI data.</p>
 </section>
@@ -800,7 +802,7 @@ peripheral.</p></td>
 </div>
 </section>
 <section id="ports">
-<h3>Ports<a class="headerlink" href="#ports" title="Link to this heading">#</a></h3>
+<h3>Ports<a class="headerlink" href="#ports" title="Permalink to this heading">#</a></h3>
 <div class="collapsible docutils container">
 <input class="collapsible_input" id="1130f9d1c1635dd7229a2efad01389094ea6d999" name="1130f9d1c1635dd7229a2efad01389094ea6d999" type="checkbox"></input><label for="1130f9d1c1635dd7229a2efad01389094ea6d999"><p>Ports table.</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
@@ -931,9 +933,9 @@ peripheral.</p></td>
       
     </aside>
   </div>
-</div><script src="../../_static/documentation_options.js?v=34cd777e"></script>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=4c0d86c8"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
     <script src="https://wavedrom.com/skins/default.js"></script>
     <script src="https://wavedrom.com/wavedrom.min.js"></script>
