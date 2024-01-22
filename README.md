@@ -1,6 +1,6 @@
 | Projects | Status | 
 | --- | --- | 
-| fmcomms2.vc707 | ![Jenkins](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fviable-regularly-sheep.ngrok-free.app%2Fjob%2Fmain%2Fjob%2Fbuilds%2Fjob%2Fmain_latest_commit%2Fjob%2Fprojects%2Fjob%2Ffmcomms2.vc707%2F&style=for-the-badge&logo=jenkins&logoColor=black&label=Build&labelColor=grey&color=orange&cacheSeconds=360) |
+| fmcomms2.vc707 | ![Jenkins](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fviable-regularly-sheep.ngrok-free.app%2Fjob%2Fmain%2Fjob%2Fbuilds%2Fjob%2Fmain_latest_commit%2Fjob%2Fprojects%2Fjob%2Ffmcomms2.vc707%2F&style=flat-square&logo=jenkins&logoColor=white&label=Build&labelColor=grey&color=orange&cacheSeconds=360) |
 
 ![Jenkins](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fviable-regularly-sheep.ngrok-free.app%2Fjob%2Fmain%2Fjob%2Fbuilds%2Fjob%2Fmain_latest_commit%2Fjob%2Fprojects%2Fjob%2Ffmcomms2.vc707&logo=%23D24939&logoColor=red)
 ![Jenkins](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fviable-regularly-sheep.ngrok-free.app%2Fjob%2Fmain%2Fjob%2Fbuilds%2Fjob%2Fmain_latest_commit%2Fjob%2Fprojects%2Fjob%2Ffmcomms2.vc707&logo=%23D24939&logoColor=red)
