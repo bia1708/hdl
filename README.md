@@ -1,3 +1,4 @@
+[StatusTable](myreadme.md)
 <p align="center">
 <img src="docs/sources/HDL_logo.png" width="500" alt="ADI HDL Logo"> </br>
 </p>
