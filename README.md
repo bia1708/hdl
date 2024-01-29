@@ -15,6 +15,9 @@
 <a href="https://github.com/analogdevicesinc/hdl/actions">
 <img src="https://github.com/analogdevicesinc/hdl/actions/workflows/test_n_lint.yml/badge.svg" alt="Build Status">
 </a>
+
+[![Jenkins](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Flargely-growing-salmon.ngrok-free.app%2Fjob%2Fmain%2Fjob%2Fhdl_jobs%2Fjob%2FMain_HDL_Commit%2F&style=plastic&logo=jenkins&logoColor=white&label=Build%20Status&labelColor=grey&cacheSeconds=360)
+](myreadme.md)
 </p>
 
 <p align="center">
