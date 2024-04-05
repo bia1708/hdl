@@ -1,167 +1,160 @@
-<!doctype html>
-<html class="no-js" lang="en" data-content_root="">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="HDL Architecture" href="architecture.html" /><link rel="prev" title="Releases" href="releases.html" />
+<!DOCTYPE html>
 
-    <link rel="shortcut icon" href="../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
-        <title>Build an HDL project - HDL, Analog Devices v0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build an HDL project &#8212; HDL  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.min.css?v=7196d5a4" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=73e8d488" />
-    
-    
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="https://wavedrom.com/skins/default.js"></script>
+    <script src="https://wavedrom.com/wavedrom.min.js"></script>
+    <script defer="" src="../_static/app.umd.js?v=96350458"></script>
+    <link rel="icon" href="../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HDL Architecture" href="architecture.html" />
+    <link rel="prev" title="Releases" href="releases.html" />
+   
+  
+    <meta name="robots" content="noindex">
+  
+  
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
-  
+    
   }
-  @media not print {
-    body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-    }
-    @media (prefers-color-scheme: dark) {
-      body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-      }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
     }
   }
-</style></head>
-  <body>
-    
-    <script>
-      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
-    </script>
-    
-
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="svg-toc" viewBox="0 0 24 24">
-    <title>Contents</title>
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
-      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-menu" viewBox="0 0 24 24">
-    <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-    <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-  <symbol id="svg-sun" viewBox="0 0 24 24">
-    <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon" viewBox="0 0 24 24">
-    <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-    </svg>
-  </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
-    </svg>
-  </symbol>
-</svg>
-
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
-
-
-
-<div class="page">
-  <header class="mobile-header">
-    <div class="header-left">
-      <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
-      </label>
-    </div>
-    <div class="header-center">
-      <a href="../index.html"><div class="brand">HDL, Analog Devices v0.1 documentation</div></a>
-    </div>
-    <div class="header-right">
-      <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-        </button>
+</style>
+  </head><body>
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <header>
+    <div class="header">
+      <div id="left">
+        <label id="show-sidebar" for="input-show-toc" title="Show/hide index"></label>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-      </label>
+      <div id="right">
+        <span>
+          <a id="logo-org" href="https://analog.com"></a>
+              <a id="no-logo" href="../index.html">
+                HDL
+              </a>
+        </span>
+        <span class="reverse">
+          <label id="show-localtoc" for="input-show-localtoc" title="Show/hide contents"></label>
+        </span>
+      </div>
+    </div>
+    <div class="repotoc-tree">
+      <root>
+  <a href="../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../documentation/university/index.html">University Program</a>
+  <a href="../index.html" class="current">HDL</a>
+  <a href="../../no-OS/index.html">no-OS</a>
+  <a href="../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../precision-converters-firmware/index.html">Precision Converters Firmware</a>
+</root>
+
     </div>
   </header>
-  <aside class="sidebar-drawer">
-    <div class="sidebar-container">
-      
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div>
+          <div class="localtoc-header">On this page</div>
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">Build an HDL project</a><ul>
+<li><a class="reference internal" href="#setup-and-check-your-environment">Setup and check your environment</a></li>
+<li><a class="reference internal" href="#setup-the-hdl-repository">Setup the HDL repository</a></li>
+<li><a class="reference internal" href="#building-the-projects">Building the projects</a><ul>
+<li><a class="reference internal" href="#building-an-intel-project">Building an Intel project</a><ul>
+<li><a class="reference internal" href="#checking-the-build-and-analyzing-results">Checking the build and analyzing results</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-an-amd-project">Building an AMD project</a><ul>
+<li><a class="reference internal" href="#enabling-out-of-context-synthesis">Enabling Out-of-Context synthesis</a></li>
+<li><a class="reference internal" href="#checking-the-build-and-analyzing-results-of-library-components">Checking the build and analyzing results of library components</a></li>
+<li><a class="reference internal" href="#checking-the-build-and-analyzing-results-of-projects">Checking the build and analyzing results of projects</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#supported-targets-of-make-command">Supported targets of <code class="docutils literal notranslate"><span class="pre">make</span></code> command</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tools-and-their-versions">Tools and their versions</a><ul>
+<li><a class="reference internal" href="#tools">Tools</a></li>
+<li><a class="reference internal" href="#tool-versions">Tool versions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#environment">Environment</a><ul>
+<li><a class="reference internal" href="#linux-environment-setup">Linux environment setup</a></li>
+<li><a class="reference internal" href="#windows-environment-setup">Windows environment setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#preparing-the-sd-card">Preparing the SD card</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#errors-warnings-and-notes">Errors, Warnings and Notes</a><ul>
+<li><a class="reference internal" href="#amd-vivado">AMD: Vivado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
   
-  
-  <span class="sidebar-brand-text">HDL, Analog Devices v0.1 documentation</span>
-  
-</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
-  <input type="hidden" name="check_keywords" value="yes">
-  <input type="hidden" name="area" value="default">
-</form>
-<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
-<ul class="current">
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">User Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of User Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+              <a id="no-logo" href="../index.html">
+                HDL
+              </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root>
+  <a href="../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../documentation/university/index.html">University Program</a>
+  <a href="../index.html" class="current">HDL</a>
+  <a href="../../no-OS/index.html">no-OS</a>
+  <a href="../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../precision-converters-firmware/index.html">Precision Converters Firmware</a>
+</root>
+
+</div>
+<div class="toc-tree">
+  <html>
+  <body><ul class="current">
+<li class="toctree-l1 current"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1" checked=""/><div class="collapse"><a class="reference internal" href="index.html">User Guide</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_repository.html">Git repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="releases.html">Releases</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Build an HDL project</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build an HDL project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="architecture.html">HDL architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ip_cores.html">IP cores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="porting_project.html">Porting reference designs</a></li>
@@ -171,67 +164,69 @@
 <li class="toctree-l2"><a class="reference internal" href="third_party.html">Third party forks</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2" id="toctree-collapse-2"/><div class="collapse"><a class="reference internal" href="../library/index.html">Libraries</a><label for="toctree-collapse-2"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../library/axi_dmac/index.html">High-Speed DMA Controller</a></li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2-1" id="toctree-collapse-2-1"/><div class="collapse"><a class="reference internal" href="../library/spi_engine/index.html">SPI Engine</a><label for="toctree-collapse-2-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/spi_engine_execution.html">Execution Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/axi_spi_engine.html">AXI Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/spi_engine_offload.html">Offload Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/spi_engine_interconnect.html">Interconnect Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/control-interface.html">Control Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Libraries</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../library/axi_dmac/index.html">High-Speed DMA Controller</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../library/spi_engine/index.html">SPI Engine</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of SPI Engine</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/spi_engine_execution.html">Execution Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/axi_spi_engine.html">AXI Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/spi_engine_offload.html">Offload Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/spi_engine_interconnect.html">Interconnect Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/control-interface.html">Control Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/instruction-format.html">Instruction Set Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../library/spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
+</li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2-2" id="toctree-collapse-2-2"/><div class="collapse"><a class="reference internal" href="../library/jesd204/index.html">JESD204 Interface Framework</a><label for="toctree-collapse-2-2"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../library/jesd204/axi_jesd204_tx/index.html">JESD204B/C Link Transmit Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/jesd204/axi_jesd204_rx/index.html">JESD204B/C Link Receive Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/jesd204/ad_ip_jesd204_tpl_adc/index.html">ADC JESD204B/C Transport Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../library/jesd204/ad_ip_jesd204_tpl_dac/index.html">DAC JESD204B/C Transport Peripheral</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../library/axi_adxcvr/index.html">AXI_ADXCVR</a></li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2-3" id="toctree-collapse-2-3"/><div class="collapse"><a class="reference internal" href="../library/xilinx/index.html">AMD Xilinx Specific IPs</a><label for="toctree-collapse-2-3"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../library/xilinx/util_adxcvr/index.html">UTIL_ADXCVR</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Projects</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../projects/adaq7980_sdz/index.html">ADAQ7980-SDZ</a></li>
+</li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-3" id="toctree-collapse-3"/><div class="collapse"><a class="reference internal" href="../projects/index.html">Projects</a><label for="toctree-collapse-3"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad4134_fmc/index.html">AD4134-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad4630_fmc/index.html">AD4630-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad5766_sdz/index.html">AD5766-SDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7134_fmc/index.html">AD7134-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad738x_fmc/index.html">AD738X-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad7768evb/index.html">AD7768-EVB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad9434_fmc/index.html">AD9434-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/adaq7980_sdz/index.html">ADAQ7980-SDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/cn0363/index.html">CN0363</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/cn0540/index.html">CN0540</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/cn0561/index.html">CN0561</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../projects/pulsar_adc/index.html">PULSAR-ADC</a></li>
 </ul>
+</li>
+</ul>
+</body>
+</html>
 
 </div>
-</div>
-
-      </div>
-      
-    </div>
-  </aside>
-  <div class="main">
-    <div class="content">
-      <div class="article-container">
-        <a href="#" class="back-to-top muted-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-          </svg>
-          <span>Back to top</span>
-        </a>
-        <div class="content-icon-container">
-          
-<div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-            </button>
-          </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-          </label>
         </div>
-        <article role="main">
-          <section id="build-an-hdl-project">
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body" role="main">
+            
+  <section id="build-an-hdl-project">
 <span id="build-hdl"></span><h1>Build an HDL project<a class="headerlink" href="#build-an-hdl-project" title="Permalink to this heading">#</a></h1>
 <p><strong>Please note that ADI only provides the source files necessary to create
 and build the designs. This means that you are responsible for modifying
@@ -255,10 +250,10 @@ Make sure that you’re always using the latest release.</p></li>
 <li><p>The proper Vivado/Quartus version can be found in:</p>
 <ul class="simple">
 <li><p>Starting with <code class="docutils literal notranslate"><span class="pre">hdl_2021_r1</span></code> release branch:
-<a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/scripts/adi_env.tcl">scripts/adi_env.tcl</a></p></li>
+<a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/scripts/adi_env.tcl">scripts/adi_env.tcl</a></p></li>
 <li><p>For <code class="docutils literal notranslate"><span class="pre">hdl_2019_r2</span></code> and older:
-<a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/projects/scripts/adi_project_xilinx.tcl">hdl/projects/scripts/adi_project_xilinx.tcl</a> for Vivado, and
-<a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/projects/scripts/adi_project_intel.tcl">hdl/projects/scripts/adi_project_intel.tcl</a> for Quartus.</p></li>
+<a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/hdl_2019_r2/projects/scripts/adi_project_xilinx.tcl">hdl/projects/scripts/adi_project_xilinx.tcl</a> for Vivado, and
+<a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/hdl_2019_r2/projects/scripts/adi_project_intel.tcl">hdl/projects/scripts/adi_project_intel.tcl</a> for Quartus.</p></li>
 </ul>
 </li>
 <li><p>Download the tools from the following links:</p>
@@ -279,7 +274,7 @@ note.</p></li>
 projects. Depending on what OS you’re using, you have these options:</p></li>
 </ol>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="cea666a6d7a115b9bcddd5094edc27aa351210b7" name="cea666a6d7a115b9bcddd5094edc27aa351210b7" type="checkbox"></input><label for="cea666a6d7a115b9bcddd5094edc27aa351210b7"><p>For Windows environment with Cygwin</p>
+<input class="collapsible_input" id="d79b51c5e3fe7737294e831d24a8aadaafdad7b7" name="d79b51c5e3fe7737294e831d24a8aadaafdad7b7" type="checkbox"></input><label for="d79b51c5e3fe7737294e831d24a8aadaafdad7b7"><p>For Windows environment with Cygwin</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <p>Because GNU Make is not supported on Windows, you need to install
 <a class="reference external" href="https://www.cygwin.com/">Cygwin</a>, which is a UNIX-like environment
@@ -305,7 +300,7 @@ and the <strong>tools version</strong> with the proper one.</p>
 </div>
 </div>
 </div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="3d9210c2f56efb8253b724d250a57fc25766d5e2" name="3d9210c2f56efb8253b724d250a57fc25766d5e2" type="checkbox"></input><label for="3d9210c2f56efb8253b724d250a57fc25766d5e2"><p>How to verify your environment setup</p>
+<input class="collapsible_input" id="356312f27f93c34c68e2934fbceb78d39ba711a0" name="356312f27f93c34c68e2934fbceb78d39ba711a0" type="checkbox"></input><label for="356312f27f93c34c68e2934fbceb78d39ba711a0"><p>How to verify your environment setup</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <p>Run any of the following commands. These commands will return a valid path
 if your setup is good.</p>
@@ -322,7 +317,7 @@ if your setup is good.</p>
 <h2>Setup the HDL repository<a class="headerlink" href="#setup-the-hdl-repository" title="Permalink to this heading">#</a></h2>
 <p>These designs are built upon ADI’s generic HDL reference designs framework.
 ADI does not distribute the bit/elf files of these projects so they
-must be built from the sources available <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master//">here</a>. To get
+must be built from the sources available <a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/">here</a>. To get
 the source you must
 <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">clone</a>
 the repository. This is the best method to get the sources. Here, we are
@@ -418,7 +413,7 @@ ls<span class="w"> </span>-ltr<span class="w"> </span>projects/adrv9371x/a10soc/
 <p>You may now use this <strong>sopcinfo</strong> file as the input to your no-OS and/or
 Linux build. The <strong>sof</strong> file is used to program the device.</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="d72b31e7492d45fd5e4bd200981e9c0cf5d05f8b" name="d72b31e7492d45fd5e4bd200981e9c0cf5d05f8b" type="checkbox"></input><label for="d72b31e7492d45fd5e4bd200981e9c0cf5d05f8b"><p>Building an Intel project in WSL - known issues</p>
+<input class="collapsible_input" id="d6277e09b937f5703b1c39f22652810d9004262d" name="d6277e09b937f5703b1c39f22652810d9004262d" type="checkbox"></input><label for="d6277e09b937f5703b1c39f22652810d9004262d"><p>Building an Intel project in WSL - known issues</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <p>For a10Soc and s10Soc projects it’s very possible to face the following
 error when you try to build the project:</p>
@@ -459,7 +454,7 @@ project. To create a swap file you can use the following commands:</p>
 </div>
 </div>
 </div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="80857d2b90b02213b6ba59e93e72ddba2243326b" name="80857d2b90b02213b6ba59e93e72ddba2243326b" type="checkbox"></input><label for="80857d2b90b02213b6ba59e93e72ddba2243326b"><p>Building manually in Quartus GUI</p>
+<input class="collapsible_input" id="f664ff2c072ab69ccfeadd6d0ab4475e09ceaed6" name="f664ff2c072ab69ccfeadd6d0ab4475e09ceaed6" type="checkbox"></input><label for="f664ff2c072ab69ccfeadd6d0ab4475e09ceaed6"><p>Building manually in Quartus GUI</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -605,7 +600,7 @@ build.</p>
 <p>Starting with Vivado 2019.3, the output file extension was changed from
 <strong>.hdf</strong> to <strong>.xsa</strong>.</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="0a31c7c0b3d524201f0027f16565206ad716fb69" name="0a31c7c0b3d524201f0027f16565206ad716fb69" type="checkbox"></input><label for="0a31c7c0b3d524201f0027f16565206ad716fb69"><p>Building an AMD project in WSL - known issues</p>
+<input class="collapsible_input" id="e385a4d4e6babe3b50029dfcd5e31372b6d358af" name="e385a4d4e6babe3b50029dfcd5e31372b6d358af" type="checkbox"></input><label for="e385a4d4e6babe3b50029dfcd5e31372b6d358af"><p>Building an AMD project in WSL - known issues</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <p>For some projects it is very possible to face the following error when you make a
 build:</p>
@@ -641,7 +636,7 @@ find more information about what a swap file is at this link:
 </div>
 </div>
 </div><div><div class="collapsible docutils container">
-<input class="collapsible_input" id="734115b089b8a81360e11b0f94e806b32c2be3ed" name="734115b089b8a81360e11b0f94e806b32c2be3ed" type="checkbox"></input><label for="734115b089b8a81360e11b0f94e806b32c2be3ed"><p>Building manually in Vivado GUI</p>
+<input class="collapsible_input" id="a6ed46db2efc1dcf0e6c3f10ef3dd428c6af35ca" name="a6ed46db2efc1dcf0e6c3f10ef3dd428c6af35ca" type="checkbox"></input><label for="a6ed46db2efc1dcf0e6c3f10ef3dd428c6af35ca"><p>Building manually in Vivado GUI</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -692,73 +687,40 @@ The <code class="docutils literal notranslate"><span class="pre">make</span></co
 inside its sub-folders. What this means is that if you run <code class="docutils literal notranslate"><span class="pre">make</span></code> inside
 <strong>hdl/projects/daq2</strong>, it builds all the carriers (<strong>kc705</strong>, <strong>a10soc</strong>,
 <strong>kcu105</strong>, <strong>zc706</strong> to <strong>zcu102</strong>) instead of just the target carrier.</p>
-<p>The following ‘targets’ are supported.</p>
-<div class="table-wrapper docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>argument</p></th>
-<th class="head"><p>description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>all</p></td>
-<td><p>This builds everything in the current folder and
-its sub-folders, see context examples below.</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>make -C library/axi_ad9122 all; ## build AD9122
-library component (AMD only).</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>make -C library all; ## build <strong>ALL</strong> library
-components inside ‘library’ (AMD only).</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>make -C projects/daq2/zc706 all; ## build
-DAQ2_ZC706 (AMD) project.</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>make -C projects/daq2/a10soc all; ## build
-DAQ2_A10SOC(Intel) project.</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>make -C projects/daq2 all; ## build DAQ2 <strong>ALL</strong>
-carrier (including Intel &amp; AMD) projects.</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>make -C projects all; ## build <strong>ALL</strong> projects
-(something you really should NOT do).</p></td>
-</tr>
-<tr class="row-odd"><td><p>clean</p></td>
-<td><p>This removes all tool and temporary files in the
-current folder and its sub-folders, same context
-as above.</p></td>
-</tr>
-<tr class="row-even"><td><p>clean-all</p></td>
-<td><p>This removes all tool and temporary files in the
-current folder, its sub-folders and from all the
-IPs that are specified in the Makefile file;
-same context as above.</p></td>
-</tr>
-<tr class="row-odd"><td><p>lib</p></td>
-<td><p>This is same as ‘all’ in the library folder,
-ignored inside project folders.</p></td>
-</tr>
-<tr class="row-even"><td><p>project.platform</p></td>
-<td><p>This is a special target available only in the
-‘hdl’ root folder and is ignored everywhere
-else, see syntax below.</p></td>
-</tr>
-<tr class="row-odd"><td></td>
-<td><p>make daq2.a10soc ; ## build
-projects/daq2/a10soc.</p></td>
-</tr>
-<tr class="row-even"><td></td>
-<td><p>make daq2.zc706 ; ## build projects/daq2/zc706.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>The following targets/arguments are supported:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span></code>:
+This builds everything in the current folder and its sub-folders, for example:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">library/axi_ad9122</span> <span class="pre">all;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">AD9122</span> <span class="pre">library</span> <span class="pre">component</span> <span class="pre">(AMD</span> <span class="pre">only).</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">library</span> <span class="pre">all;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">ALL</span> <span class="pre">library</span> <span class="pre">components</span> <span class="pre">inside</span> <span class="pre">'library'</span> <span class="pre">(AMD</span> <span class="pre">only).</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">projects/daq2/zc706</span> <span class="pre">all;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">DAQ2_ZC706</span> <span class="pre">(AMD)</span> <span class="pre">project.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">projects/daq2/a10soc</span> <span class="pre">all;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">DAQ2_A10SOC</span> <span class="pre">(Intel)</span> <span class="pre">project.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">projects/daq2</span> <span class="pre">all;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">DAQ2</span> <span class="pre">ALL</span> <span class="pre">carrier</span> <span class="pre">(Intel</span> <span class="pre">&amp;</span> <span class="pre">AMD)</span> <span class="pre">projects.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-C</span> <span class="pre">projects</span> <span class="pre">all;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">ALL</span> <span class="pre">projects</span> <span class="pre">(not</span> <span class="pre">recommended).</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean</span></code>:
+Removes all tool and temporary files in the current folder and its
+sub-folders, same context as above.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean-all</span></code>:
+This removes all tool and temporary files in the current folder, its
+sub-folders and from all the IPs that are specified in the Makefile file;
+same context as above.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lib</span></code>: This is same as <code class="docutils literal notranslate"><span class="pre">all</span></code> in the library folder, ignored inside project
+folders.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">projects.platform</span></code>: This is a special target available only in the ‘hdl’ root
+folder and is ignored everywhere else, see syntax:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">daq2.a10soc</span> <span class="pre">;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">projects/daq2/a10soc.</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">daq2.zc706</span> <span class="pre">;</span> <span class="pre">#</span> <span class="pre">build</span> <span class="pre">projects/daq2/zc706.</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>To speed up the building process, especially libraries, you can use the <code class="docutils literal notranslate"><span class="pre">-j</span></code>
+option to run the targets in parallel, e.g. <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">-j4</span></code>.</p>
+<p>All artifacts generated by the build process should be “git”-ignored,
+e.g. <code class="docutils literal notranslate"><span class="pre">component.xml</span></code> and <code class="docutils literal notranslate"><span class="pre">.lock</span></code> files.</p>
 </section>
 </section>
 <section id="tools-and-their-versions">
@@ -856,10 +818,10 @@ to use an unsupported version of tools.</p>
 The easiest way is to check the <a class="reference external" href="https://github.com/analogdevicesinc/hdl/releases">release
 notes</a>. You may
 also check out or browse the desired branch, and verify the tool version
-in the base Tcl script
-(<a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/projects/scripts/adi_project_xilinx.tcl#L4">./hdl/projects/scripts/adi_project_xilinx.tcl</a>)
+in the base Tcl script ./hdl/scripts/adi_env.tcl
+(<a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/scripts/adi_env.tcl#L18">for Vivado version</a>)
 or
-(<a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/projects/scripts/adi_project_intel.tcl#L5">./hdl/projects/scripts/adi_project_intel.tcl</a>),
+(<a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/scripts/adi_env.tcl#L34">or for Quartus version</a>),
 which build the projects.</p>
 </div>
 </section>
@@ -943,7 +905,7 @@ the root directory of your project.</p>
 <p>More info on how to generate this file you will find in the
 <a class="reference internal" href="#references">References</a> section or in the <strong>ReadMe.txt</strong> file from <strong>boot</strong> partition.</p>
 <div><div class="collapsible docutils container">
-<input class="collapsible_input" id="847e41da20f18b87b580ad40c9c64192796613df" name="847e41da20f18b87b580ad40c9c64192796613df" type="checkbox"></input><label for="847e41da20f18b87b580ad40c9c64192796613df"><p>How to build the boot image BOOT.BIN in WSL</p>
+<input class="collapsible_input" id="5a8213f11bd3f7b810e540035db37b478df31340" name="5a8213f11bd3f7b810e540035db37b478df31340" type="checkbox"></input><label for="5a8213f11bd3f7b810e540035db37b478df31340"><p>How to build the boot image BOOT.BIN in WSL</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <p>After obtaining <strong>.xsa</strong> file, you must be sure that you have done source for
 Vivado and Vitis. To create <strong>boot.bin</strong> is recommended to run
@@ -1010,110 +972,37 @@ that it does copy these files to the project area, but ignores them.</p>
         }
         window.onload = init;
     </script>
-        </article>
-      </div>
-      <footer>
-        
-        <div class="related-pages">
-          <a class="next-page" href="architecture.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">HDL Architecture</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="releases.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Releases</div>
-                
-              </div>
-            </a>
-        </div>
-        <div class="bottom-of-page">
-          <div class="left-details">
-            <div class="copyright">
-                Copyright &#169; 2023, Analog Devices Inc
-            </div>
-            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-            
-            <a href="https://github.com/pradyunsg/furo">Furo</a>
-            
-          </div>
-          <div class="right-details">
-            
-          </div>
-        </div>
-        
-      </footer>
-    </div>
-    <aside class="toc-drawer">
-      
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Build an HDL project</a><ul>
-<li><a class="reference internal" href="#setup-and-check-your-environment">Setup and check your environment</a></li>
-<li><a class="reference internal" href="#setup-the-hdl-repository">Setup the HDL repository</a></li>
-<li><a class="reference internal" href="#building-the-projects">Building the projects</a><ul>
-<li><a class="reference internal" href="#building-an-intel-project">Building an Intel project</a><ul>
-<li><a class="reference internal" href="#checking-the-build-and-analyzing-results">Checking the build and analyzing results</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#building-an-amd-project">Building an AMD project</a><ul>
-<li><a class="reference internal" href="#enabling-out-of-context-synthesis">Enabling Out-of-Context synthesis</a></li>
-<li><a class="reference internal" href="#checking-the-build-and-analyzing-results-of-library-components">Checking the build and analyzing results of library components</a></li>
-<li><a class="reference internal" href="#checking-the-build-and-analyzing-results-of-projects">Checking the build and analyzing results of projects</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#supported-targets-of-make-command">Supported targets of <code class="docutils literal notranslate"><span class="pre">make</span></code> command</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#tools-and-their-versions">Tools and their versions</a><ul>
-<li><a class="reference internal" href="#tools">Tools</a></li>
-<li><a class="reference internal" href="#tool-versions">Tool versions</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#environment">Environment</a><ul>
-<li><a class="reference internal" href="#linux-environment-setup">Linux environment setup</a></li>
-<li><a class="reference internal" href="#windows-environment-setup">Windows environment setup</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#preparing-the-sd-card">Preparing the SD card</a></li>
-<li><a class="reference internal" href="#references">References</a></li>
-<li><a class="reference internal" href="#errors-warnings-and-notes">Errors, Warnings and Notes</a><ul>
-<li><a class="reference internal" href="#amd-vivado">AMD: Vivado</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
 
           </div>
+              <div class="related">
+                &nbsp;
+    <a href="releases.html" title="Previous document" class="prev">Releases</a>
+    <a href="architecture.html" title="Next document" class="next">HDL Architecture</a>
+              </div>
+          
         </div>
       </div>
-      
-      
-    </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=4c0d86c8"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="https://wavedrom.com/skins/default.js"></script>
-    <script src="https://wavedrom.com/wavedrom.min.js"></script>
-    </body>
+
+  <div id="vertical-border"></div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+
+  
+  <form action="" method="get" class="search-area">
+    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+    <button value="search"></button>
+    <span id="search-progress"></span>
+  </form>
+  
+    <footer>
+      &#169;2024, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
 </html>

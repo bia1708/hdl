@@ -1,163 +1,133 @@
-<!doctype html>
-<html class="no-js" lang="en" data-content_root="">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<!DOCTYPE html>
 
-    <link rel="shortcut icon" href="../../_static/icon.svg"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
-        <title>IP Template - HDL, Analog Devices v0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>IP Template &#8212; HDL  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8e8a900e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.min.css?v=7196d5a4" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=73e8d488" />
-    
-    
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="https://wavedrom.com/skins/default.js"></script>
+    <script src="https://wavedrom.com/wavedrom.min.js"></script>
+    <script defer="" src="../../_static/app.umd.js?v=96350458"></script>
+    <link rel="icon" href="../../_static/icon.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  
+    <meta name="robots" content="noindex">
+  
+  
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
-  
+    
   }
-  @media not print {
-    body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-    }
-    @media (prefers-color-scheme: dark) {
-      body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-      }
+
+  body.dark {
+    
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) {
+      
     }
   }
-</style></head>
-  <body>
-    
-    <script>
-      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
-    </script>
-    
-
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="svg-toc" viewBox="0 0 24 24">
-    <title>Contents</title>
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
-      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-menu" viewBox="0 0 24 24">
-    <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-    <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-  <symbol id="svg-sun" viewBox="0 0 24 24">
-    <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon" viewBox="0 0 24 24">
-    <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-    </svg>
-  </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
-    </svg>
-  </symbol>
-</svg>
-
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
-
-
-
-<div class="page">
-  <header class="mobile-header">
-    <div class="header-left">
-      <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
-      </label>
-    </div>
-    <div class="header-center">
-      <a href="../../index.html"><div class="brand">HDL, Analog Devices v0.1 documentation</div></a>
-    </div>
-    <div class="header-right">
-      <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-        </button>
+</style>
+  </head><body>
+  <input type="checkbox" id="input-show-toc">
+  <input type="checkbox" id="input-show-localtoc">
+  <header>
+    <div class="header">
+      <div id="left">
+        <label id="show-sidebar" for="input-show-toc" title="Show/hide index"></label>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-      </label>
+      <div id="right">
+        <span>
+          <a id="logo-org" href="https://analog.com"></a>
+              <a id="no-logo" href="../../index.html">
+                HDL
+              </a>
+        </span>
+        <span class="reverse">
+          <label id="show-localtoc" for="input-show-localtoc" title="Show/hide contents"></label>
+        </span>
+      </div>
+    </div>
+    <div class="repotoc-tree">
+      <root>
+  <a href="../../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../../documentation/university/index.html">University Program</a>
+  <a href="../../index.html" class="current">HDL</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../../precision-converters-firmware/index.html">Precision Converters Firmware</a>
+</root>
+
     </div>
   </header>
-  <aside class="sidebar-drawer">
-    <div class="sidebar-container">
-      
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+
+    <div class="localtoc">
+      <div class="tocwrapper">
+        <div>
+          <div class="localtoc-header">On this page</div>
+          <a id="scroll-up" href="#top-anchor" title="Back to top"></a>
+        </div>
+        <nav>
+          <ul>
+<li><a class="reference internal" href="#">IP Template</a><ul>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#files">Files</a></li>
+<li><a class="reference internal" href="#block-diagram">Block Diagram</a></li>
+<li><a class="reference internal" href="#configuration-parameters">Configuration Parameters</a></li>
+<li><a class="reference internal" href="#interface">Interface</a></li>
+<li><a class="reference internal" href="#detailed-architecture">Detailed Architecture</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#register-map">Register Map</a></li>
+<li><a class="reference internal" href="#design-guidelines">Design Guidelines</a></li>
+<li><a class="reference internal" href="#software-guidelines">Software Guidelines</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+        </nav>
+      </div>
+    </div>
+
   
-  
-  <span class="sidebar-brand-text">HDL, Analog Devices v0.1 documentation</span>
-  
-</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
-  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
-  <input type="hidden" name="check_keywords" value="yes">
-  <input type="hidden" name="area" value="default">
-</form>
-<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">User guide</span></p>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../user_guide/index.html">User Guide</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of User Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+              <a id="no-logo" href="../../index.html">
+                HDL
+              </a><input id="input-switch-toc" type="checkbox">
+<label id="show-repotoc" for="input-switch-toc">
+All content
+</label>
+<label id="show-toc" for="input-switch-toc">
+Content on this topic
+</label>
+<div class="repotoc-tree">
+  <root>
+  <a href="../../../documentation/eval/index.html">Evaluation Boards</a>
+  <a href="../../../documentation/university/index.html">University Program</a>
+  <a href="../../index.html" class="current">HDL</a>
+  <a href="../../../no-OS/index.html">no-OS</a>
+  <a href="../../../pyadi-iio/index.html">pyadi-iio</a>
+  <a href="../../../precision-converters-firmware/index.html">Precision Converters Firmware</a>
+</root>
+
+</div>
+<div class="toc-tree">
+  <html>
+  <body><ul>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-1" id="toctree-collapse-1"/><div class="collapse"><a class="reference internal" href="../../user_guide/index.html">User Guide</a><label for="toctree-collapse-1"><div class="icon"></div></label></div><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../user_guide/introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user_guide/git_repository.html">Git repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user_guide/releases.html">Releases</a></li>
@@ -171,688 +141,77 @@
 <li class="toctree-l2"><a class="reference internal" href="../../user_guide/third_party.html">Third party forks</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2" id="toctree-collapse-2"/><div class="collapse"><a class="reference internal" href="../index.html">Libraries</a><label for="toctree-collapse-2"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../axi_dmac/index.html">High-Speed DMA Controller</a></li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2-1" id="toctree-collapse-2-1"/><div class="collapse"><a class="reference internal" href="../spi_engine/index.html">SPI Engine</a><label for="toctree-collapse-2-1"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/spi_engine_execution.html">Execution Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/axi_spi_engine.html">AXI Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/spi_engine_offload.html">Offload Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/spi_engine_interconnect.html">Interconnect Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/control-interface.html">Control Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/instruction-format.html">Instruction Set Specification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Libraries</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../axi_dmac/index.html">High-Speed DMA Controller</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../spi_engine/index.html">SPI Engine</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of SPI Engine</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/spi_engine_execution.html">Execution Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/axi_spi_engine.html">AXI Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/spi_engine_offload.html">Offload Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/spi_engine_interconnect.html">Interconnect Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/control-interface.html">Control Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/offload-control-interface.html">Offload Control Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/spi-bus-interface.html">SPI Bus Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/instruction-format.html">Instruction Set Specification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/pipeline-delays.html">Pipeline Delays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../spi_engine/tutorial.html">Tutorial - PulSAR ADC</a></li>
+</li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2-2" id="toctree-collapse-2-2"/><div class="collapse"><a class="reference internal" href="../jesd204/index.html">JESD204 Interface Framework</a><label for="toctree-collapse-2-2"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../jesd204/axi_jesd204_tx/index.html">JESD204B/C Link Transmit Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jesd204/axi_jesd204_rx/index.html">JESD204B/C Link Receive Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jesd204/ad_ip_jesd204_tpl_adc/index.html">ADC JESD204B/C Transport Peripheral</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jesd204/ad_ip_jesd204_tpl_dac/index.html">DAC JESD204B/C Transport Peripheral</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../axi_adxcvr/index.html">AXI_ADXCVR</a></li>
+<li class="toctree-l2"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-2-3" id="toctree-collapse-2-3"/><div class="collapse"><a class="reference internal" href="../xilinx/index.html">AMD Xilinx Specific IPs</a><label for="toctree-collapse-2-3"><div class="icon"></div></label></div><ul>
+<li class="toctree-l3"><a class="reference internal" href="../xilinx/util_adxcvr/index.html">UTIL_ADXCVR</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Projects</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../projects/adaq7980_sdz/index.html">ADAQ7980-SDZ</a></li>
+</li>
+<li class="toctree-l1"><input class="toctree-collapse" type="checkbox" name="toctree-collapse-3" id="toctree-collapse-3"/><div class="collapse"><a class="reference internal" href="../../projects/index.html">Projects</a><label for="toctree-collapse-3"><div class="icon"></div></label></div><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad4134_fmc/index.html">AD4134-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad4630_fmc/index.html">AD4630-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad469x_fmc/index.html">AD469X-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad5766_sdz/index.html">AD5766-SDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad7134_fmc/index.html">AD7134-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad719x_asdz/index.html">AD719X-ASDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad738x_fmc/index.html">AD738X-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad7616_sdz/index.html">AD7616-SDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad7768evb/index.html">AD7768-EVB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad9081_fmca_ebz/index.html">AD9081-FMCA-EBZ/AD9082-FMCA-EBZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad9434_fmc/index.html">AD9434-FMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/ad9783_ebz/index.html">AD9783-EBZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/adaq7980_sdz/index.html">ADAQ7980-SDZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/cn0363/index.html">CN0363</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/cn0540/index.html">CN0540</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/cn0561/index.html">CN0561</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../projects/pulsar_adc/index.html">PULSAR-ADC</a></li>
 </ul>
+</li>
+</ul>
+</body>
+</html>
 
 </div>
-</div>
-
-      </div>
-      
-    </div>
-  </aside>
-  <div class="main">
-    <div class="content">
-      <div class="article-container">
-        <a href="#" class="back-to-top muted-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-          </svg>
-          <span>Back to top</span>
-        </a>
-        <div class="content-icon-container">
-          
-<div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-            </button>
-          </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-          </label>
         </div>
-        <article role="main">
-          <section id="ip-template">
+      </div>
+
+  <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper" id="top-anchor">
+          <div class="body" role="main">
+            
+  <section id="ip-template">
 <span id="template-ip"></span><h1>IP Template<a class="headerlink" href="#ip-template" title="Permalink to this heading">#</a></h1>
-<figure class="align-default" id="id1">
-// ***************************************************************************
-// ***************************************************************************
-// Copyright (C) 2015-2023 Analog Devices, Inc. All rights reserved.
-//
-// In this HDL repository, there are many different and unique modules, consisting
-// of various HDL (Verilog or VHDL) components. The individual modules are
-// developed independently, and may be accompanied by separate and unique license
-// terms.
-//
-// The user should read each of these license terms, and understand the
-// freedoms and responsibilities that he or she has by using this source/core.
-//
-// This core is distributed in the hope that it will be useful, but WITHOUT ANY
-// WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
-// A PARTICULAR PURPOSE.
-//
-// Redistribution and use of source or resulting binaries, with or without modification
-// of this file, are permitted under one of the following two license terms:
-//
-//   1. The GNU General Public License version 2 as published by the
-//      Free Software Foundation, which can be found in the top level directory
-//      of this repository (LICENSE_GPL2), and also online at:
-//      &lt;https://www.gnu.org/licenses/old-licenses/gpl-2.0.html&gt;
-//
-// OR
-//
-//   2. An ADI specific BSD license, which can be found in the top level directory
-//      of this repository (LICENSE_ADIBSD), and also on-line at:
-//      https://github.com/analogdevicesinc/hdl/blob/master/LICENSE_ADIBSD
-//      This will allow to generate bit files and not release the source code,
-//      as long as it attaches to an ADI device.
-//
-// ***************************************************************************
-// ***************************************************************************
-
-`timescale 1ns/100ps
-
-module spi_engine_execution #(
-
-  parameter NUM_OF_CS = 1,
-  parameter DEFAULT_SPI_CFG = 0,
-  parameter DEFAULT_CLK_DIV = 0,
-  parameter DATA_WIDTH = 8,                   // Valid data widths values are 8/16/24/32
-  parameter NUM_OF_SDI = 1,
-  parameter [0:0] SDO_DEFAULT = 1'b0,
-  parameter ECHO_SCLK = 0,
-  parameter [1:0] SDI_DELAY = 2'b00
-) (
-  input clk,
-  input resetn,
-
-  output reg active,
-
-  output cmd_ready,
-  input cmd_valid,
-  input [15:0] cmd,
-
-  input sdo_data_valid,
-  output reg sdo_data_ready,
-  input [(DATA_WIDTH-1):0] sdo_data,
-
-  input sdi_data_ready,
-  output reg sdi_data_valid,
-  output [(NUM_OF_SDI * DATA_WIDTH)-1:0] sdi_data,
-
-  input sync_ready,
-  output reg sync_valid,
-  output [7:0] sync,
-
-  input echo_sclk,
-  output reg sclk,
-  output reg sdo,
-  output reg sdo_t,
-  input [NUM_OF_SDI-1:0] sdi,
-  output reg [NUM_OF_CS-1:0] cs,
-  output reg three_wire
-);
-
-  localparam CMD_TRANSFER = 2'b00;
-  localparam CMD_CHIPSELECT = 2'b01;
-  localparam CMD_WRITE = 2'b10;
-  localparam CMD_MISC = 2'b11;
-
-  localparam MISC_SYNC = 1'b0;
-  localparam MISC_SLEEP = 1'b1;
-
-  localparam REG_CLK_DIV = 2'b00;
-  localparam REG_CONFIG = 2'b01;
-  localparam REG_WORD_LENGTH = 2'b10;
-
-  localparam BIT_COUNTER_WIDTH = DATA_WIDTH &gt; 16 ? 5 :
-                                 DATA_WIDTH &gt; 8  ? 4 : 3;
-
-  localparam BIT_COUNTER_CARRY = 2** (BIT_COUNTER_WIDTH + 1);
-  localparam BIT_COUNTER_CLEAR = {{8{1'b1}}, {BIT_COUNTER_WIDTH{1'b0}}, 1'b1};
-
-  reg sclk_int = 1'b0;
-  wire sdo_int_s;
-  reg sdo_t_int = 1'b0;
-
-  reg idle;
-
-  reg [7:0] clk_div_counter = 'h00;
-  reg [7:0] clk_div_counter_next = 'h00;
-  reg clk_div_last;
-
-  reg [(BIT_COUNTER_WIDTH+8):0] counter = 'h00;
-
-  wire [7:0] sleep_counter = counter[(BIT_COUNTER_WIDTH+8):(BIT_COUNTER_WIDTH+1)];
-  wire [1:0] cs_sleep_counter = counter[(BIT_COUNTER_WIDTH+2):(BIT_COUNTER_WIDTH+1)];
-  wire [(BIT_COUNTER_WIDTH-1):0] bit_counter = counter[BIT_COUNTER_WIDTH:1];
-  wire [7:0] transfer_counter = counter[(BIT_COUNTER_WIDTH+8):(BIT_COUNTER_WIDTH+1)];
-  wire ntx_rx = counter[0];
-
-  reg trigger = 1'b0;
-  reg trigger_next = 1'b0;
-  reg wait_for_io = 1'b0;
-  reg transfer_active = 1'b0;
-
-  wire last_bit;
-  wire first_bit;
-  reg last_transfer;
-  reg [7:0] word_length = DATA_WIDTH;
-  reg [7:0] left_aligned = 8'b0;
-  wire end_of_word;
-
-  reg [7:0] sdi_counter = 8'b0;
-
-  assign first_bit = ((bit_counter == 'h0) ||  (bit_counter == word_length));
-
-  reg [15:0] cmd_d1;
-
-  reg cpha = DEFAULT_SPI_CFG[0];
-  reg cpol = DEFAULT_SPI_CFG[1];
-  reg [7:0] clk_div = DEFAULT_CLK_DIV;
-
-  reg sdo_enabled = 1'b0;
-  reg sdi_enabled = 1'b0;
-
-  reg [(DATA_WIDTH-1):0] data_sdo_shift = 'h0;
-
-  reg [SDI_DELAY+1:0] trigger_rx_d = {(SDI_DELAY+2){1'b0}};
-
-  wire [1:0] inst = cmd[13:12];
-  wire [1:0] inst_d1 = cmd_d1[13:12];
-
-  wire exec_cmd = cmd_ready &amp;&amp; cmd_valid;
-  wire exec_transfer_cmd = exec_cmd &amp;&amp; inst == CMD_TRANSFER;
-
-  wire exec_write_cmd = exec_cmd &amp;&amp; inst == CMD_WRITE;
-  wire exec_chipselect_cmd = exec_cmd &amp;&amp; inst == CMD_CHIPSELECT;
-  wire exec_misc_cmd = exec_cmd &amp;&amp; inst == CMD_MISC;
-  wire exec_sync_cmd = exec_misc_cmd &amp;&amp; cmd[8] == MISC_SYNC;
-
-  wire trigger_tx;
-  wire trigger_rx;
-
-  wire sleep_counter_compare;
-  wire cs_sleep_counter_compare;
-  wire cs_sleep_early_exit;
-  reg cs_sleep_repeat;
-
-  wire io_ready1;
-  wire io_ready2;
-  wire trigger_rx_s;
-
-  wire last_sdi_bit;
-  wire end_of_sdi_latch;
-
-  (* direct_enable = &quot;yes&quot; *) wire cs_gen;
-
-  assign cs_gen = inst_d1 == CMD_CHIPSELECT
-                  &amp;&amp; ((cs_sleep_counter_compare == 1'b1) || cs_sleep_early_exit)
-                  &amp;&amp; (cs_sleep_repeat == 1'b0)
-                  &amp;&amp; (idle == 1'b0);
-  assign cmd_ready = idle;
-
-  always &#64;(posedge clk) begin
-    if (exec_transfer_cmd) begin
-      sdo_enabled &lt;= cmd[8];
-      sdi_enabled &lt;= cmd[9];
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if (cmd_ready &amp; cmd_valid)
-     cmd_d1 &lt;= cmd;
-  end
-
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0) begin
-      active &lt;= 1'b0;
-    end else begin
-      if (exec_cmd == 1'b1)
-        active &lt;= 1'b1;
-      else if (sync_ready == 1'b1 &amp;&amp; sync_valid == 1'b1)
-        active &lt;= 1'b0;
-    end
-  end
-
-  // Load the interface configurations from the 'Configuration Write'
-  // instruction
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0) begin
-      cpha &lt;= DEFAULT_SPI_CFG[0];
-      cpol &lt;= DEFAULT_SPI_CFG[1];
-      three_wire &lt;= DEFAULT_SPI_CFG[2];
-      clk_div &lt;= DEFAULT_CLK_DIV;
-      word_length &lt;= DATA_WIDTH;
-      left_aligned &lt;= 8'b0;
-    end else if (exec_write_cmd == 1'b1) begin
-      if (cmd[9:8] == REG_CONFIG) begin
-        cpha &lt;= cmd[0];
-        cpol &lt;= cmd[1];
-        three_wire &lt;= cmd[2];
-      end else if (cmd[9:8] == REG_CLK_DIV) begin
-        clk_div &lt;= cmd[7:0];
-      end else if (cmd[9:8] == REG_WORD_LENGTH) begin
-        // the max value of this reg must be DATA_WIDTH
-        word_length &lt;= cmd[7:0];
-        left_aligned &lt;= DATA_WIDTH - cmd[7:0];
-      end
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if ((clk_div_last == 1'b0 &amp;&amp; idle == 1'b0 &amp;&amp; wait_for_io == 1'b0 &amp;&amp;
-      clk_div_counter == 'h01) || clk_div == 'h00)
-      clk_div_last &lt;= 1'b1;
-    else
-      clk_div_last &lt;= 1'b0;
-  end
-
-  always &#64;(posedge clk) begin
-    if (clk_div_last == 1'b1 || idle == 1'b1 || wait_for_io == 1'b1) begin
-      clk_div_counter &lt;= clk_div;
-      trigger &lt;= 1'b1;
-    end else begin
-      clk_div_counter &lt;= clk_div_counter - 1'b1;
-      trigger &lt;= 1'b0;
-    end
-  end
-
-  assign trigger_tx = trigger == 1'b1 &amp;&amp; ntx_rx == 1'b0;
-  assign trigger_rx = trigger == 1'b1 &amp;&amp; ntx_rx == 1'b1;
-
-  assign sleep_counter_compare = sleep_counter == cmd_d1[7:0];
-  assign cs_sleep_counter_compare = cs_sleep_counter == cmd_d1[9:8];
-  assign cs_sleep_early_exit = (cmd_d1[9:8] == 2'b00);
-
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0) begin
-      cs_sleep_repeat &lt;= 1'b0;
-    end else begin
-      if (idle) begin
-        cs_sleep_repeat &lt;= 1'b0;
-      end else if (cs_sleep_counter_compare &amp;&amp; (inst_d1 == CMD_CHIPSELECT)) begin
-        cs_sleep_repeat &lt;= !cs_sleep_repeat;
-      end
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if (idle == 1'b1 || (cs_sleep_counter_compare &amp;&amp; !cs_sleep_repeat &amp;&amp; inst_d1 == CMD_CHIPSELECT)) begin
-      counter &lt;= 'h00;
-    end else if (clk_div_last == 1'b1 &amp;&amp; wait_for_io == 1'b0) begin
-      if (bit_counter == word_length) begin
-        counter &lt;= (counter &amp; BIT_COUNTER_CLEAR) + (transfer_active ? 'h1 : (2**BIT_COUNTER_WIDTH)) + BIT_COUNTER_CARRY;
-      end else begin
-        counter &lt;= counter + (transfer_active ? 'h1 : (2**BIT_COUNTER_WIDTH));
-      end
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0) begin
-      idle &lt;= 1'b1;
-    end else begin
-      if (exec_transfer_cmd || exec_chipselect_cmd || exec_misc_cmd) begin
-        idle &lt;= 1'b0;
-      end else begin
-        case (inst_d1)
-        CMD_TRANSFER: begin
-          if (transfer_active == 1'b0 &amp;&amp; wait_for_io == 1'b0 &amp;&amp; end_of_sdi_latch == 1'b1)
-            idle &lt;= 1'b1;
-        end
-        CMD_CHIPSELECT: begin
-          if ((cs_sleep_counter_compare &amp;&amp; cs_sleep_repeat) || cs_sleep_early_exit)
-            idle &lt;= 1'b1;
-        end
-        CMD_MISC: begin
-          case (cmd_d1[8])
-          MISC_SLEEP: begin
-            if (sleep_counter_compare)
-              idle &lt;= 1'b1;
-          end
-          MISC_SYNC: begin
-            if (sync_ready)
-              idle &lt;= 1'b1;
-          end
-          endcase
-        end
-        endcase
-      end
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0) begin
-      cs &lt;= 'hff;
-    end else if (cs_gen) begin
-      cs &lt;= cmd_d1[NUM_OF_CS-1:0];
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0) begin
-      sync_valid &lt;= 1'b0;
-    end else begin
-      if (exec_sync_cmd == 1'b1) begin
-        sync_valid &lt;= 1'b1;
-      end else if (sync_ready == 1'b1) begin
-        sync_valid &lt;= 1'b0;
-      end
-    end
-  end
-
-  assign sync = cmd_d1[7:0];
-
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0)
-      sdo_data_ready &lt;= 1'b0;
-    else if (sdo_enabled == 1'b1 &amp;&amp; first_bit == 1'b1 &amp;&amp; trigger_tx == 1'b1 &amp;&amp; transfer_active == 1'b1)
-      sdo_data_ready &lt;= 1'b1;
-    else if (sdo_data_valid == 1'b1)
-      sdo_data_ready &lt;= 1'b0;
-  end
-
-  assign io_ready1 = (sdi_data_valid == 1'b0 || sdi_data_ready == 1'b1) &amp;&amp;
-          (sdo_enabled == 1'b0 || last_transfer == 1'b1 || sdo_data_valid == 1'b1);
-  assign io_ready2 = (sdi_enabled == 1'b0 || sdi_data_ready == 1'b1) &amp;&amp;
-          (sdo_enabled == 1'b0 || last_transfer == 1'b1 || sdo_data_valid == 1'b1);
-
-  always &#64;(posedge clk) begin
-    if (idle == 1'b1) begin
-      last_transfer &lt;= 1'b0;
-    end else if (trigger_tx == 1'b1 &amp;&amp; transfer_active == 1'b1) begin
-      if (transfer_counter == cmd_d1[7:0])
-        last_transfer &lt;= 1'b1;
-      else
-        last_transfer &lt;= 1'b0;
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if (resetn == 1'b0) begin
-      transfer_active &lt;= 1'b0;
-      wait_for_io &lt;= 1'b0;
-    end else begin
-      if (exec_transfer_cmd == 1'b1) begin
-        wait_for_io &lt;= 1'b1;
-        transfer_active &lt;= 1'b0;
-      end else if (wait_for_io == 1'b1 &amp;&amp; io_ready1 == 1'b1) begin
-        wait_for_io &lt;= 1'b0;
-        if (last_transfer == 1'b0)
-          transfer_active &lt;= 1'b1;
-        else
-          transfer_active &lt;= 1'b0;
-      end else if (transfer_active == 1'b1 &amp;&amp; end_of_word == 1'b1) begin
-        if (last_transfer == 1'b1 || io_ready2 == 1'b0)
-          transfer_active &lt;= 1'b0;
-        if (io_ready2 == 1'b0)
-          wait_for_io &lt;= 1'b1;
-      end
-    end
-  end
-
-  always &#64;(posedge clk) begin
-    if (transfer_active == 1'b1 || wait_for_io == 1'b1)
-    begin
-      sdo_t_int &lt;= ~sdo_enabled;
-    end else begin
-      sdo_t_int &lt;= 1'b1;
-    end
-  end
-
-  // Load the SDO parallel data into the SDO shift register. In case of a custom
-  // data width, additional bit shifting must done at load.
-  always &#64;(posedge clk) begin
-    if ((inst_d1 == CMD_TRANSFER) &amp;&amp; (!sdo_enabled)) begin
-      data_sdo_shift &lt;= {DATA_WIDTH{SDO_DEFAULT}};
-    end else if (transfer_active == 1'b1 &amp;&amp; trigger_tx == 1'b1) begin
-      if (first_bit == 1'b1)
-        data_sdo_shift &lt;= sdo_data &lt;&lt; left_aligned;
-      else
-        data_sdo_shift &lt;= {data_sdo_shift[(DATA_WIDTH-2):0], 1'b0};
-    end
-  end
-
-  assign sdo_int_s = data_sdo_shift[DATA_WIDTH-1];
-
-  // In case of an interface with high clock rate (SCLK &gt; 50MHz), the latch of
-  // the SDI line can be delayed with 1, 2 or 3 SPI core clock cycle.
-  // Taking the fact that in high SCLK frequencies the pre-scaler most likely will
-  // be set to 0, to reduce the core clock's speed, this delay will mean that SDI will
-  // be latched at one of the next consecutive SCLK edge.
-
-  always &#64;(posedge clk) begin
-    trigger_rx_d &lt;= {trigger_rx_d, trigger_rx};
-  end
-
-  assign trigger_rx_s = trigger_rx_d[SDI_DELAY+1];
-
-  // Load the serial data into SDI shift register(s), then link it to the output
-  // register of the module
-  // NOTE: ECHO_SCLK mode can be used when the SCLK line is looped back to the FPGA
-  // through an other level shifter, in order to remove the round-trip timing delays
-  // introduced by the level shifters. This can improve the timing significantly
-  // on higher SCLK rates. Devices like ad4630 have an echod SCLK, which can be
-  // used to latch the MISO lines, improving the overall timing margin of the
-  // interface.
-
-  wire cs_active_s = (inst_d1 == CMD_CHIPSELECT) &amp; ~(&amp;cmd_d1[NUM_OF_CS-1:0]);
-  genvar i;
-
-  // NOTE: SPI configuration (CPOL/PHA) is only hardware configurable at this point
-  generate
-  if (ECHO_SCLK == 1) begin : g_echo_sclk_miso_latch
-
-    reg [7:0] sdi_counter_d = 8'b0;
-    reg [7:0] sdi_transfer_counter = 8'b0;
-    reg [7:0] num_of_transfers = 8'b0;
-    reg [(NUM_OF_SDI * DATA_WIDTH)-1:0] sdi_data_latch = {(NUM_OF_SDI * DATA_WIDTH){1'b0}};
-
-    if ((DEFAULT_SPI_CFG[1:0] == 2'b01) || (DEFAULT_SPI_CFG[1:0] == 2'b10)) begin : g_echo_miso_nshift_reg
-
-      // MISO shift register runs on negative echo_sclk
-      for (i=0; i&lt;NUM_OF_SDI; i=i+1) begin: g_sdi_shift_reg
-        reg [DATA_WIDTH-1:0] data_sdi_shift;
-
-        always &#64;(negedge echo_sclk or posedge cs_active_s) begin
-          if (cs_active_s) begin
-            data_sdi_shift &lt;= 0;
-          end else begin
-            data_sdi_shift &lt;= {data_sdi_shift, sdi[i]};
-          end
-        end
-
-        // intended LATCH
-        always &#64;(negedge echo_sclk) begin
-          if (last_sdi_bit)
-            sdi_data_latch[i*DATA_WIDTH+:DATA_WIDTH] &lt;= {data_sdi_shift, sdi[i]};
-        end
-
-      end
-
-      always &#64;(posedge echo_sclk or posedge cs_active_s) begin
-        if (cs_active_s == 1'b1) begin
-          sdi_counter &lt;= 8'b0;
-          sdi_counter_d &lt;= 8'b0;
-        end else begin
-          sdi_counter &lt;= (sdi_counter == word_length-1) ? 8'b0 : sdi_counter + 1'b1;
-          sdi_counter_d &lt;= sdi_counter;
-        end
-      end
-
-    end else begin : g_echo_miso_pshift_reg
-
-      // MISO shift register runs on positive echo_sclk
-      for (i=0; i&lt;NUM_OF_SDI; i=i+1) begin: g_sdi_shift_reg
-        reg [DATA_WIDTH-1:0] data_sdi_shift;
-        always &#64;(posedge echo_sclk or posedge cs_active_s) begin
-          if (cs_active_s) begin
-            data_sdi_shift &lt;= 0;
-          end else begin
-            data_sdi_shift &lt;= {data_sdi_shift, sdi[i]};
-          end
-        end
-        // intended LATCH
-        always &#64;(posedge echo_sclk) begin
-          if (last_sdi_bit)
-            sdi_data_latch[i*DATA_WIDTH+:DATA_WIDTH] &lt;= data_sdi_shift;
-        end
-      end
-
-      always &#64;(posedge echo_sclk or posedge cs_active_s) begin
-        if (cs_active_s == 1'b1) begin
-          sdi_counter &lt;= 8'b0;
-          sdi_counter_d &lt;= 8'b0;
-        end else begin
-          sdi_counter &lt;= (sdi_counter == word_length-1) ? 8'b0 : sdi_counter + 1'b1;
-          sdi_counter_d &lt;= sdi_counter;
-        end
-      end
-
-    end
-
-    assign sdi_data = sdi_data_latch;
-    assign last_sdi_bit = (sdi_counter == 0) &amp;&amp; (sdi_counter_d == word_length-1);
-
-    // sdi_data_valid is synchronous to SPI clock, so synchronize the
-    // last_sdi_bit to SPI clock
-
-    reg [3:0] last_sdi_bit_m = 4'b0;
-    always &#64;(posedge clk) begin
-      if (cs_active_s) begin
-        last_sdi_bit_m &lt;= 4'b0;
-      end else begin
-        last_sdi_bit_m &lt;= {last_sdi_bit_m, last_sdi_bit};
-      end
-    end
-
-    always &#64;(posedge clk) begin
-      if (cs_active_s) begin
-        sdi_data_valid &lt;= 1'b0;
-      end else if (sdi_enabled == 1'b1 &amp;&amp;
-                   last_sdi_bit_m[3] == 1'b0 &amp;&amp;
-                   last_sdi_bit_m[2] == 1'b1) begin
-        sdi_data_valid &lt;= 1'b1;
-      end else if (sdi_data_ready == 1'b1) begin
-        sdi_data_valid &lt;= 1'b0;
-      end
-    end
-
-    always &#64;(posedge clk) begin
-      if (cs_active_s) begin
-        num_of_transfers &lt;= 8'b0;
-      end else begin
-        if (cmd_d1[15:12] == 4'b0) begin
-          num_of_transfers &lt;= cmd_d1[7:0] + 1'b1; // cmd_d1 contains the NUM_OF_TRANSFERS - 1
-        end
-      end
-    end
-
-    always &#64;(posedge clk) begin
-      if (cs_active_s) begin
-        sdi_transfer_counter &lt;= 0;
-      end else if (last_sdi_bit_m[2] == 1'b0 &amp;&amp;
-                   last_sdi_bit_m[1] == 1'b1) begin
-        sdi_transfer_counter &lt;= sdi_transfer_counter + 1'b1;
-      end
-    end
-
-    assign end_of_sdi_latch = last_sdi_bit_m[2] &amp; (sdi_transfer_counter == num_of_transfers);
-
-  end /* g_echo_sclk_miso_latch */
-  else
-  begin : g_sclk_miso_latch
-
-    assign end_of_sdi_latch = 1'b1;
-
-    for (i=0; i&lt;NUM_OF_SDI; i=i+1) begin: g_sdi_shift_reg
-
-      reg [DATA_WIDTH-1:0] data_sdi_shift;
-
-      always &#64;(posedge clk) begin
-        if (cs_active_s) begin
-          data_sdi_shift &lt;= 0;
-        end else begin
-          if (trigger_rx_s == 1'b1) begin
-            data_sdi_shift &lt;= {data_sdi_shift, sdi[i]};
-          end
-        end
-      end
-
-      assign sdi_data[i*DATA_WIDTH+:DATA_WIDTH] = data_sdi_shift;
-
-    end
-
-    assign last_sdi_bit = (sdi_counter == word_length-1);
-    always &#64;(posedge clk) begin
-      if (resetn == 1'b0) begin
-        sdi_counter &lt;= 8'b0;
-      end else begin
-        if (trigger_rx_s == 1'b1) begin
-          sdi_counter &lt;= last_sdi_bit ? 8'b0 : sdi_counter + 1'b1;
-        end
-      end
-    end
-
-    always &#64;(posedge clk) begin
-      if (resetn == 1'b0)
-        sdi_data_valid &lt;= 1'b0;
-      else if (sdi_enabled == 1'b1 &amp;&amp; last_sdi_bit == 1'b1 &amp;&amp; trigger_rx_s == 1'b1)
-        sdi_data_valid &lt;= 1'b1;
-      else if (sdi_data_ready == 1'b1)
-        sdi_data_valid &lt;= 1'b0;
-    end
-
-  end /* g_sclk_miso_latch */
-  endgenerate
-
-  // end_of_word will signal the end of a transaction, pushing the command
-  // stream execution to the next command. end_of_word in normal mode can be
-  // generated using the global bit_counter
-  assign last_bit = bit_counter == word_length - 1;
-  assign end_of_word = last_bit == 1'b1 &amp;&amp; ntx_rx == 1'b1 &amp;&amp; clk_div_last == 1'b1;
-
-  always &#64;(posedge clk) begin
-    if (transfer_active == 1'b1) begin
-      sclk_int &lt;= cpol ^ cpha ^ ntx_rx;
-    end else begin
-      sclk_int &lt;= cpol;
-    end
-  end
-
-  // Additional register stage to improve timing
-  always &#64;(posedge clk) begin
-    sclk &lt;= sclk_int;
-    sdo &lt;= sdo_int_s;
-    sdo_t &lt;= sdo_t_int;
-  end
-
-endmodule
-<figcaption>
-<p><span class="caption-text">spi_engine_execution</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<section id="features">
+<div><section id="hdl-component-diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 234.0 186" width="234.0" height="186"><style>
+                a {
+                    text-decoration: none;
+                }
+                </style><defs><linearGradient id="ip_background" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#c4e5ff"/><stop offset="100%" stop-color="#ebf6ff"/></linearGradient></defs><rect x="18" y="18" width="198.0" height="132" rx="18" fill="url(#ip_background)"/><a href="#bus-interface-ctrl"><text style="font: 16px sans-serif" text-anchor="start" dominant-baseline="middle" x="36" y="54">ctrl</text></a><g transform="translate(18,46.0) scale(-1,1)"><rect x="0" y="0" width="16" height="16" fill="#c4e5ff"/><rect x="3.2" y="0" width="3.2" height="3.2" fill="#0067b9"/><rect x="9.600000000000001" y="0" width="3.2" height="3.2" fill="#0067b9"/><rect x="3.2" y="6.4" width="3.2" height="3.2" fill="#0067b9"/><rect x="9.600000000000001" y="6.4" width="3.2" height="3.2" fill="#0067b9"/><rect x="3.2" y="12.8" width="3.2" height="3.2" fill="#0067b9"/><rect x="9.600000000000001" y="12.8" width="3.2" height="3.2" fill="#0067b9"/></g><a href="#ports"><text style="font: 16px sans-serif" text-anchor="start" dominant-baseline="middle" x="36" y="78">clk</text></a><g transform="translate(18,70.0) scale(-1,1)"><line stroke="white" stroke-width="6" x1="0" y1="8.0" x2="19" y2="8.0"/><line stroke="black" stroke-width="3" x1="0" y1="8.0" x2="16" y2="8.0"/></g><a href="#ports"><text style="font: 16px sans-serif" text-anchor="start" dominant-baseline="middle" x="36" y="102">resetn</text></a><g transform="translate(18,94.0) scale(-1,1)"><line stroke="white" stroke-width="6" x1="0" y1="8.0" x2="19" y2="8.0"/><line stroke="black" stroke-width="3" x1="0" y1="8.0" x2="16" y2="8.0"/></g><a href="#ports"><text style="font: 16px sans-serif" text-anchor="start" dominant-baseline="middle" x="36" y="126">echo_sclk</text></a><g transform="translate(18,118.0) scale(-1,1)"><line stroke="white" stroke-width="6" x1="0" y1="8.0" x2="19" y2="8.0"/><line stroke="black" stroke-width="3" x1="0" y1="8.0" x2="16" y2="8.0"/></g><a href="#bus-interface-spi"><text style="font: 16px sans-serif" text-anchor="end" dominant-baseline="middle" x="198.0" y="54">spi</text></a><g transform="translate(216.0,46.0) scale(1,1)"><rect x="0" y="0" width="16" height="16" fill="#c4e5ff"/><rect x="3.2" y="0" width="3.2" height="3.2" fill="#0067b9"/><rect x="9.600000000000001" y="0" width="3.2" height="3.2" fill="#0067b9"/><rect x="3.2" y="6.4" width="3.2" height="3.2" fill="#0067b9"/><rect x="9.600000000000001" y="6.4" width="3.2" height="3.2" fill="#0067b9"/><rect x="3.2" y="12.8" width="3.2" height="3.2" fill="#0067b9"/><rect x="9.600000000000001" y="12.8" width="3.2" height="3.2" fill="#0067b9"/></g><a href="#ports"><text style="font: 16px sans-serif" text-anchor="end" dominant-baseline="middle" x="198.0" y="78">active</text></a><g transform="translate(216.0,70.0) scale(1,1)"><line stroke="white" stroke-width="6" x1="0" y1="8.0" x2="19" y2="8.0"/><line stroke="black" stroke-width="3" x1="0" y1="8.0" x2="16" y2="8.0"/></g><rect x="18" y="18" width="198.0" height="132" rx="18" fill="none" stroke="#0067b9" stroke-width="3"/><text style="font: 16px sans-serif" fill="#0067b9" text-anchor="middle" dominant-baseline="middle" x="117.0" y="170">spi_engine_execution</text></svg></section>
+</div><section id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>AXI-based configuration</p></li>
@@ -869,7 +228,7 @@ endmodule
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/axi_dmac/axi_dmac.v">library/axi_dmac/axi_dmac.v</a></p></td>
+<tr class="row-even"><td><p><a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/axi_dmac/axi_dmac.v">library/axi_dmac/axi_dmac.v</a></p></td>
 <td><p>Verilog source for the peripheral.</p></td>
 </tr>
 </tbody>
@@ -887,7 +246,6 @@ endmodule
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Description</p></th>
-<th class="head"><p>Data Type</p></th>
 <th class="head"><p>Default Value</p></th>
 <th class="head"><p>Choices/Range</p></th>
 </tr>
@@ -898,15 +256,13 @@ endmodule
 <p>Data width of the parallel SDI/SDO data interfaces.</p>
 </section>
 </td>
-<td class="type"><p>Long</p></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">8</span></code></td>
-<td><p>From 8 to 256.</p></td>
+<td class="range"><p>From 8 to 256.</p></td>
 </tr>
 <tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">NUM_OF_SDI</span></code></td>
 <td class="description"><p>Number of MISO lines.</p></td>
-<td class="type"><p>Long</p></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">1</span></code></td>
-<td><p>From 1 to 8.</p></td>
+<td class="range"><p>From 1 to 8.</p></td>
 </tr>
 </tbody>
 </table>
@@ -915,7 +271,228 @@ endmodule
 </div></section>
 <section id="interface">
 <span id="template-ip-interface"></span><h2>Interface<a class="headerlink" href="#interface" title="Permalink to this heading">#</a></h2>
-<div></div></section>
+<div><section id="bus-interface-s_axi">
+<div class="collapsible docutils container">
+<input class="collapsible_input" id="3623d596eaa21cdbf8ce55aa9f16eb59631f79ed" name="3623d596eaa21cdbf8ce55aa9f16eb59631f79ed" type="checkbox"></input><label for="3623d596eaa21cdbf8ce55aa9f16eb59631f79ed"><div><p>s_axi</p>
+</div><div class="icon"></div></label><div class="collapsible_content docutils container">
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Physical Port</p></th>
+<th class="head"><p>Logical Port</p></th>
+<th class="head"><p>Direction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_awaddr</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">AWADDR</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_awprot</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">AWPROT</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_awvalid</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">AWVALID</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_awready</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">AWREADY</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_wdata</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">WDATA</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_wstrb</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">WSTRB</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_wvalid</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">WVALID</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_wready</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">WREADY</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_bresp</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BRESP</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_bvalid</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BVALID</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_bready</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">BREADY</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_araddr</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ARADDR</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_arprot</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ARPROT</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_arvalid</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ARVALID</span></code></td>
+<td><p>in</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_arready</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">ARREADY</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_rdata</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">RDATA</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_rresp</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">RRESP</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">s_axi_rvalid</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">RVALID</span></code></td>
+<td><p>out</p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_rready</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">RREADY</span></code></td>
+<td><p>in</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="bus-interface-s_axi_aclk">
+<div class="collapsible docutils container">
+<input class="collapsible_input" id="9c8678b85b2f0b699d25e56f3073c3e1b818cd83" name="9c8678b85b2f0b699d25e56f3073c3e1b818cd83" type="checkbox"></input><label for="9c8678b85b2f0b699d25e56f3073c3e1b818cd83"><div><p>s_axi_aclk</p>
+</div><div class="icon"></div></label><div class="collapsible_content docutils container">
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Physical Port</p></th>
+<th class="head"><p>Logical Port</p></th>
+<th class="head"><p>Direction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_aclk</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">CLK</span></code></td>
+<td><p>in</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="bus-interface-s_axi_aresetn">
+<div class="collapsible docutils container">
+<input class="collapsible_input" id="82934709fcea30747d09c1ddf7392138a8d663d0" name="82934709fcea30747d09c1ddf7392138a8d663d0" type="checkbox"></input><label for="82934709fcea30747d09c1ddf7392138a8d663d0"><div><p>s_axi_aresetn</p>
+</div><div class="icon"></div></label><div class="collapsible_content docutils container">
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Physical Port</p></th>
+<th class="head"><p>Logical Port</p></th>
+<th class="head"><p>Direction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">s_axi_aresetn</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">RST</span></code></td>
+<td><p>in</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="ports">
+<div class="collapsible docutils container">
+<input class="collapsible_input" id="4b85eb8e81722c5742c219564dbbbc39872ee995" name="4b85eb8e81722c5742c219564dbbbc39872ee995" type="checkbox"></input><label for="4b85eb8e81722c5742c219564dbbbc39872ee995"><p>Ports</p>
+<div class="icon"></div></label><div class="collapsible_content docutils container">
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Physical Port</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Dependency</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dac_clk_in_p</span></code></td>
+<td><p>in</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dac_clk_in_n</span></code></td>
+<td><p>in</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dac_clk_out_p</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dac_clk_out_n</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dac_data_out_p</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dac_data_out_n</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dac_div_clk</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dac_rst</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dac_valid</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dac_dunf</span></code></td>
+<td><p>in</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">dac_enable_*</span></code></td>
+<td><p>out</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">dac_ddata_*</span></code></td>
+<td><p>in</p></td>
+<td><p></p></td>
+<td class="description"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</div></section>
 <section id="detailed-architecture">
 <h2>Detailed Architecture<a class="headerlink" href="#detailed-architecture" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">image</span><span class="p">::</span> <span class="n">detailed_architecture</span><span class="o">.</span><span class="n">svg</span>
@@ -942,36 +519,37 @@ basic monitoring and control of the ADC’s channel.</p>
 <h2>Register Map<a class="headerlink" href="#register-map" title="Permalink to this heading">#</a></h2>
 <div><section id="hdl-regmap">
 <section id="register-map-Base (common to all cores)">
-<h4>Base (common to all cores) (Base (common to all cores))<a class="headerlink" href="#register-map-Base (common to all cores)" title="Permalink to this heading">#</a></h4>
 <div class="collapsible docutils container">
-<input class="collapsible_input" id="cc26e3cbc5121058c1531ab9056a6838885ff6ea" name="cc26e3cbc5121058c1531ab9056a6838885ff6ea" type="checkbox"></input><label for="cc26e3cbc5121058c1531ab9056a6838885ff6ea"><p>Register map table.</p>
+<input class="collapsible_input" id="d7c6517c369404a97b27fd3e5b1a469dc88d1687" name="d7c6517c369404a97b27fd3e5b1a469dc88d1687" type="checkbox"></input><label for="d7c6517c369404a97b27fd3e5b1a469dc88d1687"><p>Base (common to all cores) register map</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div class="table-wrapper regmap docutils container">
 <table class="regmap docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>DWORD</p></th>
 <th class="head"><p>BYTE</p></th>
+<th class="head" colspan="4"><p>Reg Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<thead>
+<tr class="row-even"><th class="head" colspan="2"><p></p></th>
 <th class="head"><p>BITS</p></th>
-<th class="head"><p>Name</p></th>
+<th class="head"><p>Field Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Default Value</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_VERSION</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_VERSION</span></code></td>
+<td class="description bold"><section>
 <p>Version and Scratch Registers</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">VERSION[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -981,19 +559,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x1</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_ID</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_ID</span></code></td>
+<td class="description bold"><section>
 <p>Version and Scratch Registers</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ID[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1003,19 +577,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x8</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_SCRATCH</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x2</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x8</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_SCRATCH</span></code></td>
+<td class="description bold"><section>
 <p>Version and Scratch Registers</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SCRATCH[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1025,19 +595,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x3</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0xc</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CONFIG</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x3</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0xc</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CONFIG</span></code></td>
+<td class="description bold"><section>
 <p>Version and Scratch Registers</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">IQCORRECTION_DISABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1047,129 +613,125 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DCFILTER_DISABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates that the DC Filter module was not implemented. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DATAFORMAT_DISABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates that the Data Format module was not implemented. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[3]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USERPORTS_DISABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates that the logic related to the User Data Format (e.g. decimation) was not implemented. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[4]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MODE_1R1T</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates that the core was implemented in 1 channel mode. (e.g. refer to AD9361 data sheet)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[5]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_CONTROL_DISABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates that the delay control is disabled for this IP. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[6]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DDS_DISABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates that the DDS is disabled for this IP. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[7]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CMOS_OR_LVDS_N</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>CMOS or LVDS mode is used for the interface. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PPS_RECEIVER_ENABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates the PPS receiver is enabled. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[9]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SCALECORRECTION_ONLY</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates that the IQ Correction module implements only scale correction. IQ correction must be enabled. (as a result of a configuration of the IP instance)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[12]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">EXT_SYNC</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set the transport layer cores (ADC/DAC) have implemented the support for external synchronization signal.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[13]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RD_RAW_DATA</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, the ADC has the capability to read raw data in register REG_CHAN_RAW_DATA from adc_channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_PPS_IRQ_MASK</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x4</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_PPS_IRQ_MASK</span></code></td>
+<td class="description bold"><section>
 <p>PPS Interrupt mask</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PPS_IRQ_MASK</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1179,19 +741,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x7</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x1c</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_FPGA_INFO</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
-<p>FPGA device information <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/scripts/adi_intel_device_info_enc.tcl">library/scripts/adi_intel_device_info_enc.tcl</a> (Intel encoded values) <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/scripts/adi_xilinx_device_info_enc.tcl">library/scripts/adi_xilinx_device_info_enc.tcl</a> (Xilinx encoded values)</p>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x7</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1c</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_FPGA_INFO</span></code></td>
+<td class="description bold"><section>
+<p>FPGA device information <a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/scripts/adi_intel_device_info_enc.tcl">library/scripts/adi_intel_device_info_enc.tcl</a> (Intel encoded values) <a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/scripts/adi_xilinx_device_info_enc.tcl">library/scripts/adi_xilinx_device_info_enc.tcl</a> (Xilinx encoded values)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:24]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">FPGA_TECHNOLOGY</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1201,33 +759,33 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[23:16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">FPGA_FAMILY</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Encoded value describing the family variant of the FPGA device(e.g., SX, GX, GT or zynq, kintex, virtex)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SPEED_GRADE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Encoded value describing the FPGA’s speed-grade</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DEV_PACKAGE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Encoded value describing the device package. The package might affect high-speed interfaces</p>
 </section>
 </td>
 </tr>
@@ -1240,36 +798,37 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </div><div><section id="hdl-regmap">
 <section id="register-map-ADC Common (axi_ad*)">
-<h4>ADC Common (axi_ad*) (ADC Common (axi_ad*))<a class="headerlink" href="#register-map-ADC Common (axi_ad*)" title="Permalink to this heading">#</a></h4>
 <div class="collapsible docutils container">
-<input class="collapsible_input" id="cc26e3cbc5121058c1531ab9056a6838885ff6ea" name="cc26e3cbc5121058c1531ab9056a6838885ff6ea" type="checkbox"></input><label for="cc26e3cbc5121058c1531ab9056a6838885ff6ea"><p>Register map table.</p>
+<input class="collapsible_input" id="66315c6cc66bb3c6a34c8f1aaa297da527f718a5" name="66315c6cc66bb3c6a34c8f1aaa297da527f718a5" type="checkbox"></input><label for="66315c6cc66bb3c6a34c8f1aaa297da527f718a5"><p>ADC Common (axi_ad*) register map</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div class="table-wrapper regmap docutils container">
 <table class="regmap docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>DWORD</p></th>
 <th class="head"><p>BYTE</p></th>
+<th class="head" colspan="4"><p>Reg Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<thead>
+<tr class="row-even"><th class="head" colspan="2"><p></p></th>
 <th class="head"><p>BITS</p></th>
-<th class="head"><p>Name</p></th>
+<th class="head"><p>Field Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Default Value</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x40</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_RSTN</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x10</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x40</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_RSTN</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CE_N</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1279,39 +838,35 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MMCM_RSTN</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>MMCM reset only (required for DRP access). Reset, default is IN-RESET (0x0), software must write 0x1 to bring up the core.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RSTN</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Reset, default is IN-RESET (0x0), software must write 0x1 to bring up the core.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x11</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x44</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CNTRL</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x11</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x44</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CNTRL</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SDR_DDR_N</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1321,89 +876,85 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SYMB_OP</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Select symbol data format mode (0x1)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[14]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SYMB_8_16B</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Select number of bits for symbol format mode (1 represents 8b, 0 represents 16b)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[12:8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">NUM_LANES[4:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Number of active lanes (1 : CSSI 1-lane, LSSI 1-lane, 2 : LSSI 2-lane, 4 : CSSI 4-lane). For AD7768, AD7768-4 and AD777x number of active lanes : 1/2/4/8 where supported.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[3]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SYNC</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Initialize synchronization between multiple ADCs</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">R1_MODE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Select number of RF channels 1 (0x1) or 2 (0x0).</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DDR_EDGESEL</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Select rising edge (0x0) or falling edge (0x1) for the first part of a sample (if applicable) followed by the successive edges for the remaining parts. This only controls how the sample is delineated from the incoming data post DDR registers.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PIN_MODE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Select interface pin mode to be clock multiplexed (0x1) or pin multiplexed (0x0). In clock multiplexed mode, samples are received on alternative clock edges. In pin multiplexed mode, samples are interleaved or grouped on the pins at the same clock edge.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x12</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x48</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CNTRL_2</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x12</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x48</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CNTRL_2</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">EXT_SYNC_ARM</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1413,39 +964,35 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">EXT_SYNC_DISARM</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Setting this bit will disarm the trigger mechanism sensitive to an external sync signal. This bit has an effect only the EXT_SYNC synthesis parameter is set. This bit self clears.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">MANUAL_SYNC_REQUEST</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Setting this bit will issue an external sync event if it is hooked up inside the fabric. This bit has an effect only the EXT_SYNC synthesis parameter is set. This bit self clears.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x13</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x4c</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CNTRL_3</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x13</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x4c</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CNTRL_3</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CRC_EN</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1455,29 +1002,25 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CUSTOM_CONTROL</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>Select output format decode mode.(for ADAQ8092: bit 0 - enables digital output randomizer decode , bit 1 - enables alternate bit polarity decode).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x15</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x54</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CLK_FREQ</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x15</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x54</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CLK_FREQ</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CLK_FREQ[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1487,19 +1030,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x16</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x58</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CLK_RATIO</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x16</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x58</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CLK_RATIO</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CLK_RATIO[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1509,19 +1048,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x17</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x5c</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_STATUS</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x17</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x5c</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_STATUS</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[4]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_CTRL_STATUS</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1531,59 +1066,55 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[3]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PN_ERR</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates pn error in one or more channels.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PN_OOS</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates pn oos in one or more channels.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">OVER_RANGE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates over range in one or more channels.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">STATUS</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Interface status, if set indicates no errors. If not set, there are errors, software may try resetting the cores.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x18</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x60</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_DELAY_CNTRL</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x18</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x60</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_DELAY_CNTRL</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status(‘’Deprecated from version 9’’)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[17]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_SEL</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1593,49 +1124,45 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_RWN</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Delay read (0x1) or write (0x0), the delay is accessed directly (no increment or decrement) with an address corresponding to each pin, and data corresponding to the total delay.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_ADDRESS[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>Delay address, the range depends on the interface pins, data pins are usually at the lower range.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[4:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_WDATA[4:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Delay write data, a value of 1 corresponds to (1/200)ns for most devices.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x19</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x64</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_DELAY_STATUS</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x19</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x64</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_DELAY_STATUS</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status(‘’Deprecated from version 9’’)</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[9]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_LOCKED</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1645,39 +1172,35 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_STATUS</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates busy status (access pending). The read data may not be valid if this bit is set.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[4:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DELAY_RDATA[4:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Delay read data, current delay value in the elements</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1a</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x68</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_SYNC_STATUS</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1a</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x68</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_SYNC_STATUS</span></code></td>
+<td class="description bold"><section>
 <p>ADC Synchronization Status register</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_SYNC</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1687,19 +1210,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1c</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x70</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_DRP_CNTRL</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1c</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x70</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_DRP_CNTRL</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[28]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DRP_RWN</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1709,39 +1228,35 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[27:16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DRP_ADDRESS[11:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>DRP address, designs that contain more than one DRP accessible primitives have selects based on the most significant bits (does not include GTX lanes). NOT-APPLICABLE if DRP_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RESERVED[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0000</span></code></td>
 <td class="description"><section>
+<p>Reserved for backward compatibility.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1d</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x74</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_DRP_STATUS</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1d</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x74</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_DRP_STATUS</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[17]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DRP_LOCKED</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1751,39 +1266,35 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DRP_STATUS</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set indicates busy (access pending). The read data may not be valid if this bit is set (does not include GTX lanes). NOT-APPLICABLE if DRP_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RESERVED[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>Reserved for backward compatibility.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1e</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x78</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_DRP_WDATA</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1e</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x78</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_DRP_WDATA</span></code></td>
+<td class="description bold"><section>
 <p>ADC DRP Write Data</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DRP_WDATA[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1793,19 +1304,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1f</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x7c</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_DRP_RDATA</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1f</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x7c</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_DRP_RDATA</span></code></td>
+<td class="description bold"><section>
 <p>ADC DRP Read Data</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DRP_RDATA[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1815,19 +1322,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x20</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x80</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_ADC_CONFIG_WR</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x20</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x80</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_ADC_CONFIG_WR</span></code></td>
+<td class="description bold"><section>
 <p>ADC Write Configuration ​Data</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_CONFIG_WR[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1837,19 +1340,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x21</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x84</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_ADC_CONFIG_RD</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x21</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x84</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_ADC_CONFIG_RD</span></code></td>
+<td class="description bold"><section>
 <p>ADC Read Configuration ​Data</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_CONFIG_RD[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1859,19 +1358,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x22</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x88</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_UI_STATUS</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x22</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x88</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_UI_STATUS</span></code></td>
+<td class="description bold"><section>
 <p>User Interface Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">UI_OVF</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW1C</span></code></td>
@@ -1881,39 +1376,35 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">UI_UNF</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW1C</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>User Interface underflow. If set, indicates an underflow occurred during data transfer at the user interface (FIFO interface). Software must write a 0x1 to clear this register bit.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">UI_RESERVED</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW1C</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Reserved for backward compatibility.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x23</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x8c</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_ADC_CONFIG_CTRL</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x23</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x8c</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_ADC_CONFIG_CTRL</span></code></td>
+<td class="description bold"><section>
 <p>ADC RD/WR configuration</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_CONFIG_CTRL[31:​0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1923,19 +1414,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x28</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0xa0</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_USR_CNTRL_1</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x28</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0xa0</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_USR_CNTRL_1</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_CHANMAX[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1945,19 +1432,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x29</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0xa4</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_ADC_START_CODE</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x29</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0xa4</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_ADC_START_CODE</span></code></td>
+<td class="description bold"><section>
 <p>ADC Synchronization start word</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_START_CODE[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -1967,19 +1450,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x2e</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0xb8</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_ADC_GPIO_IN</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x2e</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0xb8</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_ADC_GPIO_IN</span></code></td>
+<td class="description bold"><section>
 <p>ADC GPIO inputs</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_GPIO_IN[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -1989,19 +1468,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x2f</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0xbc</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_ADC_GPIO_OUT</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x2f</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0xbc</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_ADC_GPIO_OUT</span></code></td>
+<td class="description bold"><section>
 <p>ADC GPIO outputs</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_GPIO_OUT[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -2011,19 +1486,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x30</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0xc0</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_PPS_COUNTER</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x30</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0xc0</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_PPS_COUNTER</span></code></td>
+<td class="description bold"><section>
 <p>PPS Counter register</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PPS_COUNTER[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -2033,19 +1504,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x31</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0xc4</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_PPS_STATUS</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x31</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0xc4</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_PPS_STATUS</span></code></td>
+<td class="description bold"><section>
 <p>PPS Status register</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PPS_STATUS</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -2064,36 +1531,37 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </div><div><section id="hdl-regmap">
 <section id="register-map-ADC Channel (axi_ad*)">
-<h4>ADC Channel (axi_ad*) (ADC Channel (axi_ad*))<a class="headerlink" href="#register-map-ADC Channel (axi_ad*)" title="Permalink to this heading">#</a></h4>
 <div class="collapsible docutils container">
-<input class="collapsible_input" id="cc26e3cbc5121058c1531ab9056a6838885ff6ea" name="cc26e3cbc5121058c1531ab9056a6838885ff6ea" type="checkbox"></input><label for="cc26e3cbc5121058c1531ab9056a6838885ff6ea"><p>Register map table.</p>
+<input class="collapsible_input" id="7f0db353838a5f89ff609c34020cd94a071fac64" name="7f0db353838a5f89ff609c34020cd94a071fac64" type="checkbox"></input><label for="7f0db353838a5f89ff609c34020cd94a071fac64"><p>ADC Channel (axi_ad*) register map</p>
 <div class="icon"></div></label><div class="collapsible_content docutils container">
 <div class="table-wrapper regmap docutils container">
 <table class="regmap docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>DWORD</p></th>
 <th class="head"><p>BYTE</p></th>
+<th class="head" colspan="4"><p>Reg Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<thead>
+<tr class="row-even"><th class="head" colspan="2"><p></p></th>
 <th class="head"><p>BITS</p></th>
-<th class="head"><p>Name</p></th>
+<th class="head"><p>Field Name</p></th>
 <th class="head"><p>Type</p></th>
 <th class="head"><p>Default Value</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x100</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x400</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x100</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x400</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[11]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_LB_OWR</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -2103,119 +1571,115 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[10]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_PN_SEL_OWR</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, forces ADC_PN_SEL to 0x9, device specific pn (e.g. ad9361) If both ADC_PN_TYPE_OWR and ADC_PN_SEL_OWR are set, they are ignored</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[9]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">IQCOR_ENB</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>if set, enables IQ correction or scale correction. NOT-APPLICABLE if IQCORRECTION_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DCFILT_ENB</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>if set, enables DC filter (to disable DC offset, set offset value to 0x0). NOT-APPLICABLE if DCFILTER_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[6]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">FORMAT_SIGNEXT</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>if set, enables sign extension (applicable only in 2’s complement mode). The data is always sign extended to the nearest byte boundary. NOT-APPLICABLE if DATAFORMAT_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[5]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">FORMAT_TYPE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Select offset binary (0x1) or 2’s complement (0x0) data type. This sets the incoming data type and is required by the post processing modules for any data conversion. NOT-APPLICABLE if DATAFORMAT_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[4]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">FORMAT_ENABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Enable data format conversion (see register bits above). NOT-APPLICABLE if DATAFORMAT_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[3]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RESERVED</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Reserved for backward compatibility.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RESERVED</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Reserved for backward compatibility.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_PN_TYPE_OWR</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, forces ADC_PN_SEL to 0x1, modified pn23 If both ADC_PN_TYPE_OWR and ADC_PN_SEL_OWR are set, they are ignored</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ENABLE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, enables channel. A 0x0 to 0x1 transition transfers all the control signals to the respective channel processing module. If a channel is part of a complex signal (I/Q), even channel is the master and the odd channel is the slave. Though a single control is used, both must be individually selected.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x101</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x404</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_STATUS</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x101</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x404</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_STATUS</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[12]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">CRC_ERR</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW1C</span></code></td>
@@ -2225,59 +1689,55 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[11:4]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">STATUS_HEADER</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>The status header sent by the ADC.(compatible with AD7768/AD7768-4/AD777x).</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PN_ERR</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW1C</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>PN errors. If set, indicates spurious mismatches in sync state. This bit is cleared if OOS is set and is only indicates errors when OOS is cleared.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[1]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">PN_OOS</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW1C</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>PN Out Of Sync. If set, indicates an OOS status. OOS is set, if 64 consecutive patterns mismatch from the expected pattern. It is cleared, when 16 consecutive patterns match the expected pattern.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">OVER_RANGE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW1C</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>If set, indicates over range. Note that over range is independent of the data path, it indicates an over range over a data transfer period. Software must first clear this bit before initiating a transfer and monitor afterwards.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x102</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x408</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_RAW_DATA</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x102</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x408</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_RAW_DATA</span></code></td>
+<td class="description bold"><section>
 <p>ADC Raw Data Reading</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_READ_DATA[31:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -2287,19 +1747,15 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x104</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x410</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_1</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x104</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x410</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_1</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DCFILT_OFFSET[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -2309,29 +1765,25 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">DCFILT_COEFF[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0000</span></code></td>
 <td class="description"><section>
+<p>DC removal filter (if equipped) coefficient. The format is 1.1.14 (sign, integer and fractional bits). NOT-APPLICABLE if DCFILTER_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x105</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x414</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_2</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x105</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x414</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_2</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">IQCOR_COEFF_1[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -2341,29 +1793,25 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">IQCOR_COEFF_2[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0000</span></code></td>
 <td class="description"><section>
+<p>IQ correction (if equipped) coefficient. If scale &amp; offset is implemented, this is the offset value and the format is 2’s complement. If matrix multiplication is used, this is the channel Q coefficient and the format is 1.1.14 (sign, integer and fractional bits). NOT-APPLICABLE if IQCORRECTION_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x106</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x418</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_3</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x106</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x418</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_3</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[19:16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_PN_SEL[3:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -2373,29 +1821,25 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[3:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">ADC_DATA_SEL[3:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>Selects the data source to DMA. 0x0: input data (ADC) 0x1: loopback data (DAC)</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x108</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x420</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_USR_CNTRL_1</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x108</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x420</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_USR_CNTRL_1</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[25]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_DATATYPE_BE</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -2405,59 +1849,55 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[24]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_DATATYPE_SIGNED</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0</span></code></td>
 <td class="description"><section>
+<p>The user data type format- if set, indicates signed (2’s complement) data (default is unsigned). NOT-APPLICABLE if USERPORTS_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[23:16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_DATATYPE_SHIFT[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>The user data type format- the amount of right shift for actual samples within the total number of bits. NOT-APPLICABLE if USERPORTS_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:8]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_DATATYPE_TOTAL_BITS[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>The user data type format- number of total bits used for a sample. The total number of bits must be an integer multiple of 8 (byte aligned). NOT-APPLICABLE if USERPORTS_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_DATATYPE_BITS[7:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x00</span></code></td>
 <td class="description"><section>
+<p>The user data type format- number of bits in a sample. This indicates the actual sample data bits. NOT-APPLICABLE if USERPORTS_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x109</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x424</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_USR_CNTRL_2</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x109</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x424</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_USR_CNTRL_2</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:16]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_DECIMATION_M[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
@@ -2467,29 +1907,25 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">USR_DECIMATION_N[15:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x0000</span></code></td>
 <td class="description"><section>
+<p>This holds the user decimation N value of the channel that is currently being selected on the multiplexer above. The total decimation factor is of the form M/N. NOT-APPLICABLE if USERPORTS_DISABLE is set (0x1).</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x10a</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x428</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_4</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x10a</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x428</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_CHAN_CNTRL_4</span></code></td>
+<td class="description bold"><section>
 <p>ADC Interface Control &amp; Status</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-even"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[31:3]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RESERVED[28:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RO</span></code></td>
@@ -2499,46 +1935,33 @@ basic monitoring and control of the ADC’s channel.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
+<tr class="row-odd"><td colspan="2"><p></p></td>
 <td><code class="docutils literal notranslate"><span class="pre">[2:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">SOFTSPAN</span> <span class="pre">[2:0]</span></code></td>
 <td><code class="docutils literal notranslate"><span class="pre">RW</span></code></td>
 <td class="default"><code class="docutils literal notranslate"><span class="pre">0x7</span></code></td>
 <td class="description"><section>
+<p>Softspan configuration register.</p>
 </section>
 </td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x110</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x440</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_*</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x110</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x440</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_*</span></code></td>
+<td class="description bold"><section>
 <p>Channel 1, similar to register 0x100 to 0x10f.</p>
 </section>
 </td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">0x120</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x480</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_*</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
-</section>
-</td>
+<tr class="row-odd"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x120</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x480</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_*</span></code></td>
+<td class="description bold"><p></p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">0x1f0</span></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">0x7c0</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"><span class="pre">REG_*</span></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td><code class="docutils literal notranslate"></code></td>
-<td class="description"><section>
-</section>
-</td>
+<tr class="row-even"><td class="bold"><code class="docutils literal notranslate"><span class="pre">0x1f0</span></code></td>
+<td class="bold"><code class="docutils literal notranslate"><span class="pre">0x7c0</span></code></td>
+<td class="bold" colspan="4"><code class="docutils literal notranslate"><span class="pre">REG_*</span></code></td>
+<td class="description bold"><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -2564,13 +1987,13 @@ from the interface module.</p>
 </section>
 <section id="software-guidelines">
 <h2>Software Guidelines<a class="headerlink" href="#software-guidelines" title="Permalink to this heading">#</a></h2>
-<p>Linux is supported also using <a class="reference external" href="https://github.com/analogdevicesinc/linux/blob/master//">/</a>.</p>
+<p>Linux is supported also using <a class="icon git reference external" href="https://github.com/analogdevicesinc/linux/blob/master/"></a>.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/analogdevicesinc/hdl">ADI HDL repository</a>, <a class="reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/axi_ad777x">library/axi_ad777x</a> library.</p></li>
-<li><p><a class="reference external" href="https://github.com/analogdevicesinc/linux/blob/master//">/</a>.</p></li>
+<li><p><a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl">ADI HDL repository</a>, <a class="icon git reference external" href="https://github.com/analogdevicesinc/hdl/blob/master/library/axi_ad777x">library/axi_ad777x</a> library.</p></li>
+<li><p><a class="icon git reference external" href="https://github.com/analogdevicesinc/linux/blob/master/"></a>.</p></li>
 <li><p><a class="reference external" href="https://www.xilinx.com/support/documentation/data_sheets/ds190-Zynq-7000-Overview.pdf">Zynq-7000 SoC Overview</a>.</p></li>
 <li><p><a class="reference external" href="https://www.xilinx.com/support/documentation/user_guides/ug865-Zynq-7000-Pkg-Pinout.pdf">Zynq-7000 SoC Packaging and Pinout</a>.</p></li>
 </ul>
@@ -2583,71 +2006,37 @@ from the interface module.</p>
         }
         window.onload = init;
     </script>
-        </article>
-      </div>
-      <footer>
-        
-        <div class="related-pages">
-          
-          
-        </div>
-        <div class="bottom-of-page">
-          <div class="left-details">
-            <div class="copyright">
-                Copyright &#169; 2023, Analog Devices Inc
-            </div>
-            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-            
-            <a href="https://github.com/pradyunsg/furo">Furo</a>
-            
-          </div>
-          <div class="right-details">
-            
-          </div>
-        </div>
-        
-      </footer>
-    </div>
-    <aside class="toc-drawer">
-      
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">IP Template</a><ul>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#files">Files</a></li>
-<li><a class="reference internal" href="#block-diagram">Block Diagram</a></li>
-<li><a class="reference internal" href="#configuration-parameters">Configuration Parameters</a></li>
-<li><a class="reference internal" href="#interface">Interface</a></li>
-<li><a class="reference internal" href="#detailed-architecture">Detailed Architecture</a></li>
-<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
-<li><a class="reference internal" href="#register-map">Register Map</a></li>
-<li><a class="reference internal" href="#design-guidelines">Design Guidelines</a></li>
-<li><a class="reference internal" href="#software-guidelines">Software Guidelines</a></li>
-<li><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
-</ul>
 
           </div>
+              <div class="related">
+                &nbsp;
+    <div></div>
+    <div></div>
+              </div>
+          
         </div>
       </div>
-      
-      
-    </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=4c0d86c8"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="https://wavedrom.com/skins/default.js"></script>
-    <script src="https://wavedrom.com/wavedrom.min.js"></script>
-    </body>
+
+  <div id="vertical-border"></div>
+
+  <label id="cancel-area-show-toc" for="input-show-toc"></label>
+  <label id="cancel-area-show-localtoc" for="input-show-localtoc"></label>
+
+  
+  <form action="" method="get" class="search-area">
+    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="search" placeholder="Search"/>
+    <button value="search"></button>
+    <span id="search-progress"></span>
+  </form>
+  
+    <footer>
+      &#169;2024, Analog Devices, Inc.
+      
+      |
+      Made with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+      &amp; <a href="https://github.com/analogdevicesinc/doctools">Doctools</a>
+      
+    </footer>
+  </body>
 </html>
