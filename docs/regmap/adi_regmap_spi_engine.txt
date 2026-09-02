@@ -9,17 +9,17 @@ ENDTITLE
 REG
 0x00
 VERSION
-Version of the peripheral. Follows semantic versioning. Current version 1.02.01.
+Version of the peripheral. Follows semantic versioning. Current version 2.00.00.
 ENDREG
 
 FIELD
-[31:16] 0x00000001
+[31:16] 0x0002
 VERSION_MAJOR
 RO
 ENDFIELD
 
 FIELD
-[15:8] 0x00000002
+[15:8] 0x00000000
 VERSION_MINOR
 RO
 ENDFIELD
@@ -39,7 +39,7 @@ PERIPHERAL_ID
 ENDREG
 
 FIELD
-[31:0] ''ID''
+[31:0] ID
 PERIPHERAL_ID
 RO
 Value of the ID configuration parameter.
@@ -70,15 +70,15 @@ DATA_WIDTH
 ENDREG
 
 FIELD
-[7:4] ''NUM_OF_SDI''
-NUM_OF_SDI
+[23:16] NUM_OF_SDIO
+NUM_OF_SDIO
 RO
-Number of SDI.
-It is equal with the maximum supported SDI lines in bits.
+Number of SDIOs.
+It is equal with the maximum supported SDIO lines in bits.
 ENDFIELD
 
 FIELD
-[3:0] ''DATA_WITH''
+[15:0] DATA_WIDTH
 DATA_WIDTH
 RO
 Data width of the SDI/SDO parallel interface.
@@ -247,7 +247,7 @@ SYNC_ID
 ENDREG
 
 FIELD
-[31:0] 0xXXXXXXXX
+[31:0]
 SYNC_ID
 RO
 Last synchronization event ID received from the SPI engine control interface.
@@ -277,7 +277,7 @@ CMD_FIFO_ROOM
 ENDREG
 
 FIELD
-[31:0] log2((2^''CMD_FIFO_ADDRESS_WIDTH'')-1)
+[31:0] CMD_FIFO_ROOM = $clog2((2**CMD_FIFO_ADDRESS_WIDTH)-1)
 CMD_FIFO_ROOM
 RO
 Number of free entries in the command FIFO. The reset value of the CMD_FIFO_ROOM register
@@ -293,7 +293,7 @@ SDO_FIFO_ROOM
 ENDREG
 
 FIELD
-[31:0] log2((2^''SDO_FIFO_ADDRESS_WIDTH'')-1)
+[31:0] SDO_FIFO_ROOM = $clog2((2**SDO_FIFO_ADDRESS_WIDTH)-1)
 SDO_FIFO_ROOM
 RO
 Number of free entries in the serial-data-out FIFO. The reset value of the SDO_FIFO_ROOM
@@ -324,7 +324,7 @@ CMD_FIFO
 ENDREG
 
 FIELD
-[31:0] 0xXXXXXXXX
+[31:0]
 CMD_FIFO
 WO
 Command FIFO register. Writing to this register inserts an entry into the command FIFO.
@@ -341,7 +341,7 @@ SDO_FIFO
 ENDREG
 
 FIELD
-[31:0] 0xXXXXXXXX
+[31:0]
 SDO_FIFO
 WO
 SDO FIFO register. Writing to this register inserts an entry into the SDO FIFO.
@@ -358,7 +358,7 @@ SDI_FIFO
 ENDREG
 
 FIELD
-[31:0] 0xXXXXXXXX
+[31:0]
 SDI_FIFO
 RO
 SDI FIFO register. Reading from this register removes the first entry from the SDI FIFO.
@@ -370,27 +370,12 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x3b
-SDI_FIFO_MSB
-ENDREG
-
-FIELD
-[31:0] 0xXXXXXXXX
-SDI_FIFO_MSB
-RO
-Store SDI's 32 bits MSB, if exists.
-ENDFIELD
-
-############################################################################################
-############################################################################################
-
-REG
 0x3c
 SDI_FIFO_PEEK
 ENDREG
 
 FIELD
-[31:0] 0xXXXXXXXX
+[31:0]
 SDI_FIFO_PEEK
 RO
 SDI FIFO peek register.
@@ -453,7 +438,7 @@ OFFLOAD0_CDM_FIFO
 ENDREG
 
 FIELD
-[31:0] 0xXXXXXXXX
+[31:0]
 OFFLOAD0_CDM_FIFO
 WO
 Offload command FIFO register. Writing to this register inserts an entry into the command FIFO
@@ -470,7 +455,7 @@ OFFLOAD0_SDO_FIFO
 ENDREG
 
 FIELD
-[31:0] 0xXXXXXXXX
+[31:0]
 OFFLOAD0_SDO_FIFO
 WO
 Offload SDO FIFO register. Writing to this register inserts an entry into the offload SDO FIFO.
@@ -487,7 +472,7 @@ CFG_INFO_0
 ENDREG
 
 FIELD
-[31:0] ''CFG_INFO_0''
+[31:0] CFG_INFO_0
 CFG_INFO_0
 RO
 Configuration Info.
@@ -501,7 +486,7 @@ CFG_INFO_1
 ENDREG
 
 FIELD
-[31:0] ''CFG_INFO_1''
+[31:0] CFG_INFO_1
 CFG_INFO_1
 RO
 Configuration Info.
@@ -515,7 +500,7 @@ CFG_INFO_2
 ENDREG
 
 FIELD
-[31:0] ''CFG_INFO_2''
+[31:0] CFG_INFO_2
 CFG_INFO_2
 RO
 Configuration Info.
@@ -529,7 +514,7 @@ CFG_INFO_3
 ENDREG
 
 FIELD
-[31:0] ''CFG_INFO_3''
+[31:0] CFG_INFO_3
 CFG_INFO_4
 RO
 Configuration Info.

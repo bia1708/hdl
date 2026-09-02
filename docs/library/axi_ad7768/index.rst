@@ -35,7 +35,7 @@ Files
    * - :git-hdl:`library/axi_ad7768/axi_ad7768_ip.tcl`
      - TCL script to generate the Vivado IP-integrator project.
    * - :git-hdl:`library/axi_ad7768/axi_ad7768_hw.tcl`
-     - TCL script to generate the Quartus IP-integrator project.   
+     - TCL script to generate the Quartus IP-integrator project.
 
 Block Diagram
 --------------------------------------------------------------------------------
@@ -119,6 +119,35 @@ basic monitoring and control of the ADC's channel.
 Register Map
 --------------------------------------------------------------------------------
 
+The register map of the core contains instances of several generic register maps
+like ADC common, ADC channel.
+The following table presents the base addresses of each instance, after it you
+can find the detailed description of each generic register map.
+
+The absolute address of a register should be calculated by adding the instance
+base address to the registers relative address. For a more detailed explanation,
+see :ref:`ADC register access <generic-adc-register-access>`.
+
+.. list-table:: Register Map base addresses for axi_ad7768
+   :header-rows: 1
+
+   * - HDL reg
+     - Software reg
+     - Name
+     - Description
+   * - 0x0000
+     - 0x0000
+     - BASE
+     - See the `Base <#hdl-regmap-COMMON>`__ table for more details.
+   * - 0x0000
+     - 0x0000
+     - RX COMMON
+     - See the `ADC Common <#hdl-regmap-ADC_COMMON>`__ table for more details.
+   * - 0x0000
+     - 0x0000
+     - RX CHANNELS
+     - See the `ADC Channel <#hdl-regmap-ADC_CHANNEL>`__ table for more details.
+
 .. hdl-regmap::
    :name: COMMON
    :no-type-info:
@@ -130,6 +159,7 @@ Register Map
 .. hdl-regmap::
    :name: ADC_CHANNEL
    :no-type-info:
+
 
 Design Guidelines
 --------------------------------------------------------------------------------
@@ -151,17 +181,22 @@ The example design uses a processor to program all the registers. If no
 processor is available in your system, you can create your own IP starting from
 the interface module.
 
-Software Guidelines
+Software Support
 --------------------------------------------------------------------------------
 
-Linux is suported using :git-linux:`/`.
+* Linux documentation :dokuwiki:`on wiki <resources/tools-software/linux-drivers/iio-adc/ad7768>`
+* Linux documentation for AD7768-1 :dokuwiki:`on wiki <resources/tools-software/linux-drivers/iio-adc/ad7768-1>`
+* No-OS driver at :git-no-os:`drivers/adc/ad7768`, :git-no-os:`drivers/adc/ad7768-1`
+* No-OS project at :git-no-os:`projects/ad7768-evb`, :git-no-os:`projects/ad7768-1fmcz`
+* IIO documentation support for AD7768-1 :dokuwiki:`on wiki <resources/tools-software/product-support-software/ad77681_mbed_iio_application>`
 
 References
 -------------------------------------------------------------------------------
 
-* :git-hdl:`library/axi_ad7768`
+* HDL IP core at :git-hdl:`library/axi_ad7768`
+* HDL project at :git-hdl:`projects/ad7768evb`, :git-hdl:`projects/ad77681evb`
+* HDL project documentation at :ref:`ad7768evb`
 * :adi:`AD7768`
 * :adi:`AD7768-4`
-* :git-linux:`/`
 * :xilinx:`Zynq-7000 SoC Overview <support/documentation/data_sheets/ds190-Zynq-7000-Overview.pdf>`
 * :xilinx:`Zynq-7000 SoC Packaging and Pinout <support/documentation/user_guides/ug865-Zynq-7000-Pkg-Pinout.pdf>`

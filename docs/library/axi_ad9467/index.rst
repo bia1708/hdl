@@ -134,6 +134,35 @@ monitoring and control of the ADC.
 Register Map
 --------------------------------------------------------------------------------
 
+The register map of the core contains instances of several generic register maps
+like ADC common, ADC channel.
+The following table presents the base addresses of each instance, after it you
+can find the detailed description of each generic register map.
+
+The absolute address of a register should be calculated by adding the instance
+base address to the registers relative address. For a more detailed explanation,
+see :ref:`ADC register access <generic-adc-register-access>`.
+
+.. list-table:: Register Map base addresses for axi_ad9467
+   :header-rows: 1
+
+   * - HDL reg
+     - Software reg
+     - Name
+     - Description
+   * - 0x0000
+     - 0x0000
+     - BASE
+     - See the `Base <#hdl-regmap-COMMON>`__ table for more details.
+   * - 0x0000
+     - 0x0000
+     - RX COMMON
+     - See the `ADC Common <#hdl-regmap-ADC_COMMON>`__ table for more details.
+   * - 0x0000
+     - 0x0000
+     - RX CHANNELS
+     - See the `ADC Channel <#hdl-regmap-ADC_CHANNEL>`__ table for more details.
+
 .. hdl-regmap::
    :name: COMMON
    :no-type-info:
@@ -169,20 +198,26 @@ The example design uses a processor to program all the registers. If no
 processor is available in your system, you can create your own IP starting from
 the interface module.
 
-Software Guidelines
+Software Support
 --------------------------------------------------------------------------------
 
-The software for this IP can be found as part of the AD9467 Native FMC Card
-Reference Design at: :git-no-OS:`projects/ad9467`
-Linux is supported also using :git-linux:`/`.
+* Linux device driver at :git-linux:`drivers/iio/adc/ad9467.c``
+* Linux device trees at:
+
+  * :git-linux:`arch/microblaze/boot/dts/kc705_ad9467_fmc.dts`
+  * :git-linux:`arch/arm/boot/dts/zynq-zed-adv7511-ad9467-fmc-250ebz.dts`
+
+* No-OS device driver at :git-no-os:`drivers/adc/ad9467`
+* No-OS project at :git-no-os:`projects/ad9467`
 
 References
 -------------------------------------------------------------------------------
 
-* :git-hdl:`library/axi_ad9467`
+* HDL IP core at :git-hdl:`library/axi_ad9467`
+* HDL project at :git-hdl:`projects/ad9467_fmc`
+* HDL project documentation at :ref:`ad9467_fmc`
 * :adi:`AD9467`
-* :git-linux:`/`
-* :git-no-OS:`projects/ad9467`
+* :dokuwiki:`AD9467-FMC-250EBZ FMC card Quick start guide <resources/fpga/xilinx/fmc/ad9467>`
 * :xilinx:`Zynq-7000 SoC Overview <support/documentation/data_sheets/ds190-Zynq-7000-Overview.pdf>`
 * :xilinx:`Zynq-7000 SoC Packaging and Pinout <support/documentation/user_guides/ug865-Zynq-7000-Pkg-Pinout.pdf>`
 * :xilinx:`7 Series libraries <support/documentation/sw_manuals/xilinx2016_2/ug953-vivado-7series-libraries.pdf>`

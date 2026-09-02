@@ -1,22 +1,22 @@
 ###############################################################################
-## Copyright (C) 2019-2024 Analog Devices, Inc. All rights reserved.
+## Copyright (C) 2019-2026 Analog Devices, Inc. All rights reserved.
 ### SPDX short identifier: ADIBSD
 ###############################################################################
 
 create_bd_intf_port -mode Master -vlnv analog.com:interface:spi_engine_rtl:1.0 adaq7980_spi
 source $ad_hdl_dir/library/spi_engine/scripts/spi_engine.tcl
 
-set data_width    16
-set async_spi_clk 1 
-set num_cs        1
-set num_sdi       1 
-set num_sdo       1 
-set sdi_delay     1 
-set echo_sclk     0 
+set hier_spi_engine  spi_adaq7980_adc
+set data_width       16
+set async_spi_clk    1
+set offload_en       1
+set num_cs           1
+set num_sdi          1
+set num_sdo          1
+set sdi_delay        1
+set echo_sclk        0
 
-set hier_spi_engine spi_adaq7980_adc
-
-spi_engine_create $hier_spi_engine $data_width $async_spi_clk $num_cs $num_sdi $num_sdo $sdi_delay $echo_sclk
+spi_engine_create $hier_spi_engine $data_width $async_spi_clk $offload_en $num_cs $num_sdi $num_sdo $sdi_delay $echo_sclk
 
 # axi_pwm_gen
 ad_ip_instance axi_pwm_gen spi_trigger_gen
@@ -34,11 +34,11 @@ ad_ip_parameter axi_adaq7980_dma CONFIG.DMA_2D_TRANSFER 0
 ad_ip_parameter axi_adaq7980_dma CONFIG.DMA_DATA_WIDTH_SRC 16
 ad_ip_parameter axi_adaq7980_dma CONFIG.DMA_DATA_WIDTH_DEST 64
 
- # axi_clkgen
+# axi_clkgen
 ad_ip_instance axi_clkgen spi_clkgen
-ad_ip_parameter spi_clkgen CONFIG.CLK0_DIV 5 
-ad_ip_parameter spi_clkgen CONFIG.VCO_DIV 1 
-ad_ip_parameter spi_clkgen CONFIG.VCO_MUL 8 
+ad_ip_parameter spi_clkgen CONFIG.CLK0_DIV 5
+ad_ip_parameter spi_clkgen CONFIG.VCO_DIV 1
+ad_ip_parameter spi_clkgen CONFIG.VCO_MUL 8
 
 ad_connect $sys_cpu_clk spi_clkgen/clk
 ad_connect spi_clk spi_clkgen/clk_0

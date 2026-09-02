@@ -1,10 +1,8 @@
 ###############################################################################
-## Copyright (C) 2014-2023 Analog Devices, Inc. All rights reserved.
+## Copyright (C) 2014-2023, 2025-2026 Analog Devices, Inc. All rights reserved.
 ### SPDX short identifier: ADIBSD
 ###############################################################################
 
-set REQUIRED_QUARTUS_VERSION 22.1std.0
-set QUARTUS_PRO_ISUSED 0
 source ../../../scripts/adi_env.tcl
 source ../../scripts/adi_project_intel.tcl
 
@@ -160,4 +158,3 @@ set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to sda
 set_instance_assignment -name AUTO_SHIFT_REGISTER_RECOGNITION OFF -to * -entity axi_ad9361
 
 execute_flow -compile
-

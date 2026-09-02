@@ -90,6 +90,8 @@ Configuration Parameters
      - If enabled the CDC circuitry for the external sync signal is added.
    * - HAS_BYPASS
      - If enabled the bypass circuitry is added.
+   * - ASYNC_CLK
+     - If enabled, the source and destination clocks are asynchronous.
 
 Interface
 --------------------------------------------------------------------------------
@@ -489,3 +491,9 @@ The latter is addressed by the integration into
 which allow the drivers to control the oneshot functionality of the data offload
 based on what was requested with the current IIO buffer, assuming that bypass
 was disabled.
+
+References
+--------------------------------------------------------------------------------
+
+* HDL IP core at :git-hdl:`library/data_offload`
+* :dokuwiki:`Data Offload Engine on wiki <resources/fpga/docs/data_offload>`

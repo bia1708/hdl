@@ -1,5 +1,5 @@
 ###############################################################################
-## Copyright (C) 2022-2023 Analog Devices, Inc. All rights reserved.
+## Copyright (C) 2022-2026 Analog Devices, Inc. All rights reserved.
 ### SPDX short identifier: ADIBSD
 ###############################################################################
 
@@ -8,6 +8,8 @@ set ad_hdl_dir [file normalize [file join [file dirname [info script]] "../"]]
 
 if [info exists ::env(ADI_HDL_DIR)] {
   set ad_hdl_dir [file normalize $::env(ADI_HDL_DIR)]
+} else {
+  set env(ADI_HDL_DIR) $ad_hdl_dir
 }
 
 if [info exists ::env(ADI_GHDL_DIR)] {
@@ -15,7 +17,7 @@ if [info exists ::env(ADI_GHDL_DIR)] {
 }
 
 # Define the supported tool version
-set required_vivado_version "2023.2"
+set required_vivado_version "2025.1"
 if {[info exists ::env(REQUIRED_VIVADO_VERSION)]} {
   set required_vivado_version $::env(REQUIRED_VIVADO_VERSION)
 } elseif {[info exists REQUIRED_VIVADO_VERSION]} {
@@ -29,13 +31,38 @@ if {[info exists ::env(ADI_IGNORE_VERSION_CHECK)]} {
   set IGNORE_VERSION_CHECK 0
 }
 
-# Define the supported tool version
-if {![info exists REQUIRED_QUARTUS_VERSION]} {
-  set REQUIRED_QUARTUS_VERSION "23.2.0"
+# Check $QUARTUS_PRO_ISUSED environment variables
+# If it's not defined auto-detect it based on  the project name
+set quartus_pro_isused 1
+if {[info exists ::env(QUARTUS_PRO_ISUSED)]} {
+  set quartus_pro_isused $::env(QUARTUS_PRO_ISUSED)
+} elseif {[info exists QUARTUS_PRO_ISUSED]} {
+  set quartus_pro_isused $QUARTUS_PRO_ISUSED
+} else {
+  set quartus_std_carriers {de10nano c5soc}
+
+  foreach carrier $quartus_std_carriers {
+    if {[string match "*$carrier*" [pwd]]} {
+      set quartus_pro_isused 0
+      break
+    }
+  }
 }
 
 # Define the supported tool version
-set required_lattice_version "2023.2"
+# If the variable is not defined, set it to standard if the carrier requires it
+set required_quartus_version "25.3.0"
+set required_quartus_std_version "24.1std.0"
+if {[info exists ::env(REQUIRED_QUARTUS_VERSION)]} {
+  set required_quartus_version $::env(REQUIRED_QUARTUS_VERSION)
+} elseif {[info exists REQUIRED_QUARTUS_VERSION]} {
+  set required_quartus_version $REQUIRED_QUARTUS_VERSION
+} elseif {$quartus_pro_isused == 0} {
+  set required_quartus_version $required_quartus_std_version
+}
+
+# Define the supported tool version
+set required_lattice_version "2025.2"
 if {[info exists ::env(REQUIRED_LATTICE_VERSION)]} {
   set required_lattice_version $::env(REQUIRED_LATTICE_VERSION)
 } elseif {[info exists REQUIRED_LATTICE_VERSION]} {

@@ -1,6 +1,6 @@
 // ***************************************************************************
 // ***************************************************************************
-// Copyright (C) 2020-2023 Analog Devices, Inc. All rights reserved.
+// Copyright (C) 2020-2025 Analog Devices, Inc. All rights reserved.
 //
 // In this HDL repository, there are many different and unique modules, consisting
 // of various HDL (Verilog or VHDL) components. The individual modules are
@@ -227,6 +227,7 @@ module adrv9001_rx_link #(
   wire        rx_data16_1_packed_valid;
   wire        rx_data16_0_packed_osof;
   wire        rx_data16_1_packed_osof;
+  wire        rx_data32_0_packed_osof;
 
   wire [31:0] rx_data32_0_packed;
   wire        rx_data32_0_packed_valid;
@@ -297,7 +298,7 @@ module adrv9001_rx_link #(
     .idata (rx_data8_1_aligned),
     .sof (rx_data8_strobe_aligned[7]),
     .odata (rx_data16_1_packed),
-    .ovalid (rx_data16_1_paked_valid),
+    .ovalid (rx_data16_1_packed_valid),
     .osof (rx_data16_1_packed_osof));
 
   adrv9001_pack #(

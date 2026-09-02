@@ -1,5 +1,5 @@
 ###############################################################################
-## Copyright (C) 2022-2024 Analog Devices, Inc. All rights reserved.
+## Copyright (C) 2022-2026 Analog Devices, Inc. All rights reserved.
 ### SPDX short identifier: ADIBSD
 ###############################################################################
 
@@ -10,23 +10,23 @@ create_bd_port -dir O cn0561_odr
 
 source $ad_hdl_dir/library/spi_engine/scripts/spi_engine.tcl
 
-set data_width    32
-set async_spi_clk 1
-set num_cs        1
-set num_sdi       4
-set num_sdo       0
-set sdi_delay     0
-set echo_sclk     0
+set hier_spi_engine  spi_cn0561
+set data_width       32
+set async_spi_clk    1
+set offload_en       1
+set num_cs           1
+set num_sdi          4
+set num_sdo          0
+set sdi_delay        0
+set echo_sclk        0
 
-set hier_spi_engine spi_cn0561
-
-spi_engine_create $hier_spi_engine $data_width $async_spi_clk $num_cs $num_sdi $num_sdo $sdi_delay $echo_sclk
+spi_engine_create $hier_spi_engine $data_width $async_spi_clk $offload_en $num_cs $num_sdi $num_sdo $sdi_delay $echo_sclk
 
 # clkgen
 
 ad_ip_instance axi_clkgen axi_cn0561_clkgen
 ad_ip_parameter axi_cn0561_clkgen CONFIG.VCO_DIV 5
-ad_ip_parameter axi_cn0561_clkgen CONFIG.VCO_MUL 48
+ad_ip_parameter axi_cn0561_clkgen CONFIG.VCO_MUL 50
 ad_ip_parameter axi_cn0561_clkgen CONFIG.CLK0_DIV 10
 
 # dma to receive data stream

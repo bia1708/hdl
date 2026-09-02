@@ -1,6 +1,6 @@
 // ***************************************************************************
 // ***************************************************************************
-// Copyright (C) 2017-2023 Analog Devices, Inc. All rights reserved.
+// Copyright (C) 2017-2026 Analog Devices, Inc. All rights reserved.
 //
 // In this HDL repository, there are many different and unique modules, consisting
 // of various HDL (Verilog or VHDL) components. The individual modules are
@@ -98,9 +98,9 @@ module system_top (
 
   // spi
 
-  assign spi_csn_adc = spi_csn[2];
-  assign spi_csn_dac = spi_csn[1];
-  assign spi_csn_clk = spi_csn[0];
+  assign spi_csn_clk = spi_csn[0]; // AD9528 CLKD_SPI_CSB
+  assign spi_csn_dac = spi_csn[1]; // AD9152 DAC_SPI_CSB
+  assign spi_csn_adc = spi_csn[2]; // AD9680 ADC_SPI_CSB
 
   // instantiations
 
@@ -201,7 +201,6 @@ module system_top (
     .spi1_miso (1'd0),
     .spi1_mosi (),
     .spi1_sclk (),
-    .dac_fifo_bypass(gpio_o[41]),
     .tx_data_0_n (tx_data_n[0]),
     .tx_data_0_p (tx_data_p[0]),
     .tx_data_1_n (tx_data_n[1]),

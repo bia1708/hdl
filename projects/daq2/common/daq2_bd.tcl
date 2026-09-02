@@ -1,5 +1,5 @@
 ###############################################################################
-## Copyright (C) 2014-2023 Analog Devices, Inc. All rights reserved.
+## Copyright (C) 2014-2025 Analog Devices, Inc. All rights reserved.
 ### SPDX short identifier: ADIBSD
 ###############################################################################
 
@@ -12,6 +12,7 @@
 
 source $ad_hdl_dir/library/jesd204/scripts/jesd204.tcl
 source $ad_hdl_dir/projects/common/xilinx/data_offload_bd.tcl
+source $ad_hdl_dir/library/xilinx/scripts/xcvr_automation.tcl
 
 # JESD204B interface configurations
 
@@ -66,6 +67,7 @@ ad_ip_instance axi_dmac axi_ad9144_dma [list \
   CYCLIC 0 \
   DMA_DATA_WIDTH_SRC 128 \
   DMA_DATA_WIDTH_DEST $dac_data_width \
+  CACHE_COHERENT $CACHE_COHERENCY \
 ]
 
 ad_data_offload_create axi_ad9144_offload \
@@ -115,6 +117,7 @@ ad_ip_instance axi_dmac axi_ad9680_dma [list \
   CYCLIC 0 \
   DMA_DATA_WIDTH_SRC $adc_data_width \
   DMA_DATA_WIDTH_DEST 64 \
+  CACHE_COHERENT $CACHE_COHERENCY \
 ]
 
 ad_data_offload_create axi_ad9680_offload \
@@ -131,17 +134,14 @@ ad_connect axi_ad9680_offload/sync_ext GND
 
 # shared transceiver core
 
-ad_ip_instance util_adxcvr util_daq2_xcvr [list \
+global xcvr_config_paths
+
+set util_adxcvr_parameters [adi_xcvr_parameters $xcvr_config_paths [list \
   RX_NUM_OF_LANES $MAX_RX_NUM_OF_LANES \
-  TX_NUM_OF_LANES $MAX_TX_NUM_OF_LANES \
-  QPLL_REFCLK_DIV 1 \
-  QPLL_FBDIV_RATIO 1 \
-  QPLL_FBDIV 0x30 \
-  RX_OUT_DIV 1 \
-  TX_OUT_DIV 1 \
-  RX_DFE_LPM_CFG 0x0104 \
-  RX_CDR_CFG 0x0B000023FF10400020 \
-]
+  TX_NUM_OF_LANES $MAX_TX_NUM_OF_LANES\
+]]
+
+ad_ip_instance util_adxcvr util_daq2_xcvr $util_adxcvr_parameters
 
 ad_connect  $sys_cpu_resetn util_daq2_xcvr/up_rstn
 ad_connect  $sys_cpu_clk util_daq2_xcvr/up_clk
@@ -237,10 +237,17 @@ ad_mem_hp3_interconnect $sys_cpu_clk axi_ad9680_xcvr/m_axi
 
 # interconnect (mem/dac)
 
-ad_mem_hp1_interconnect $sys_cpu_clk sys_ps7/S_AXI_HP1
-ad_mem_hp1_interconnect $sys_cpu_clk axi_ad9144_dma/m_src_axi
-ad_mem_hp2_interconnect $sys_cpu_clk sys_ps7/S_AXI_HP2
-ad_mem_hp2_interconnect $sys_cpu_clk axi_ad9680_dma/m_dest_axi
+if {$CACHE_COHERENCY} {
+  ad_mem_hpc1_interconnect $sys_cpu_clk sys_ps8/S_AXI_HPC1
+  ad_mem_hpc1_interconnect $sys_cpu_clk axi_ad9144_dma/m_src_axi
+  ad_mem_hpc0_interconnect $sys_cpu_clk sys_ps8/S_AXI_HPC0
+  ad_mem_hpc0_interconnect $sys_cpu_clk axi_ad9680_dma/m_dest_axi
+} else {
+  ad_mem_hp1_interconnect $sys_cpu_clk sys_ps7/S_AXI_HP1
+  ad_mem_hp1_interconnect $sys_cpu_clk axi_ad9144_dma/m_src_axi
+  ad_mem_hp2_interconnect $sys_cpu_clk sys_ps7/S_AXI_HP2
+  ad_mem_hp2_interconnect $sys_cpu_clk axi_ad9680_dma/m_dest_axi
+}
 
 # interrupts
 

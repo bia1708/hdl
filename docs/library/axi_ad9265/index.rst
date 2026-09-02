@@ -141,6 +141,35 @@ monitoring the PRBS sequence.
 Register Map
 --------------------------------------------------------------------------------
 
+The register map of the core contains instances of several generic register maps
+like ADC common, ADC channel.
+The following table presents the base addresses of each instance, after it you
+can find the detailed description of each generic register map.
+
+The absolute address of a register should be calculated by adding the instance
+base address to the registers relative address. For a more detailed explanation,
+see :ref:`ADC register access <generic-adc-register-access>`.
+
+.. list-table:: Register Map base addresses for axi_ad9265
+   :header-rows: 1
+
+   * - HDL reg
+     - Software reg
+     - Name
+     - Description
+   * - 0x0000
+     - 0x0000
+     - BASE
+     - See the `Base <#hdl-regmap-COMMON>`__ table for more details.
+   * - 0x0000
+     - 0x0000
+     - RX COMMON
+     - See the `ADC Common <#hdl-regmap-ADC_COMMON>`__ table for more details.
+   * - 0x0000
+     - 0x0000
+     - RX CHANNELS
+     - See the `ADC Channel <#hdl-regmap-ADC_CHANNEL>`__ table for more details.
+
 .. hdl-regmap::
    :name: COMMON
    :no-type-info:
@@ -169,27 +198,30 @@ The example design uses a DMA to move the data from the output of the IP to
 memory.
 
 If the data needs to be processed in HDL before moved to the memory, it can be
-done at the output of the IP (at system level) or inside of the adc channel
+done at the output of the IP (at system level) or inside of the ADC channel
 module (at IP level).
 
 The example design uses a processor to program all the registers. If no
 processor is available in your system, you can create your own IP starting from
 the interface module.
 
-Software Guidelines
+Software Support
 --------------------------------------------------------------------------------
 
-The software for this IP can be found as part of the AD9265 Native FMC Card
-Reference Design at: :git-no-OS:`projects/ad9265-fmc-125ebz`
-Linux is supported also using :git-linux:`/`.
+* Linux device trees at:
+
+  * :git-linux:`arch/arm/boot/dts/zynq-zc706-adv7511-ad9265-fmc-125ebz.dts`
+  * :git-linux:`arch/arm/boot/dts/zynq-zed-adv7511-ad9265-fmc-125ebz.dts`
+
+* No-OS device driver at :git-no-os:`drivers/adc/ad9265`
+* No-OS project at :git-no-os:`projects/ad9265-fmc-125ebz`
 
 References
 -------------------------------------------------------------------------------
 
-* :git-hdl:`library/axi_ad9265`
+* HDL IP core at :git-hdl:`library/axi_ad9265`
+* HDL project at :git-hdl:`projects/ad9265_fmc`
+* HDL project documentation at :dokuwiki:`AD9265 Native FMC Card Reference Design <resources/fpga/xilinx/fmc/ad9265>`
 * :adi:`AD9265`
-* :git-linux:`/`
-* :git-no-OS:`projects/ad9265-fmc-125ebz`
-* :dokuwiki:`AD9265 Native FMC Card Reference Design <resources/fpga/xilinx/fmc/ad9265>`
 * :xilinx:`Zynq-7000 SoC Overview <support/documentation/data_sheets/ds190-Zynq-7000-Overview.pdf>`
 * :xilinx:`Zynq-7000 SoC Packaging and Pinout <support/documentation/user_guides/ug865-Zynq-7000-Pkg-Pinout.pdf>`

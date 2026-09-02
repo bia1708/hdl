@@ -1,6 +1,6 @@
 // ***************************************************************************
 // ***************************************************************************
-// Copyright (C) 2021-2024 Analog Devices, Inc. All rights reserved.
+// Copyright (C) 2021-2026 Analog Devices, Inc. All rights reserved.
 //
 // In this HDL repository, there are many different and unique modules, consisting
 // of various HDL (Verilog or VHDL) components. The individual modules are
@@ -36,7 +36,7 @@
 `timescale 1ns/100ps
 
 module system_top #(
-  parameter NUM_OF_SDI = 2
+  parameter NUM_OF_SDIO = 2
 ) (
   inout   [14:0]  ddr_addr,
   inout   [ 2:0]  ddr_ba,
@@ -86,7 +86,7 @@ module system_top #(
 
   // ad463x SPI configuration interface
 
-  input [NUM_OF_SDI-1:0]  ad463x_spi_sdi,
+  input [NUM_OF_SDIO-1:0]  ad463x_spi_sdi,
   output          ad463x_spi_sdo,
   output          ad463x_spi_sclk,
   output          ad463x_spi_cs,
@@ -117,11 +117,13 @@ module system_top #(
   wire    [ 1:0]  iic_mux_sda_o_s;
   wire            iic_mux_sda_t_s;
   wire            ad463x_echo_sclk_s;
+  wire            ad463x_trigger;
 
   // instantiations
 
-  assign gpio_i[63:36] = 27'b0;
-  assign max17687_en = 1'b1;
+  assign gpio_i[63:37]   = 26'b0;
+  assign max17687_en     = 1'b1;
+  assign ad463x_trigger  = gpio_o[36];
 
   ad_data_clk #(
     .SINGLE_ENDED (1)
@@ -243,6 +245,7 @@ module system_top #(
     .ad463x_echo_sclk (ad463x_echo_sclk_s),
     .ad463x_busy (ad463x_busy),
     .ad463x_cnv (ad463x_cnv),
+    .ad463x_trigger (ad463x_trigger),
     .ad463x_ext_clk (ext_clk_s),
     .max17687_sync_clk (max17687_sync_clk),
     .otg_vbusoc (otg_vbusoc),

@@ -43,8 +43,8 @@ Configuration Parameters
      - Data width of the Master AXI streaming interface.
    * - S_DATA_WIDTH
      - Data width of the Slave AXI streaming interface.
-   * - S_ADDRESS_WIDTH
-     - Width of the Slave AXI's address, defines the depth of the FIFO.
+   * - ADDRESS_WIDTH
+     - Defines the depth of the FIFO.
    * - ASYNC_CLK
      - Clocking mode. If set, the FIFO operates on asynchronous mode.
    * - M_AXIS_REGISTERED
@@ -59,6 +59,11 @@ Configuration Parameters
      - Enable ``TLAST`` logical port on the AXI streaming interface.
    * - TKEEP_EN
      - Enable ``TKEEP`` logical port on the AXI streaming interface.
+   * - REDUCED_FIFO
+     - Reduce the FIFO size when master and slave data widths are not equal
+   * - SRC_REG_SLICE_EN
+     - Add an additional register slice to the slave AXI stream interface. It
+       is deasserted by default.
 
 Interface
 --------------------------------------------------------------------------------
@@ -107,13 +112,11 @@ blocks are calculated as follows:
    localparam RATIO_TYPE = (S_DATA_WIDTH >= M_DATA_WIDTH) ? 1 : 0;
    // bus width ratio
    localparam RATIO = (RATIO_TYPE) ? S_DATA_WIDTH/M_DATA_WIDTH : M_DATA_WIDTH/S_DATA_WIDTH;
-   // atomic parameters - NOTE: depth is defined by master or slave and limitation attributes
+   // atomic parameters
    localparam A_WIDTH = (RATIO_TYPE) ? M_DATA_WIDTH : S_DATA_WIDTH;
-   localparam A_ADDRESS = (ADDRESS_WIDTH_PERSPECTIVE) ?
-       ((FIFO_LIMITED) ? ((RATIO_TYPE) ? (ADDRESS_WIDTH-$clog2(RATIO)) : ADDRESS_WIDTH) : ADDRESS_WIDTH) :
-       ((FIFO_LIMITED) ? ((RATIO_TYPE) ? ADDRESS_WIDTH : (ADDRESS_WIDTH-$clog2(RATIO))) : ADDRESS_WIDTH);
-   localparam A_ALMOST_FULL_THRESHOLD = (RATIO_TYPE) ? ALMOST_FULL_THRESHOLD : (ALMOST_FULL_THRESHOLD/RATIO);
-   localparam A_ALMOST_EMPTY_THRESHOLD = (RATIO_TYPE) ? (ALMOST_EMPTY_THRESHOLD/RATIO) : ALMOST_EMPTY_THRESHOLD;
+   localparam A_ADDRESS = (REDUCED_FIFO) ? (ADDRESS_WIDTH-$clog2(RATIO)) : ADDRESS_WIDTH;
+   localparam A_ALMOST_FULL_THRESHOLD = (REDUCED_FIFO) ? ((ALMOST_FULL_THRESHOLD+RATIO-1)/RATIO) : ALMOST_FULL_THRESHOLD;
+   localparam A_ALMOST_EMPTY_THRESHOLD = (REDUCED_FIFO) ? ((ALMOST_EMPTY_THRESHOLD+RATIO-1)/RATIO) : ALMOST_EMPTY_THRESHOLD;
 
 Status Signal Delays
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -136,10 +139,10 @@ destination logic:
    empty FIFO all the read operations are suspended.
 -  ALMOST_EMPTY/ALMOST_FULL - It can be used to foresee a potential FULL or
    EMPTY state, asserting before the EMPTY/FULL before a predefined number of
-   word. The offset between ALMOST_EMPTY and EMPTY, and between ALMOST_FULL and
+   words. The offset between ALMOST_EMPTY and EMPTY, and between ALMOST_FULL and
    FULL can be set by using the parameters ALMOST_EMPTY_THRESHOLD and
-   ALMOST_FULL_THRESHOLD. The offset values are automatically adjusted
-   according to M_DATA_WIDTH and S_DATA_WIDTH ratio.
+   ALMOST_FULL_THRESHOLD. The offset values are automatically adjusted according
+   to M_DATA_WIDTH and S_DATA_WIDTH ratio when REDUCED_FIFO is enabled.
 -  S_AXIS_ROOM - Indicate how many word can be written in the FIFO at the
    current moment, until the FIFO become FULL.
 -  M_AXIS_LEVEL - Indicate how many word can be read from the FIFO at the
@@ -148,22 +151,23 @@ destination logic:
 FIFO Depth Calculation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The FIFO Depth is calculated based on parameters M_DATA_WIDTH, S_DATA_WIDTH,
-ADDRESS_WIDTH, FIFO_LIMITED and ADDRESS_WIDTH_PERSPECTIVE:
+The FIFO Depth is calculated based on M_DATA_WIDTH, S_DATA_WIDTH,
+ADDRESS_WIDTH and REDUCED_FIFO parameters:
 
-- ADDRESS_WIDTH_PERSPECTIVE is 1 and FIFO_LIMITED is 1 - This means that the
-  address specified is from the perspective of the Master interface. Since
-  the limit is enabled the FIFO size will be reduced if the S_DATA_WIDTH
-  is > M_DATA_WIDTH, leading to a smaller FIFO implementation.
-- ADDRESS_WIDTH_PERSPECTIVE is 1 and FIFO_LIMITED is 0 - This means that the
-  address specified is from the perspective of the Master interface. Since
-  the limit is disable the FIFO size will remain the same if the S_DATA_WIDTH
-  is > M_DATA_WIDTH, leading to a bigger FIFO implementation.
-- ADDRESS_WIDTH_PERSPECTIVE is 0 and FIFO_LIMITED is 1 - This means that the
-  address specified is from the perspective of the Slave interface. Since
-  the limit is enabled the FIFO size will be reduced if the S_DATA_WIDTH
-  is < M_DATA_WIDTH, leading to a smaller FIFO implementation.
-- ADDRESS_WIDTH_PERSPECTIVE is 0 and FIFO_LIMITED is 0 - This means that the
-  address specified is from the perspective of the Slave interface. Since
-  the limit is disable the FIFO size will remain the same if the S_DATA_WIDTH
-  is < M_DATA_WIDTH, leading to a bigger FIFO implementation.
+- When M_DATA_WIDTH and S_DATA_WIDTH are equal or REDUCED_FIFO is disabled, the
+  ADDRESS_WIDTH specified is not changed.
+- When M_DATA_WIDTH and S_DATA_WIDTH are not equal and the REDUCED_FIFO is
+  enabled, the ADDRESS_WIDTH is reduced by log2 ratio of the master and slave
+  data widths.
+
+Software Support
+--------------------------------------------------------------------------------
+
+* Linux project at :git-linux:`drivers/staging/axis-fifo`
+* Linux driver at :git-linux:`drivers/staging/axis-fifo/axis-fifo.c`
+
+References
+--------------------------------------------------------------------------------
+
+* HDL IP core at :git-hdl:`library/util_axis_fifo_asym`
+* :dokuwiki:`Asymmetric AXI Stream FIFO Core on wiki <resources/fpga/docs/util_axis_fifo_asym>`

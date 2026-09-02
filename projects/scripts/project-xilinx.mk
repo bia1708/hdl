@@ -1,5 +1,5 @@
 ####################################################################################
-## Copyright (c) 2018 - 2023 Analog Devices, Inc.
+## Copyright (c) 2018 - 2023, 2025 Analog Devices, Inc.
 ## SPDX short identifier: BSD-1-Clause
 ####################################################################################
 
@@ -19,10 +19,15 @@ ifdef CFG
     DIR_NAME := $(basename $(notdir $(CFG)))
 endif
 
-VIVADO := vivado -mode batch -source
+VIVADO := vivado -tempDir .Xil -mode batch -source
 
 # Parse the variables passed to make and convert them to the filename format
-CMD_VARIABLES := $(shell echo $(-*-command-variables-*-) | tac -s ' ')
+ifeq ($(shell expr $(MAKELEVEL) % 2),0)
+  CMD_VARIABLES := $(shell echo $(-*-command-variables-*-) | tac -s ' ')
+else
+  CMD_VARIABLES := $(shell echo $(MAKEOVERRIDES))
+endif
+
 ifneq ($(strip $(CMD_VARIABLES)), )
     PARAMS := $(shell echo $(CMD_VARIABLES) | sed -e 's/[=]/_/g')
     GEN_NAME := $(shell echo $(PARAMS) | sed -e $(GEN_SED) | sed -e 's/[ .]/_/g')
@@ -34,7 +39,7 @@ ifneq ($(strip $(DIR_NAME)), )
     $(shell test -d $(DIR_NAME) || mkdir $(DIR_NAME))
     ADI_PROJECT_DIR := $(DIR_NAME)/
     export ADI_PROJECT_DIR
-	VIVADO := vivado -log $(DIR_NAME)/vivado.log -journal $(DIR_NAME)/vivado.jou -mode batch -source 
+	VIVADO := vivado -tempDir $(DIR_NAME)/.Xil -log $(DIR_NAME)/vivado.log -journal $(DIR_NAME)/vivado.jou -mode batch -source
 endif
 
 CLEAN_TARGET := *.cache
@@ -73,12 +78,13 @@ M_DEPS += $(wildcard system_constr*.tcl) # Not all projects have this file
 M_DEPS += $(HDL_PROJECT_PATH)scripts/adi_project_xilinx.tcl
 M_DEPS += $(HDL_PROJECT_PATH)../scripts/adi_env.tcl
 M_DEPS += $(HDL_PROJECT_PATH)scripts/adi_board.tcl
+M_DEPS += $(EXTERNAL_DEPS)
 
 M_DEPS += $(foreach dep,$(LIB_DEPS),$(HDL_LIBRARY_PATH)$(dep)/component.xml)
 
 .PHONY: all lib clean clean-all
 
-all: $(PROJECT_NAME).sdk/system_top.xsa
+all: external_dependencies $(PROJECT_NAME).sdk/system_top.xsa
 
 lib: $(M_DEPS)
 
@@ -95,6 +101,16 @@ clean-all: clean
 		$(MAKE) -C $(HDL_LIBRARY_PATH)$${lib} clean; \
 	done
 
+external_dependencies: external_dependencies_cleanup $(EXTERNAL_DEPS)
+
+external_dependencies_cleanup:
+	rm -f missing_external.log
+
+$(EXTERNAL_DEPS):
+	if [ ! -d $@ ]; then \
+		echo $@ >> missing_external.log ; \
+	fi
+
 MODE ?= "default"
 
 $(PROJECT_NAME).sdk/system_top.xsa: $(M_DEPS)
@@ -109,11 +125,15 @@ $(PROJECT_NAME).sdk/system_top.xsa: $(M_DEPS)
 	else \
 		rm -f reference.dcp; \
 	fi;
-	-rm -rf $(CLEAN_TARGET)
+	$(call skip_if_missing, \
+		Project, \
+		$(PROJECT_NAME), \
+		true, \
+	rm -rf $(CLEAN_TARGET) ; \
 	$(call build, \
 		$(VIVADO) system_project.tcl, \
 		$(PROJECT_NAME)_vivado.log, \
-		$(HL)$(PROJECT_NAME)$(NC) project)
+		$(HL)$(PROJECT_NAME)$(NC) project))
 
 $(HDL_LIBRARY_PATH)%/component.xml: TARGET:=xilinx
 FORCE:

@@ -3,28 +3,34 @@
 AD4630-FMC HDL project
 =================================================================================
 
-Overview
----------------------------------------------------------------------------------
-
-The :adi:`AD4630-24` is a two-channel, simultaneous sampling, Easy Drive, 2 MSPS
-successive approximation register (SAR) analog-to-digital converter (ADC). The
-:adi:`AD4030-24` is the single channel version. With a guaranteed maximum ±0.9
-ppm INL and no missing codes at 24-bits, the :adi:`AD4630-24` and 
-:adi:`AD4030-24` achieve unparalleled precision from −40°C to +125°C.
-The :adi:`AD4030-16` is a 16-bit dual channel version.
+The AD4630 has three variations with precision ranging from 16 to 24 bits, they
+are: :adi:`AD4630-16`, :adi:`AD4630-20` (the newest release), and
+:adi:`AD4630-24`. All of them are dual channel, simultaneous sampling, Easy
+Drive, 2 MSPS successive approximation register (SAR) analog-to-digital
+converter (ADC). The :adi:`AD4630-20` has a guaranteed maximum ±0.8 ppm INL
+and no missing codes at 20-bits. With a guaranteed maximum ±0.9 ppm INL and no
+missing codes at 24-bits, the :adi:`AD4630-24` and :adi:`AD4030-24` achieve
+unparalleled precision from −40°C to +125°C. The :adi:`AD4630-16` has a
+guaranteed maximum ±3 ppm INL and no missing codes at 16-bits. The
+:adi:`AD4030-24` is the single channel version.
 
 A low-drift, internal precision reference buffer eases voltage reference
-sharing with other system circuitry. The AD4630-24 offers a typical dynamic
-range of 106 dB when using a 5 V reference. The :adi:`AD4030-24` offers a typical
-dynamic range of 109 dB using a 5 V reference. The low noise floor enables signal
-chains requiring less gain and lower power. A block averaging filter with
-programmable decimation ratio can increase dynamic range up to 153 dB and
-155.5dB for the :adi:`AD4030`. The wide differential input and common mode ranges
-allow inputs to use the full ±VREF range without saturating, simplifying signal
-conditioning requirements and system calibration. The improved settling of the
-Easy Drive analog inputs broadens the selection of analog front-end components
-compatible with the :adi:`AD4630-24`, :adi:`AD4630-16` and :adi:`AD4030-24`.
-Both single-ended and differential signals are supported.
+sharing with other system circuitry. The :adi:`AD4630-20` and :adi:`AD4630-24`
+offer a typical dynamic range of 106 dB when using a 5 V reference, while the
+:adi:`AD4630-16` offers a typical dynamic range of 97.4 dB. The
+:adi:`AD4030-24` offers a typical dynamic range of 109 dB using a 5 V
+reference.
+
+The low noise floor enables signal chains requiring less gain and lower power.
+A block averaging filter with programmable decimation ratio can increase
+dynamic range up to 153 dB for the :adi:`AD4630-20` and :adi:`AD4630-24`, and
+155.5dB for the :adi:`AD4030-24`. The wide differential input and common mode
+ranges allow inputs to use the full ±VREF range without saturating, simplifying
+signal conditioning requirements and system calibration. The improved settling
+of the Easy Drive analog inputs broadens the selection of analog front-end
+components compatible with the :adi:`AD4630-16`, :adi:`AD4630-20`,
+:adi:`AD4630-24`, and :adi:`AD4030-24`. Both single-ended and differential
+signals are supported.
 
 The versatile Flexi-SPI serial interface eases host processor and ADC
 integration. A wide data clocking window, multiple SDO lanes, and optional DDR
@@ -32,57 +38,68 @@ data clocking can reduce the serial clock to 10 MHz while operating at a
 sample rate of 2 MSPS. Echo clock mode and ADC master clock mode relax the
 timing requirements and simplify the use of digital isolators.
 
-The :adi:`AD4630-24`'s, :adi:`AD4630-16`'s and :adi:`AD4030-24`'s BGA package
-integrates all critical power supply and reference bypass capacitors, reducing
-the footprint and system component count, and lessening sensitivity to board
-layout.
+The :adi:`AD4630-16`'s, :adi:`AD4630-20`'s, :adi:`AD4630-24`'s, and
+:adi:`AD4030-24`'s BGA package integrates all critical power supply and
+reference bypass capacitors, reducing the footprint and system component count,
+and lessening sensitivity to board layout.
 
-The ADAQ4224 is a μModule® precision data acquisition (DAQ) signal chain 
-solution that reduces the development cycle of a precision measurement system 
-by transferring the signal chain design challenge of component selection, 
-optimization, and layout from the designer to the device. With a guaranteed 
-maximum ±TBD ppm INL and no missing codes at 24 bits, the ADAQ4224 achieves
-unparalleled precision from −40°C to +85°C.
+The :adi:`ADAQ4224` and :adi:`ADAQ4216` is a μModule® precision data
+acquisition (DAQ) signal chain solution that reduces the development cycle
+of a precision measurement system by transferring the signal chain design
+challenge of component selection, optimization, and layout from the designer
+to the device. With a guaranteed maximum ±1.0 ppm INL and no missing codes at
+24 bits, the :adi:`ADAQ4224` and :adi:`ADAQ4216` achieves unparalleled
+precision from −40°C to +105°C.
 
-The HDL reference design for the :adi:`EVAL-AD4630_FMCZ` and
-:adi:`EVAL-AD4030_FMCZ` provides all the interfaces that are necessary to
-interact with the device using a Xilinx FPGA development board. The design has
-all the necessary infrastructure to acquire data from the :adi:`AD4630-24`
-24-bit dual-channel precision SAR ADC, :adi:`AD4630-16` 16-bit dual channel
-precision SAR ADC and :adi:`AD4030-24` single channel ADC, supporting
-continuous data capture at maximum 2 MSPS data rate. The design targeted to the
-Zedboard, which is a low cost FPGA carrier board from Digilent, using a
-Zynq-7000 re-programmable SoC from Xilinx.
+The HDL reference design for the :adi:`EVAL-AD4030-24`, :adi:`EVAL-AD4630-16`,
+:adi:`EVAL-AD4630-24`, :adi:`EVAL-ADAQ4216-FMCZ`, and :adi:`EVAL-ADAQ4224-FMCZ`
+provide all the interfaces that are necessary to interact with the device using
+a Xilinx FPGA development board. The design has all the necessary
+infrastructure to acquire data from the :adi:`AD4630-16` 16-bit dual channel
+precision SAR ADC, :adi:`AD4630-20` 20-bit dual-channel precision SAR ADC,
+:adi:`AD4630-24` 24-bit dual-channel precision SAR ADC, and :adi:`AD4030-24`
+single channel ADC, supporting continuous data capture at maximum 2 MSPS data
+rate. The design targeted to the Zedboard, which is a low cost FPGA carrier
+board from Digilent, using a Zynq-7000 re-programmable SoC from Xilinx.
 
 Applications:
-  * Automatic test equipment
-  * Digital control loops
-  * Medical instrumentation
-  * Seismology
-  * Semiconductor manufacturing
-  * Scientific instrumentation
-  
+
+* Automatic test equipment
+* Digital control loops
+* Medical instrumentation
+* Seismology
+* Semiconductor manufacturing
+* Scientific instrumentation
+
 Supported boards
 -------------------------------------------------------------------------------
 
--  :adi:`EVAL-AD4030-24FMCZ <EVAL-AD4030-24FMCZ>`
--  :adi:`EVAL-AD4630-16FMCZ <EVAL-AD4630-16FMCZ>`
--  :adi:`EVAL-AD4630-24FMCZ <EVAL-AD4630-24FMCZ>`
--  EVAL-ADAQ4224-FMCZ <EVAL-ADAQ4224>
--  EVAL-ISO-4224-FMCZ <EVAL-ISO-ADAQ4224>
+- :adi:`EVAL-AD4030-24FMCZ`
+- :adi:`EVAL-AD4630-16FMCZ`
+- :adi:`EVAL-AD4630-20FMCZ`
+- :adi:`EVAL-AD4630-24FMCZ`
+- :adi:`EVAL-ADAQ4216-FMCZ`
+- :adi:`EVAL-ADAQ4224-FMCZ`
+- :adi:`EV-ISO-4224-FMCZ`
 
 Supported devices
 -------------------------------------------------------------------------------
 
--  :adi:`AD4030-24`
--  :adi:`AD4630-16`
--  :adi:`AD4630-24`
--  ADAQ4224
+- :adi:`AD4030-24`
+- :adi:`AD4032-24`
+- :adi:`AD4630-16`
+- :adi:`AD4630-20`
+- :adi:`AD4630-24`
+- :adi:`AD4632-16`
+- :adi:`AD4632-20`
+- :adi:`AD4632-24`
+- :adi:`ADAQ4216`
+- :adi:`ADAQ4224`
 
 Supported carriers
 -------------------------------------------------------------------------------
 
--  :xilinx:`ZedBoard <products/boards-and-kits/1-8dyf-11.html>` on FMC slot
+- `ZedBoard <https://digilent.com/shop/zedboard-zynq-7000-arm-fpga-soc-development-board>`__ on FMC slot
 
 Block design
 ---------------------------------------------------------------------------------
@@ -94,9 +111,10 @@ for data latching is routed back through the BUSY line, an additional data
 capture module is used for saving the received samples and transmitting
 forward for the DMA.
 
-There are three modes in which the system can run. Refer to the :adi:`AD4630-24`,
-:adi:`AD4630-16` or :adi:`AD4030-24` data sheet section titled SAMPLE CONVERSION
-TIMING AND DATA TRANSFER for more explanation of data transfer zones.
+There are three modes in which the system can run. Refer to the
+:adi:`AD4630-16`, :adi:`AD4630-20`, :adi:`AD4630-24`, or :adi:`AD4030-24` data
+sheet section titled SAMPLE CONVERSION TIMING AND DATA TRANSFER for more
+explanation of data transfer zones.
 
 Block diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,23 +126,42 @@ SPI mode - transfer zone 1
 
 The main aspect of this mode is the fact that it is using the BUSY signal from
 the ADC to trigger the Offload module. Data is then clocked out by the
-Execution module and transferred to the DMA by the Offload module. CNV is
-always generated by the AXI PWM GEN IP core regardless of the mode. Zone 1
-transfer is not currently supported by the pre-compiled HDL files that are
-included in the SD card image that is provided with the evaluation board.
+Execution module and transferred to the DMA by the Offload module. CNV is an "or"
+function of the AXI PWM GEN IP and the ad463x_trigger (EMIO) regardless of the
+mode. It is the software responsibility to configure the correct behavior for
+the trigger source. Zone 1 transfer is not currently supported by the
+pre-compiled HDL files that are included in the SD card image that is provided
+with the evaluation board.
 
 .. image:: ad463x_hdl_cm0_cz1_1.svg
    :width: 800
    :align: center
    :alt: AD4630_FMC SPI mode - transfer zone 1 block diagram
 
+The DATA REORDER IP (spi_axis_reorder) is instantiated according to the
+combination of the NUM_OF_CHANNEL and LANES_PER_CHANNEL parameters. The
+following modes does not use the spi_axis_reorder IP and directly connects the
+SPI Engine Offload to the DMA:
+
+- 1 MISO/SDI (:adi:`AD4030`) - NUM_OF_CHANNEL = 1 LANES_PER_CHANNEL = 1;
+- 2 MISOs/SDIs (:adi:`AD4030`) - NUM_OF_CHANNEL = 1 LANES_PER_CHANNEL = 2;
+- 2 MISOs/SDIs (:adi:`AD4630`) - NUM_OF_CHANNEL = 2 LANES_PER_CHANNEL = 1.
+
+The last case may instantiate spi_axis_reorder IP if INTERLEAVE_MODE=1 is used.
+
+.. image:: ad463x_hdl_cm0_cz1_no_reorder.svg
+   :width: 800
+   :align: center
+   :alt: AD4630_FMC SPI mode - transfer zone 1 block diagram without using the spi_axis_reorder IP
+
 SPI mode - transfer zone 2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In this mode, the BUSY signal is not used and both the CNV and the Offload
-trigger signals are generated by the AXI PWM GEN core. The reason for using two
-PWM outputs instead of a common one is to accommodate for the averaging mode
-where the two signals will have different frequencies.
+In this mode, the BUSY signal is not used. Offload trigger is generated by the
+AXI PWM GEN core. CNV is still generated by the "or" function of the AXI PWM
+GEN and the ad463x_trigger (EMIO). The reason for using two PWM outputs instead
+of a common one is to accommodate for the averaging mode where the two signals
+will have different frequencies.
 
 .. image:: ad463x_hdl_cm0_cz2_1.svg
    :width: 800
@@ -141,9 +178,11 @@ Echo clock mode - transfer zone 2
 
 In this configuration, the ADC's BUSY-SCKOUT pin functions as a bit-clock
 output and is generated by looping-through the host’s SCK. The SPI engine is
-driving the SPI signals except it is no longer reading the data. For this
-purpose, the Data Capture IP is used. This also allows for reading data in DDR
-mode.
+driving the SPI signals except it is no longer reading the data. In echo clock
+mode, data reading reading is done by a dedicated Data Capture IP that is
+configured to capture data either in SDR or DDR mode.
+Again, CNV is generated by the "or" function of the AXI PWM GEN and the
+ad463x_trigger (EMIO).
 
 .. image:: ad463x_hdl_cm1_cz2_1.svg
    :width: 800
@@ -155,42 +194,86 @@ mode.
    :align: center
    :alt: ADAQ4224_FMC Echo clock mode - transfer zone 2 block diagram
 
-The design supports the following interface and clock modes both in SDR and DDR:
+The design supports the following modes:
 
-================== ================== ================== ==================
-Mode               1 Lane per channel 2 Lane per channel 4 lane per channel
-================== ================== ================== ==================
-SPI mode           yes                yes                yes
-Echo Clock mode    yes                yes                yes
-================== ================== ================== ==================
+.. list-table::
+   :header-rows: 1
+
+   * - Mode
+     - 1 Lane per channel
+     - 2 Lanes per channel
+     - 4 Lanes per channel
+     - Interleave
+     - SDR
+     - DDR
+   * - SPI mode
+     - yes
+     - yes
+     - yes
+     - yes
+     - yes
+     - no
+   * - Echo Clock mode
+     - yes
+     - yes
+     - yes
+     - yes
+     - yes
+     - yes
 
 Configuration modes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The CLK_MODE configuration parameter defines clocking mode of the device's
-digital interface: Options: 0 - SPI mode, 1 - Echo-clock or Master clock mode
+digital interface:
 
-The NUM_OF_SDI configuration parameter defines the number of MOSI lines of the
-SPI interface: Options: 1 - Interleaved mode, 2 - 1 lane per channel,
-4 - 2 lanes per channel, 8 - 4 lanes per channel
+- 0 - SPI mode;
+- 1 - Echo-clock or Master clock mode.
+
+The NUM_OF_CHANNEL configuration parameter defines the number of ADC channels:
+
+- 1 - AD403x devices;
+- 2 - AD463x/adaq42xx devices (default).
+
+The LANES_PER_CHANNEL configuration parameter defines the number of MISO lanes
+per channel of the SPI interface:
+
+- 1 - 1 lane per channel: Interleaved mode or single lane per channel;
+- 2 - 2 lanes per channel;
+- 4 - 4 lanes per channel (default).
 
 The CAPTURE_ZONE configuration parameter defines the capture zone of the next
-sample. There are two capture zones: 1 - from negative edge of the BUSY line
-until the next CNV positive edge -20ns, 2 - from the next consecutive CNV
-positive edge +20ns until the second next consecutive CNV positive edge -20ns
+sample. There are two capture zones:
+
+- 1 - from negative edge of the BUSY line until the next CNV positive edge
+  -20ns
+- 2 - from the next consecutive CNV positive edge +20ns until the second next
+  consecutive CNV positive edge -20ns
 
 The DDR_EN configuration parameter defines the type of data transfer. In echo
-and master clock mode the SDI lines can have Single or Double Data Rates.
-Options: 0 - MISO runs on SDR, 1 - MISO runs on DDR.
+and master clock mode the SDI lines can have Single or Double Data Rates:
+
+- 0 - MISO runs on SDR
+- 1 - MISO runs on DDR.
+
+The INTERLEAVE_MODE configuration parameter defines whether the interleaved
+mode is enabled or disabled. Interleaved mode can be only used for
+NUM_OF_CHANNEL = 2 and LANES_PER_CHANNEL = 1 (ad463x). Enabling INTERLEAVE_MODE
+for any other configuration is invalid.
+
+- 0 - interleave mode disabled, each channel has their own MISO lanes.
+  (default);
+- 1 - interleave mode enabled, the ad463x ADC share the same MISO lanes.
 
 CPU/Memory interconnects addresses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The addresses are dependent on the architecture of the FPGA, having an offset
-added to the base address from HDL(see more at :ref:`architecture`).
+added to the base address from HDL(see more at
+:ref:`architecture cpu-intercon-addr`).
 
 ========================  ===========
-Instance                  Address
+Instance                  Zynq
 ========================  ===========
 spi_ad463x_axi_regmap     0x44A0_0000
 axi_ad463x_dma            0x44A3_0000
@@ -202,7 +285,7 @@ sync_generator*           0x44C0_0000
 .. admonition:: Legend
    :class: note
 
-   -   ``*`` instantiated, but only used for ADAQ4224 with isolated power supply 
+   ``*`` instantiated, but only used for ADAQ4224 with isolated power supply
 
 I2C connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,21 +304,21 @@ I2C connections
      - axi_iic_fmc
      - 0x4162_0000
      - ---
-   * - 
-     - 
-     - 
+   * -
+     -
+     -
      - 0x50
      - eeprom
-   * - 
-     - 
-     - 
+   * -
+     -
+     -
      - 0x5F
      - temperature sensor  *
 
 .. admonition:: Legend
    :class: note
 
-   -   ``*`` Temperature Sensor HW Monitor is present only in ADAQ4224
+   - ``*`` Temperature Sensor HW Monitor is present only in ADAQ4224
 
 SPI connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -258,7 +341,7 @@ GPIOs
 
 The Software GPIO number is calculated as follows:
 
--  Zynq-7000: if PS7 is used, then offset is 54
+- Zynq-7000: if PS7 is used, then offset is 54
 
 .. list-table::
    :widths: 25 25 25 25
@@ -288,12 +371,16 @@ The Software GPIO number is calculated as follows:
      - INOUT
      - 35
      - 89
+   * - ad463x_trigger
+     - OUT
+     - 36
+     - 90
 
 .. admonition:: Legend
    :class: note
 
-   -   ``*`` instantiated, but used for ADAQ4224 only
-   -   ``**`` instantiated, but used for ADAQ4224 with isolated power supply
+   - ``*`` instantiated, but used for ADAQ4224 only
+   - ``**`` instantiated, but used for ADAQ4224 with isolated power supply
 
 Interrupts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -311,32 +398,33 @@ Building the HDL project
 -------------------------------------------------------------------------------
 
 The design is built upon ADI's generic HDL reference design framework.
-ADI does not distribute the bit/elf files of these projects so they
-must be built from the sources available :git-hdl:`here </>`. To get
-the source you must
+ADI distributes the bit/elf files of these projects as part of the
+:dokuwiki:`ADI Kuiper Linux <resources/tools-software/linux-software/kuiper-linux>`.
+If you want to build the sources, ADI makes them available on the
+:git-hdl:`HDL repository </>`. To get the source you must
 `clone <https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository>`__
 the HDL repository, and then build the project as follows:.
 
 **Linux/Cygwin/WSL**
 
-.. code-block::
-   :linenos:
+.. shell::
 
-   user@analog:~$ cd hdl/projects/ad4630_fmc/zed
-   user@analog:~/hdl/projects/ad4630_fmc/zed$ make NUM_OF_SDI=4 CAPTURE_ZONE=2
+   $cd hdl/projects/ad4630_fmc/zed
+   $make NUM_OF_CHANNEL=2 LANES_PER_CHANNEL=2 CAPTURE_ZONE=2
 
 The result of the build, if parameters were used, will be in a folder named
 by the configuration used:
 
 if the following command was run
 
-``make NUM_OF_SDI=4 CAPTURE_ZONE=2``
+``make NUM_OF_CHANNEL=2 LANES_PER_CHANNEL=4 CAPTURE_ZONE=2``
 
 then the folder name will be:
 
-``NUMOFSDI4_CAPTUREZONE2``
+``NUMOFCHANNEL2_SPERCHANNEL4_CAPTUREZONE2``
 
-A more comprehensive build guide can be found in the :ref:`build_hdl` user guide.
+A more comprehensive build guide can be found in the :ref:`build_hdl` user
+guide.
 
 Resources
 -------------------------------------------------------------------------------
@@ -349,18 +437,25 @@ Systems related
 Hardware related
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  Product datasheets:
+- Product datasheets:
 
--  :adi:`AD4030-24`
--  :adi:`AD4630-16`
--  :adi:`AD4630-24`
--  :dokuwiki:`[Wiki] AD4630/AD4030 Evaluation Board User Guide <resources/eval/ad4630-24-eval-board>`
+  - :adi:`AD4030-24`
+  - :adi:`AD4032-24`
+  - :adi:`AD4630-16`
+  - :adi:`AD4630-20`
+  - :adi:`AD4630-24`
+  - :adi:`AD4632-16`
+  - :adi:`AD4632-20`
+  - :adi:`AD4632-24`
+  - :adi:`ADAQ4216`
+  - :adi:`ADAQ4224`
+- :dokuwiki:`[Wiki] AD4630/AD4030 Evaluation Board User Guide <resources/eval/ad4630-24-eval-board>`
 
 HDL related
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  :git-hdl:`AD4630_FMC HDL project source code <projects/ad4630_fmc>`
--  :dokuwiki:`[Wiki] AD4630_FMC HDL project documentation <resources/eval/user-guides/ad463x/hdl>`
+- :git-hdl:`AD4630_FMC HDL project source code <projects/ad4630_fmc>`
+- :dokuwiki:`[Wiki] AD4630_FMC HDL project documentation <resources/eval/user-guides/ad463x/hdl>`
 
 .. list-table::
    :widths: 30 35 35
@@ -374,50 +469,50 @@ HDL related
      - ---
    * - AXI_CLKGEN
      - :git-hdl:`library/axi_clkgen`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_clkgen>`
+     - :ref:`axi_clkgen`
    * - AXI_DMAC
      - :git-hdl:`library/axi_dmac`
-     - :ref:`here <axi_dmac>`
+     - :ref:`axi_dmac`
    * - AXI_HDMI_TX
      - :git-hdl:`library/axi_hdmi_tx`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_hdmi_tx>`
+     - :ref:`axi_hdmi_tx`
    * - AXI_I2S_ADI
      - :git-hdl:`library/axi_i2s_adi`
      - ---
    * - AXI_PWM_GEN
      - :git-hdl:`library/axi_pwm_gen`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_pwm_gen>`
+     - :ref:`axi_pwm_gen`
    * - AXI_SPDIF_TX
      - :git-hdl:`library/axi_spdif_tx`
      - ---
    * - AXI_SPI_ENGINE
      - :git-hdl:`library/spi_engine/axi_spi_engine`
-     - :ref:`here <spi_engine axi>`
+     - :ref:`spi_engine axi`
    * - SPI_AXIS_REORDER
      - :git-hdl:`library/spi_engine/spi_axis_reorder`
      - ---
    * - SPI_ENGINE_EXECUTION
      - :git-hdl:`library/spi_engine/spi_engine_execution`
-     - :ref:`here <spi_engine execution>`
+     - :ref:`spi_engine execution`
    * - SPI_ENGINE_INTERCONNECT
      - :git-hdl:`library/spi_engine/spi_engine_interconnect`
-     - :ref:`here <spi_engine interconnect>`
+     - :ref:`spi_engine interconnect`
    * - SPI_ENGINE_OFFLOAD
      - :git-hdl:`library/spi_engine/spi_engine_offload`
-     - :ref:`here <spi_engine offload>`
+     - :ref:`spi_engine offload`
    * - SYSID_ROM
      - :git-hdl:`library/sysid_rom`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_sysid>`
+     - :ref:`axi_sysid`
    * - UTIL_I2C_MIXER
-     - :git-hdl:`library/util_i2c_mixer <library/util_i2c_mixer>`
+     - :git-hdl:`library/util_i2c_mixer`
      - ---
 
--  :ref:`SPI Engine Framework documentation <spi_engine>`
+- :ref:`SPI Engine Framework documentation <spi_engine>`
 
 Software related
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- :git-linux:`AD4630_FMC Linux driver source code <analogdevicesinc/linux/blob/main/drivers/iio/adc/ad4630.c>`
+- :git-linux:`AD4630_FMC Linux driver source code <drivers/iio/adc/ad4630.c>`
 - :git-no-os:`AD463x_FMC No-OS project source code <projects/ad463x_fmcz>`
 - :dokuwiki:`AD4630 ADC Linux Driver <resources/tools-software/linux-drivers/iio-adc/ad4630>`
 - :dokuwiki:`AD463X ADC Linux Driver <resources/tools-software/linux-drivers/iio-adc/ad463x>`

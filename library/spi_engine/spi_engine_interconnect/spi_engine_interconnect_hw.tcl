@@ -1,5 +1,5 @@
 ###############################################################################
-## Copyright (C) 2020-2023 Analog Devices, Inc. All rights reserved.
+## Copyright (C) 2020-2025 Analog Devices, Inc. All rights reserved.
 ### SPDX short identifier: ADIBSD
 ###############################################################################
 
@@ -14,17 +14,24 @@ ad_ip_files spi_engine_interconnect [list\
 # parameters
 
 ad_ip_parameter DATA_WIDTH INTEGER 8
-ad_ip_parameter NUM_OF_SDI INTEGER 1
+ad_ip_parameter NUM_OF_SDIO INTEGER 1
 
 proc p_elaboration {} {
 
   set data_width [get_parameter_value DATA_WIDTH]
-  set num_of_sdi [get_parameter_value NUM_OF_SDI]
+  set num_of_sdi [get_parameter_value NUM_OF_SDIO]
 
   # clock and reset interface
 
-  ad_interface clock clk     input 1 
-  ad_interface reset resetn  input 1 if_clk
+  ad_interface clock    clk     input 1
+  ad_interface reset-n  resetn  input 1 if_clk
+
+  # interconnect direction interface
+
+  add_interface s_interconnect_ctrl conduit end
+  add_interface_port s_interconnect_ctrl s_interconnect_dir interconnect_dir input 1
+  set_interface_property s_interconnect_ctrl associatedClock if_clk
+  set_interface_property s_interconnect_ctrl associatedReset if_resetn
 
   # command master interface
 
@@ -35,6 +42,13 @@ proc p_elaboration {} {
 
   set_interface_property m_cmd associatedClock if_clk
   set_interface_property m_cmd associatedReset if_resetn
+
+  # offload active master interface
+
+  add_interface m_offload_active_ctrl conduit end
+  add_interface_port m_offload_active_ctrl m_offload_active interconnect_dir output 1
+  set_interface_property m_offload_active_ctrl associatedClock if_clk
+  set_interface_property m_offload_active_ctrl associatedReset if_resetn
 
   # SDO data master interface
 

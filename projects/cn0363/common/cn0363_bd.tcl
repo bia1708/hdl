@@ -1,5 +1,5 @@
 ###############################################################################
-## Copyright (C) 2016-2024 Analog Devices, Inc. All rights reserved.
+## Copyright (C) 2016-2026 Analog Devices, Inc. All rights reserved.
 ### SPDX short identifier: ADIBSD
 ###############################################################################
 
@@ -26,12 +26,6 @@ proc load_fir_filter_vector {filter_file} {
 	return $filter
 }
 
-ad_ip_parameter sys_ps7 CONFIG.PCW_GPIO_EMIO_GPIO_IO 35
-
-set_property LEFT 34 [get_bd_ports GPIO_I]
-set_property LEFT 34 [get_bd_ports GPIO_O]
-set_property LEFT 34 [get_bd_ports GPIO_T]
-
 ad_ip_instance axi_dmac axi_dma
 ad_ip_parameter axi_dma CONFIG.FIFO_SIZE 2
 ad_ip_parameter axi_dma CONFIG.DMA_TYPE_SRC 2
@@ -47,17 +41,17 @@ ad_ip_parameter axi_dma CONFIG.DMA_AXI_PROTOCOL_DEST 1
 
 # Create SPI engine controller with offload
 
-set data_width    8
-set async_spi_clk 0
-set num_cs        2
-set num_sdi       1
-set num_sdo       1
-set sdi_delay     1
-set echo_sclk     0
+set hier_spi_engine  spi_cn0363
+set data_width       8
+set async_spi_clk    0
+set offload_en       1
+set num_cs           2
+set num_sdi          1
+set num_sdo          1
+set sdi_delay        1
+set echo_sclk        0
 
-set hier_spi_engine spi_cn0363
-
-spi_engine_create $hier_spi_engine $data_width $async_spi_clk $num_cs $num_sdi $num_sdo $sdi_delay $echo_sclk
+spi_engine_create $hier_spi_engine $data_width $async_spi_clk $offload_en $num_cs $num_sdi $num_sdo $sdi_delay $echo_sclk
 
 ad_connect $sys_cpu_clk $hier_spi_engine/clk
 ad_connect sys_cpu_resetn $hier_spi_engine/resetn
@@ -70,11 +64,10 @@ ad_connect util_sigma_delta_spi/resetn $hier_spi_engine/resetn
 
 ad_connect $hier_spi_engine/m_spi util_sigma_delta_spi/s_spi
 ad_connect util_sigma_delta_spi/data_ready $hier_spi_engine/trigger
-ad_connect $hier_spi_engine/${hier_spi_engine}_execution/active util_sigma_delta_spi/spi_active
 ad_connect util_sigma_delta_spi/m_spi spi
 
 ad_ip_instance c_counter_binary phase_gen
-ad_ip_instance xlslice phase_slice
+ad_ip_instance ilslice phase_slice
 create_bd_port -dir O excitation
 
 set excitation_freq 1020
@@ -98,6 +91,7 @@ current_bd_instance /processing
 	create_bd_pin -dir I -from 31 -to 0 phase
 	create_bd_pin -dir O overflow
 	create_bd_pin -dir I -from 13 -to 0 channel_enable
+	create_bd_pin -dir O dma_wr_sync
 	create_bd_intf_pin -mode Slave -vlnv xilinx.com:interface:axis_rtl:1.0 S_AXIS_SAMPLE
 	create_bd_intf_pin -mode Master -vlnv analog.com:interface:fifo_wr_rtl:1.0 DMA_WR
 
@@ -118,7 +112,7 @@ current_bd_instance /processing
   ad_ip_instance fir_compiler hpf
   ad_ip_instance fir_compiler lpf
 
-	ad_ip_parameter hpf	CONFIG.CoefficientVector [load_fir_filter_vector "../common/filters/hpf.mat"]
+	ad_ip_parameter hpf	CONFIG.CoefficientVector [load_fir_filter_vector "$ad_hdl_dir/projects/cn0363/common/filters/hpf.mat"]
 	ad_ip_parameter hpf	CONFIG.Data_Fractional_Bits.VALUE_SRC USER
 	ad_ip_parameter hpf	CONFIG.Data_Sign.VALUE_SRC USER
 	ad_ip_parameter hpf	CONFIG.Data_Width.VALUE_SRC USER
@@ -133,7 +127,7 @@ current_bd_instance /processing
 	ad_ip_parameter hpf	CONFIG.Has_ARESETn true
 	ad_ip_parameter hpf	CONFIG.Reset_Data_Vector false
 
-	ad_ip_parameter lpf	CONFIG.CoefficientVector [load_fir_filter_vector "../common/filters/lpf.mat"]
+	ad_ip_parameter lpf	CONFIG.CoefficientVector [load_fir_filter_vector "$ad_hdl_dir/projects/cn0363/common/filters/lpf.mat"]
 	ad_ip_parameter lpf	CONFIG.Data_Fractional_Bits.VALUE_SRC USER
 	ad_ip_parameter lpf	CONFIG.Data_Sign.VALUE_SRC USER
 	ad_ip_parameter lpf	CONFIG.Data_Width.VALUE_SRC USER
@@ -148,7 +142,7 @@ current_bd_instance /processing
 	ad_ip_parameter lpf	CONFIG.Has_ARESETn true
 	ad_ip_parameter lpf	CONFIG.Reset_Data_Vector false
 
-  ad_ip_instance util_vector_logic overflow_or
+  ad_ip_instance ilvector_logic overflow_or
 	ad_ip_parameter overflow_or	CONFIG.C_SIZE 1
 	ad_ip_parameter overflow_or	CONFIG.C_OPERATION or
 
@@ -211,6 +205,7 @@ current_bd_instance /processing
 
 	ad_connect channel_enable sequencer/channel_enable
 	ad_connect sequencer/dma_wr DMA_WR
+	ad_connect sequencer/dma_wr_sync dma_wr_sync
 
 	ad_connect phase_data_sync/overflow overflow_or/Op1
 	ad_connect sequencer/overflow overflow_or/Op2
@@ -242,6 +237,7 @@ connect_bd_net -net $sys_cpu_resetn \
 	[get_bd_pins /axi_dma/m_dest_axi_aresetn]
 
 ad_connect /processing/dma_wr /axi_dma/fifo_wr
+ad_connect /processing/dma_wr_sync /axi_dma/sync
 
 ad_cpu_interconnect 0x43c00000 /axi_adc
 ad_cpu_interconnect 0x44a00000 $hier_spi_engine/${hier_spi_engine}_axi_regmap

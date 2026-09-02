@@ -519,7 +519,7 @@ ENDTITLE
 ############################################################################################
 
 REG
-0x0100 + 0x16*n
+0x0100 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_1
 DAC Channel Control & Status (channel - 0)
@@ -549,7 +549,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0101 + 0x16*n
+0x0101 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_2
 DAC Channel Control & Status (channel - 0)
@@ -580,7 +580,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0102 + 0x16*n
+0x0102 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_3
 DAC Channel Control & Status (channel - 0)
@@ -602,7 +602,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0103 + 0x16*n
+0x0103 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_4
 DAC Channel Control & Status (channel - 0)
@@ -635,7 +635,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0104 + 0x16*n
+0x0104 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_5
 DAC Channel Control & Status (channel - 0)
@@ -659,7 +659,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0105 + 0x16*n
+0x0105 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_6
 DAC Channel Control & Status (channel - 0)
@@ -693,7 +693,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0106 + 0x16*n
+0x0106 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_7
 DAC Channel Control & Status (channel - 0)
@@ -703,26 +703,28 @@ FIELD
 [3:0] 0x00000000
 DAC_DDS_SEL
 RW
-Select internal data sources (available only if the DAC supports it). \\
- - 0x00: internal tone (DDS) \\
- - 0x01: pattern (SED) \\
- - 0x02: input data (DMA) \\
- - 0x03: 0x00 \\
- - 0x04: inverted pn7 \\
- - 0x05: inverted pn15 \\
- - 0x06: pn7 (standard O.150) \\
- - 0x07: pn15 (standard O.150) \\
- - 0x08: loopback data (ADC) \\
- - 0x09: pnX (Device specific e.g. ad9361) \\
- - 0x0A: Nibble ramp (Device specific e.g. adrv9001) \\
- - 0x0B: 16 bit ramp (Device specific e.g. adrv9001) \\
+Select internal data sources (available only if the DAC supports it).
+
+* 0x00: internal tone (DDS)
+* 0x01: pattern (SED)
+* 0x02: input data (DMA)
+* 0x03: 0x00
+* 0x04: inverted pn7
+* 0x05: inverted pn15
+* 0x06: pn7 (standard O.150)
+* 0x07: pn15 (standard O.150)
+* 0x08: loopback data (ADC)
+* 0x09: pnX (Device specific e.g. ad9361)
+* 0x0A: Nibble ramp (Device specific e.g. adrv9001)
+* 0x0B: 16 bit ramp (Device specific e.g. adrv9001)
+
 ENDFIELD
 
 ############################################################################################
 ############################################################################################
 
 REG
-0x0107 + 0x16*n
+0x0107 + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_8
 DAC Channel Control & Status (channel - 0)
@@ -752,7 +754,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0108 + 0x16*n
+0x0108 + 0x10*n
 WHERE n IS FROM 0 TO 15
 USR_CNTRLn_3
 DAC Channel Control & Status (channel - 0)
@@ -804,7 +806,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x0109 + 0x16*n
+0x0109 + 0x10*n
 WHERE n IS FROM 0 TO 15
 USR_CNTRLn_4
 DAC Channel Control & Status (channel - 0)
@@ -832,7 +834,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x010A + 0x16*n
+0x010A + 0x10*n
 WHERE n IS FROM 0 TO 15
 USR_CNTRLn_5
 DAC Channel Control & Status (channel - 0)
@@ -858,7 +860,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x010B + 0x16*n
+0x010B + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_9
 DAC Channel Control & Status (channel - 0)
@@ -890,7 +892,7 @@ ENDFIELD
 ############################################################################################
 
 REG
-0x010C + 0x16*n
+0x010C + 0x10*n
 WHERE n IS FROM 0 TO 15
 CHAN_CNTRLn_10
 DAC Channel Control & Status (channel - 0)

@@ -1,6 +1,6 @@
 // ***************************************************************************
 // ***************************************************************************
-// Copyright (C) 2022-2023 Analog Devices, Inc. All rights reserved.
+// Copyright (C) 2022-2026 Analog Devices, Inc. All rights reserved.
 //
 // In this HDL repository, there are many different and unique modules, consisting
 // of various HDL (Verilog or VHDL) components. The individual modules are
@@ -130,6 +130,8 @@ module util_hbm #(
   output [NUM_M*(8-(4*AXI_PROTOCOL))-1:0]  m_axi_awlen,
   output [NUM_M*3-1:0]                     m_axi_awsize,
   output [NUM_M*2-1:0]                     m_axi_awburst,
+  output [NUM_M*4-1:0]                     m_axi_awcache,
+  output [NUM_M*3-1:0]                     m_axi_awprot,
   output [NUM_M-1:0]                       m_axi_awvalid,
   input  [NUM_M-1:0]                       m_axi_awready,
 
@@ -152,6 +154,8 @@ module util_hbm #(
   output [NUM_M*(8-(4*AXI_PROTOCOL))-1:0]  m_axi_arlen,
   output [NUM_M*3-1:0]                     m_axi_arsize,
   output [NUM_M*2-1:0]                     m_axi_arburst,
+  output [NUM_M*4-1:0]                     m_axi_arcache,
+  output [NUM_M*3-1:0]                     m_axi_arprot,
 
   // Read data and response
   input  [NUM_M*AXI_DATA_WIDTH-1:0]        m_axi_rdata,
@@ -191,8 +195,10 @@ module util_hbm #(
   wire [NUM_M-1:0] rd_request_ready_loc;
   wire [NUM_M-1:0] wr_request_eot_loc;
   wire [NUM_M-1:0] rd_request_eot_loc;
-  wire [NUM_M-1:0] rd_response_valid_loc;
+  wire [NUM_M-1:0] wr_response_ready_loc;
+  wire [NUM_M-1:0] rd_response_ready_loc;
   wire [NUM_M-1:0] wr_response_valid_loc;
+  wire [NUM_M-1:0] rd_response_valid_loc;
   wire             wr_eot_pending_all;
   wire             rd_eot_pending_all;
 
@@ -215,11 +221,11 @@ module util_hbm #(
   wire [NUM_M-1:0] m_axis_valid_loc;
   assign m_axis_valid = &m_axis_valid_loc;
 
-  wire [NUM_M-1:0] wr_response_ready_loc;
-  wire [NUM_M-1:0] rd_response_ready_loc;
-
   wire [NUM_M-1:0] wr_overflow_loc;
+  assign wr_overflow = |wr_overflow_loc;
+
   wire [NUM_M-1:0] rd_underflow_loc;
+  assign rd_underflow = |rd_underflow_loc;
 
   // Measure stored data in case transfer is shorter than programmed,
   //  do the measurement only with the first master, all others should be
@@ -309,6 +315,7 @@ module util_hbm #(
       .ctrl_enable(wr_request_enable),
       .ctrl_pause(1'b0),
       .ctrl_hwdesc(1'b0),
+      .ctrl_flock('d0),
 
       .req_valid(wr_request_valid),
       .req_ready(wr_request_ready_loc[i]),
@@ -319,8 +326,15 @@ module util_hbm #(
       .req_y_length(0),
       .req_dest_stride(0),
       .req_src_stride(0),
+      .req_flock_framenum('d0),
+      .req_flock_mode('d0),
+      .req_flock_wait_writer('d0),
+      .req_flock_distance('d0),
+      .req_flock_stride('d0),
       .req_sync_transfer_start(1'b0),
+      .req_sync(),
       .req_last(1'b1),
+      .req_cyclic('d0),
 
       .req_eot(wr_request_eot_loc[i]),
       .req_sg_desc_id(),
@@ -397,6 +411,7 @@ module util_hbm #(
       .m_axis_ready(1'b1),
       .m_axis_valid(),
       .m_axis_data(),
+      .m_axis_user(),
       .m_axis_last(),
       .m_axis_xfer_req(),
 
@@ -404,7 +419,6 @@ module util_hbm #(
       .fifo_wr_en(1'b0),
       .fifo_wr_din('b0),
       .fifo_wr_overflow(),
-      .fifo_wr_sync(),
       .fifo_wr_xfer_req(),
 
       .fifo_rd_clk(1'b0),
@@ -424,6 +438,16 @@ module util_hbm #(
       .dbg_src_data_id(),
       .dbg_src_response_id(),
       .dbg_status(),
+      .m_frame_in('d0),
+      .m_frame_in_valid('d0),
+      .m_frame_out(),
+      .m_frame_out_valid(),
+      .s_frame_in('d0),
+      .s_frame_in_valid('d0),
+      .s_frame_out(),
+      .s_frame_out_valid(),
+      .src_ext_sync('d0),
+      .dest_ext_sync('d0),
 
       .dest_diag_level_bursts());
 
@@ -479,6 +503,7 @@ module util_hbm #(
       .ctrl_enable(rd_request_enable),
       .ctrl_pause(1'b0),
       .ctrl_hwdesc(1'b0),
+      .ctrl_flock('d0),
 
       .req_valid(rd_request_valid),
       .req_ready(rd_request_ready_loc[i]),
@@ -489,8 +514,15 @@ module util_hbm #(
       .req_y_length(0),
       .req_dest_stride(0),
       .req_src_stride(0),
+      .req_flock_framenum('d0),
+      .req_flock_mode('d0),
+      .req_flock_wait_writer('d0),
+      .req_flock_distance('d0),
+      .req_flock_stride('d0),
       .req_sync_transfer_start(1'b0),
+      .req_sync(),
       .req_last(1'b1),
+      .req_cyclic('d0),
 
       .req_eot(rd_request_eot_loc[i]),
       .req_sg_desc_id(),
@@ -567,6 +599,7 @@ module util_hbm #(
       .m_axis_ready((m_axis_ready & m_axis_valid) | rd_needs_reset),
       .m_axis_valid(m_axis_valid_loc[i]),
       .m_axis_data(m_axis_data[DST_DATA_WIDTH_PER_M*i+:DST_DATA_WIDTH_PER_M]),
+      .m_axis_user(),
       .m_axis_last(m_axis_last_loc[i]),
       .m_axis_xfer_req(m_axis_xfer_req),
 
@@ -574,7 +607,6 @@ module util_hbm #(
       .fifo_wr_en(1'b0),
       .fifo_wr_din('b0),
       .fifo_wr_overflow(),
-      .fifo_wr_sync(),
       .fifo_wr_xfer_req(),
 
       .fifo_rd_clk(1'b0),
@@ -594,6 +626,16 @@ module util_hbm #(
       .dbg_src_data_id(),
       .dbg_src_response_id(),
       .dbg_status(rd_dbg_status),
+      .m_frame_in('d0),
+      .m_frame_in_valid('d0),
+      .m_frame_out(),
+      .m_frame_out_valid(),
+      .s_frame_in('d0),
+      .s_frame_in_valid('d0),
+      .s_frame_out(),
+      .s_frame_out_valid(),
+      .src_ext_sync('d0),
+      .dest_ext_sync('d0),
 
       .dest_diag_level_bursts());
 
@@ -602,8 +644,13 @@ module util_hbm #(
   end
   endgenerate
 
-  assign wr_overflow = |wr_overflow_loc;
+  assign m_axis_keep = {DST_DATA_WIDTH/8{1'b1}};
+  assign m_axis_strb = {DST_DATA_WIDTH/8{1'b1}};
+  assign m_axis_user = 1'b0;
 
-  assign rd_underflow = |rd_underflow_loc;
+  assign m_axi_awcache = {(NUM_M*4){1'b0}};
+  assign m_axi_awprot = {(NUM_M*3){1'b0}};
+  assign m_axi_arcache = {(NUM_M*4){1'b0}};
+  assign m_axi_arprot = {(NUM_M*3){1'b0}};
 
 endmodule

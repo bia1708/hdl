@@ -3,9 +3,6 @@
 AD738x_FMC HDL project
 ================================================================================
 
-Overview
---------------------------------------------------------------------------------
-
 The :adi:`AD7380`/ :adi:`AD7381` are a 16-bit and 14-bit pin-compatible family
 of dual simultaneous sampling, high speed, low power, successive approximation
 register (SAR) analog-to-digital converters (ADCs) that operate from a 3.3 V
@@ -34,50 +31,51 @@ available in a 16-lead 3mm x 3mm LFCSP package while the quad generics
 from -40°C to +125°C temperature range.
 
 Applications:
-  * Motor control position feedback
-  * Motor control current sense
-  * Data acquisition system
-  * EDFA applications
-  * I and Q demodulation
-  * SONAR
-  * Power Quality
+
+* Motor control position feedback
+* Motor control current sense
+* Data acquisition system
+* EDFA applications
+* I and Q demodulation
+* SONAR
+* Power Quality
 
 Supported boards
 -------------------------------------------------------------------------------
 
--  :adi:`EVAL-AD7380FMCZ <EVAL-AD7380FMCZ>`
--  :adi:`EVAL-AD7381FMCZ <EVAL-AD7381FMCZ>`
--  :adi:`EVAL-AD7386FMCZ <EVAL-AD7386FMCZ>`
--  :adi:`EVAL-AD7383FMCZ <EVAL-AD7383FMCZ>`
--  :adi:`EVAL-AD7380-4FMCZ <EVAL-AD7380-4FMCZ>`
+- :adi:`EVAL-AD7380-4FMCZ`
+- :adi:`EVAL-AD7383FMCZ`
+- :adi:`EVAL-AD7386FMCZ`
+- :adi:`EVAL-AD738xFMCZ`
 
 Supported devices
 -------------------------------------------------------------------------------
 
--  :adi:`AD7380`
--  :adi:`AD7380-4`
--  :adi:`AD7381`
--  :adi:`AD7381-4`
--  :adi:`AD7383`
--  :adi:`AD7383-4`
--  :adi:`AD7384`
--  :adi:`AD7384-4`
--  :adi:`AD7386`
--  :adi:`AD7387`
--  :adi:`AD7388`
--  :adi:`AD7388-4`
--  :adi:`AD7389-4`
--  :adi:`AD4680`
--  :adi:`AD4681`
--  :adi:`AD4682`
--  :adi:`AD4683`
--  :adi:`AD4684`
--  :adi:`AD4685`
+- :adi:`AD7380`
+- :adi:`AD7380-4`
+- :adi:`AD7381`
+- :adi:`AD7381-4`
+- :adi:`AD7383`
+- :adi:`AD7383-4`
+- :adi:`AD7384`
+- :adi:`AD7384-4`
+- :adi:`AD7386`
+- :adi:`AD7387`
+- :adi:`AD7388`
+- :adi:`AD7388-4`
+- :adi:`AD7389-4`
+- :adi:`AD4680`
+- :adi:`AD4681`
+- :adi:`AD4682`
+- :adi:`AD4683`
+- :adi:`AD4684`
+- :adi:`AD4685`
 
 Supported carriers
 -------------------------------------------------------------------------------
 
--  :xilinx:`ZedBoard <products/boards-and-kits/1-8dyf-11.html>` on FMC slot
+- `ZedBoard <https://digilent.com/shop/zedboard-zynq-7000-arm-fpga-soc-development-board>`__ on FMC slot
+- `LFCPNX-EVN <https://www.latticesemi.com/en/Products/DevelopmentBoardsAndKits/CertusPro-NXEvaluationBoard>`__ on FMC slot
 
 Block design
 -------------------------------------------------------------------------------
@@ -102,24 +100,24 @@ be done on the board and/or ``make`` command:
 
 In case of the **Serial Data Output Pin** functionality:
 
-.. code-block::
+.. shell:: bash
 
-   make ALERT_SPI_N=0
+   $make ALERT_SPI_N=0
 
 In case of the **Alert Indication Output Pin** functionality:
 
-.. code-block::
+.. shell:: bash
 
-   make ALERT_SPI_N=1
+   $make ALERT_SPI_N=1
 
-The NUM_OF_SDI configuration parameter defines the number of SDI lines used:
--  Options: 1, 2, 4.
-By default is set to 1.
+The **NUM_OF_SDIO** configuration parameter defines the number of SDI lines used:
+**{1, 2, 4}**. By default is set to 1.
 
-For the ALERT functionality, the following parameters will be used in make
+For the **ALERT** functionality, the following parameters will be used in make
 command: ALERT_SPI_N.
-For the serial data output functionality, the following parameters will be
-used in make command: ALERT_SPI_N, NUM_OF_SDI.
+
+For the **serial data output** functionality, the following parameters will be
+used in make command: ALERT_SPI_N, NUM_OF_SDIO.
 
 Jumper setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -150,10 +148,12 @@ CPU/Memory interconnects addresses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The addresses are dependent on the architecture of the FPGA, having an offset
-added to the base address from HDL (see more at :ref:`architecture`).
+added to the base address from HDL (see more at :ref:`architecture cpu-intercon-addr`).
+
+Xilinx
 
 =========================  ===========
-Instance                   Address
+Instance                   Zynq
 =========================  ===========
 spi_ad738x_adc_axi_regmap  0x44A0_0000
 axi_ad738x_dma             0x44A3_0000
@@ -161,7 +161,17 @@ spi_clkgen                 0x44A7_0000
 spi_trigger_gen            0x44B0_0000
 =========================  ===========
 
-I2C connections
+Lattice
+
+=========================  ===========
+Instance                   RISC-V RX
+=========================  ===========
+dmac0                      0x4002_0000
+axi_spi0                   0x4003_0000
+pwm0                       0x4004_0000
+=========================  ===========
+
+I2C connections (Zynq)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
@@ -205,7 +215,9 @@ GPIOs
 
 The Software GPIO number is calculated as follows:
 
--  Zynq-7000: if PS7 is used, then the offset is 54
+- Zynq-7000: if PS7 is used, then the offset is 54
+
+**Zynq Platform:**
 
 .. list-table::
    :widths: 25 25 25 25 25 25
@@ -224,22 +236,51 @@ The Software GPIO number is calculated as follows:
      - ALERT_SPI_N=1
      - ALERT_SPI_N=0
    * - gpio[33]
-     - OUT
+     - IN
      - 33
      - 87
      - sdid
      - 0
    * - gpio[32]
-     - OUT
+     - IN
      - 32
      - 86
      - sdib
+     - 0
+
+**Lattice LFCPNX-EVB Platform:**
+
+.. list-table::
+   :widths: 25 25 25 25 25
+   :header-rows: 2
+
+   * - GPIO signal
+     - Direction
+     - Software GPIO
+     - Assigned value
+     - Assigned value
+   * - HDL GPIO IP
+     - (from FPGA view)
+     - RISC-V RX
+     - ALERT_SPI_N=1
+     - ALERT_SPI_N=0
+   * - gpio1[29]
+     - IN
+     - gpio1[29]
+     - sdi[3]
+     - 0
+   * - gpio1[28]
+     - IN
+     - gpio1[28]
+     - sdi[1]
      - 0
 
 Interrupts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Below are the Programmable Logic interrupts used in this project.
+
+Xilinx
 
 =================== === ========== ===========
 Instance name       HDL Linux Zynq Actual Zynq
@@ -248,34 +289,97 @@ axi_ad738x_dma      13  57         89
 spi_ad738x_adc      12  56         88
 =================== === ========== ===========
 
+Lattice
+
+=================== ====== ==================
+Instance name       HDL    Lattice RISC-V RX
+=================== ====== ==================
+dmac0               IRQ_S7 7
+axi_spi0            IRQ_S8 8
+=================== ====== ==================
+
 Building the HDL project
 -------------------------------------------------------------------------------
 
 The design is built upon ADI's generic HDL reference design framework.
-ADI does not distribute the bit/elf files of these projects so they
-must be built from the sources available :git-hdl:`here </>`. To get
-the source you must
+ADI distributes the bit/elf files of these projects as part of the
+:dokuwiki:`ADI Kuiper Linux <resources/tools-software/linux-software/kuiper-linux>`.
+If you want to build the sources, ADI makes them available on the
+:git-hdl:`HDL repository </>`. To get the source you must
 `clone <https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository>`__
 the HDL repository, and then build the project as follows:
 
-**Linux/Cygwin/WSL**
+**Linux/Cygwin/WSL (for ZedBoard - Xilinx)**
 
-.. code-block::
-   :linenos:
+.. shell::
 
-   user@analog:~$ cd hdl/projects/ad738x_fmc/zed
-   user@analog:~/hdl/projects/ad738x_fmc/zed$ make ALERT_SPI_N=0 NUM_OF_SDI=4
+   $cd hdl/projects/ad738x_fmc/zed
+   $make ALERT_SPI_N=0 NUM_OF_SDIO=4
 
-The result of the build, if parameters were used, will be in a folder named
-by the configuration used:
+The result of the Xilinx build, if parameters were used, will be in a folder
+named by the configuration used:
 
 if the following command was run
 
-``make ALERT_SPI_N=0 NUM_OF_SDI=4``
+``make ALERT_SPI_N=0 NUM_OF_SDIO=4``
 
 then the folder name will be:
 
 ``ALERTSPIN0_NUMOFSDI4``
+
+**Linux/Cygwin/WSL (for LFCPNX-EVN - Lattice)**
+
+Before building the Lattice project, download the necessary Lattice Propel Builder
+IPs by running the following commands in the Lattice Propel Builder TCL Console:
+
+.. code-block:: tcl
+
+   ip_catalog_install -vlnv latticesemi.com:ip:gpio:1.8.0
+   ip_catalog_install -vlnv latticesemi.com:ip:spi_controller:2.4.0
+   ip_catalog_install -vlnv latticesemi.com:ip:i2c_controller:2.4.0
+   ip_catalog_install -vlnv latticesemi.com:ip:axi_interconnect:2.2.1
+   ip_catalog_install -vlnv latticesemi.com:ip:uart:1.5.0
+   ip_catalog_install -vlnv latticesemi.com:module:apb_interconnect:1.4.0
+   ip_catalog_install -vlnv latticesemi.com:ip:axi2apb_bridge:1.4.0
+
+Then, to build the project:
+
+.. shell::
+
+   $cd hdl/projects/ad738x_fmc/lfcpnx
+   $make ALERT_SPI_N=0 NUM_OF_SDIO=4 SYSMEM_INIT_FILE=<path_to>/<sysmem_init>.mem
+
+The SYSMEM_INIT_FILE parameter for LFCPNX-EVN is optional, use it to build the 
+project with an already initialized system memory for the RISC-V RX CPU, 
+otherwise the memory can be initialized by ``make run`` in the no-OS project
+folder or by Lattice Propel OCM debugger after loading the bitstream using
+Radiant Programmer.
+
+Simulation flow for LFCPNX-EVN (Lattice):
+
+1. Generate the Propel Builder block design:
+
+   .. shell:: bash
+
+      $cd hdl/projects/ad738x_fmc/lfcpnx
+      $make pb
+
+2. Copy the generated SGE folder from
+   ``hdl/projects/ad738x_fmc/lfcpnx/_bld/ad738x_fmc_lfcpnx/``
+   to the corresponding no-OS project root.
+
+3. Build the no-OS project with simulation enabled:
+
+   .. shell:: bash
+
+      $make SIMULATION=y
+
+4. Run HDL simulation using the generated memory image:
+
+   .. shell:: bash
+
+      $cd hdl/projects/ad738x_fmc/lfcpnx
+      $make sim SYSMEM_INIT_FILE=<path_to>/<no_os_project>.mem
 
 A more comprehensive build guide can be found in the :ref:`build_hdl` user guide.
 
@@ -285,90 +389,103 @@ Resources
 Hardware related
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  Product datasheets:
+- Product datasheets:
 
-   -  :adi:`AD7380`
-   -  :adi:`AD7380-4`
-   -  :adi:`AD7381`
-   -  :adi:`AD7381-4`
-   -  :adi:`AD7383`
-   -  :adi:`AD7383-4`
-   -  :adi:`AD7384`
-   -  :adi:`AD7384-4`
-   -  :adi:`AD7386`
-   -  :adi:`AD7387`
-   -  :adi:`AD7388`
-   -  :adi:`AD7388-4`
-   -  :adi:`AD7389-4`
-   -  :adi:`AD4680`
-   -  :adi:`AD4681`
-   -  :adi:`AD4682`
-   -  :adi:`AD4683`
-   -  :adi:`AD4684`
-   -  :adi:`AD4685`
--  `UG-1304, Evaluation Board User Guide <https://www.analog.com/media/en/technical-documentation/user-guides/eval-ad7380fmcz-7381fmcz-ug-1304.pdf>`__
+  - :adi:`AD7380`
+  - :adi:`AD7380-4`
+  - :adi:`AD7381`
+  - :adi:`AD7381-4`
+  - :adi:`AD7383`
+  - :adi:`AD7383-4`
+  - :adi:`AD7384`
+  - :adi:`AD7384-4`
+  - :adi:`AD7386`
+  - :adi:`AD7387`
+  - :adi:`AD7388`
+  - :adi:`AD7388-4`
+  - :adi:`AD7389-4`
+  - :adi:`AD4680`
+  - :adi:`AD4681`
+  - :adi:`AD4682`
+  - :adi:`AD4683`
+  - :adi:`AD4684`
+  - :adi:`AD4685`
+- `UG-1304, Evaluation Board User Guide <https://www.analog.com/media/en/technical-documentation/user-guides/eval-ad7380fmcz-7381fmcz-ug-1304.pdf>`__
 
 HDL related
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  :git-hdl:`AD738x_FMC HDL project source code <projects/ad738x_fmc>`
+- :git-hdl:`AD738x_FMC HDL project source code <projects/ad738x_fmc>`
 
 .. list-table::
-   :widths: 30 35 35
+   :widths: 25 20 20 15
    :header-rows: 1
 
    * - IP name
      - Source code link
      - Documentation link
+     - Platform
    * - AXI_CLKGEN
-     - :git-hdl:`library/axi_dmac <library/axi_clkgen>`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_clkgen>`
+     - :git-hdl:`library/axi_clkgen`
+     - :ref:`axi_clkgen`
+     - Zynq
    * - AXI_DMAC
-     - :git-hdl:`library/axi_dmac <library/axi_dmac>`
-     - :ref:`here <axi_dmac>`
+     - :git-hdl:`library/axi_dmac`
+     - :ref:`axi_dmac`
+     - Zynq, LFCPNX
    * - AXI_HDMI_TX
-     - :git-hdl:`library/axi_hdmi_tx <library/axi_hdmi_tx>`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_hdmi_tx>`
+     - :git-hdl:`library/axi_hdmi_tx`
+     - :ref:`axi_hdmi_tx`
+     - Zynq
    * - AXI_I2S_ADI
-     - :git-hdl:`library/axi_i2s_adi <library/axi_i2s_adi>`
+     - :git-hdl:`library/axi_i2s_adi`
      - ---
+     - Zynq
    * - AXI_PWM_GEN
-     - :git-hdl:`library/axi_pwm_gen <library/axi_pwm_gen>`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_pwm_gen>`
+     - :git-hdl:`library/axi_pwm_gen`
+     - :ref:`axi_pwm_gen`
+     - Zynq, LFCPNX
    * - AXI_SPDIF_TX
-     - :git-hdl:`library/axi_spdif_tx <library/axi_spdif_tx>`
+     - :git-hdl:`library/axi_spdif_tx`
      - ---
+     - Zynq
    * - AXI_SYSID
-     - :git-hdl:`library/axi_sysid <library/axi_sysid>`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_sysid>`
+     - :git-hdl:`library/axi_sysid`
+     - :ref:`axi_sysid`
+     - Zynq, LFCPNX
    * - AXI_SPI_ENGINE
-     - :git-hdl:`library/spi_engine/axi_spi_engine <library/spi_engine/axi_spi_engine>`
-     - :ref:`here <spi_engine axi>`
+     - :git-hdl:`library/spi_engine/axi_spi_engine`
+     - :ref:`spi_engine axi`
+     - Zynq, LFCPNX
    * - SPI_ENGINE_EXECUTION
-     - :git-hdl:`library/spi_engine/spi_engine_execution <library/spi_engine/spi_engine_execution>`
-     - :ref:`here <spi_engine execution>`
+     - :git-hdl:`library/spi_engine/spi_engine_execution`
+     - :ref:`spi_engine execution`
+     - Zynq, LFCPNX
    * - SPI_ENGINE_INTERCONNECT
-     - :git-hdl:`library/spi_engine/spi_engine_interconnect <library/spi_engine/spi_engine_interconnect>`
-     - :ref:`here <spi_engine interconnect>`
+     - :git-hdl:`library/spi_engine/spi_engine_interconnect`
+     - :ref:`spi_engine interconnect`
+     - Zynq, LFCPNX
    * - SPI_ENGINE_OFFLOAD
-     - :git-hdl:`library/spi_engine/spi_engine_offload <library/spi_engine/spi_engine_offload>`
-     - :ref:`here <spi_engine offload>`
+     - :git-hdl:`library/spi_engine/spi_engine_offload`
+     - :ref:`spi_engine offload`
+     - Zynq, LFCPNX
    * - SYSID_ROM
-     - :git-hdl:`library/sysid_rom <library/sysid_rom>`
-     - :dokuwiki:`[Wiki] <resources/fpga/docs/axi_sysid>`
+     - :git-hdl:`library/sysid_rom`
+     - :ref:`axi_sysid`
+     - Zynq, LFCPNX
    * - UTIL_I2C-MIXER
-     - :git-hdl:`library/util_i2c_mixer <library/util_i2c_mixer>`
+     - :git-hdl:`library/util_i2c_mixer`
      - ---
+     - Zynq
 
--  :ref:`SPI Engine Framework documentation <spi_engine>`
+- :ref:`SPI Engine Framework documentation <spi_engine>`
 
 Software related
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  :git-no-os:`AD738X_FMC No-OS project <projects/ad738x_fmcz>`
--  :dokuwiki:`AD738X_FMC - No-OS Driver [Wiki] <resources/eval/user-guides/ad738x>`
-
--  :dokuwiki:`How to build No-OS <resources/no-os/build>`
+- :git-no-os:`AD738X_FMC No-OS project <projects/ad738x_fmcz>`
+- :dokuwiki:`AD738X_FMC - No-OS Driver [Wiki] <resources/eval/user-guides/ad738x>`
+- AD7380 ZED Linux device tree :git-linux:`arch/arm/boot/dts/xilinx/zynq-zed-adv7511-ad7380.dts`
 
 .. include:: ../common/more_information.rst
 
