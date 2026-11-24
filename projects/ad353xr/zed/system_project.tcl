@@ -35,7 +35,7 @@
 source ../../../scripts/adi_env.tcl
 source $ad_hdl_dir/projects/scripts/adi_project_xilinx.tcl
 source $ad_hdl_dir/projects/scripts/adi_board.tcl
-
+#non-readme change
 adi_project ad353xr_zed
 
 adi_project_files ad353xr_zed [list \
