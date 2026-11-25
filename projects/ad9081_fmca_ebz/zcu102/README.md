@@ -51,9 +51,9 @@ The following parameters allow configuring the RX transceiver independently from
 - XCVR_RX_LANE_RATE - RX lane rate [gbps]
 - XCVR_RX_REF_CLK - RX reference clock [MHz] (usually XCVR_RX_LANE_RATE/20 or XCVR_RX_LANE_RATE/40)
 
-### Example configurations
+#### Example configurations
 
-#### JESD204B subclass 1, TX mode 9, RX mode 10, VCXO 100 MHz (default)
+### JESD204B subclass 1, TX mode 9, RX mode 10, VCXO 100 MHz (default)
 
 This specific command is equivalent to running `make` only:
 
@@ -110,7 +110,7 @@ REF_CLK=500 \
 LANE_RATE=10
 ```
 
-Corresponding device tree: [zynqmp-zcu102-rev10-ad9081-m8-l4-vcxo122p88.dts](https://github.com/analogdevicesinc/linux/blob/main/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-rev10-ad9081-m8-l4-vcxo122p88.dts)
+Corresponding device tree: [zynqmp-zcu102-rev10-ad9081-m8-l4-vcxo122p88.dts](https://github.com/analogdevicesinc/linux/blob/main/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-ev10-ad9081-m8-l4-vcxo122p88.dts)
 
 #### JESD204B subclass 1, TX mode 9, RX mode 10, with TDD support
 
@@ -131,7 +131,7 @@ REF_CLK=500 \
 LANE_RATE=10
 ```
 
-Corresponding device tree: [zynqmp-zcu102-rev10-ad9081-m8-l4-tdd.dts](https://github.com/analogdevicesinc/linux/blob/main/arch/arm64/boot/dts/xilinx/zynqmp-zcu102-rev10-ad9081-m8-l4-tdd.dts)
+Corresponding device tree: [zynqmp-zcu102-rev10-ad9081-m8-l4-tdd.dts]()
 
 #### JESD204B subclass 1, TX mode 9, RX mode 10, on AD9081-FMCA-EBZ rev. C with 100 MHz VCXO, using QPLL for both ADXCVR instances
 
